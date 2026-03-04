@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | CuberTech Enterprise</title>
+    <meta name="description" content="Learn more about Cyborg Enterprise, our mission, values, and the team driving the future of human augmentation.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Titillium+Web:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&family=Audiowide&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <link rel="stylesheet" href="navbar.css">
+    <script src="navbar.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Titillium+Web:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Navbar CSS -->
+    <link rel="stylesheet" href="navbar.css">
+
+    <!-- AOS Library for scroll animations -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="footer.css">
+    <script src="footer.js"></script>
+    <style>
+        :root {
+            --deep-space: #0A0E17;
+            --cybernetic-blue: #00C2FF;
+            --titanium-silver: #D8DEE9;
+            --neon-green: #39FF14;
+            --neural-purple: #BF5AF2;
+            --surgical-white: #F8F9FC;
+            --hydraulic-red: #FF3B30;
+            --alloy-gray: #4A4E57;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Titillium Web', sans-serif;
+            background-color: var(--deep-space);
+            color: var(--titanium-silver);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(0, 194, 255, 0.05) 0%, transparent 50%),
+                linear-gradient(to bottom, rgba(10, 14, 23, 0.9) 0%, rgba(10, 14, 23, 1) 100%);
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300C2FF' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .about-hero {
+            position: relative;
+            height: 50vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(10, 14, 23, 0.7);
+            border: 1px solid var(--cybernetic-blue);
+            border-radius: 5px;
+            max-width: 800px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(0, 194, 255, 0.3);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            filter: hue-rotate(180deg) saturate(1.5);
+            opacity: 0.4;
+            z-index: 1;
+        }
+
+        .glitch-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0,0,0,0.1) 0px,
+                rgba(0,0,0,0.1) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            z-index: 1;
+            pointer-events: none;
+            animation: scanline 5s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(100%);
+            }
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--cybernetic-blue);
+            text-shadow: 0 0 10px rgba(0, 194, 255, 0.7);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--cybernetic-blue);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--cybernetic-blue), transparent);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 50px;
+            color: var(--titanium-silver);
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .story-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(10, 14, 23, 0.8);
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 194, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(45deg, rgba(0, 194, 255, 0.05) 25%, transparent 25%) 0 0,
+                linear-gradient(-45deg, rgba(0, 194, 255, 0.05) 25%, transparent 25%) 0 0,
+                linear-gradient(45deg, transparent 75%, rgba(0, 194, 255, 0.05) 75%) 0 0,
+                linear-gradient(-45deg, transparent 75%, rgba(0, 194, 255, 0.05) 75%) 0 0;
+            background-size: 20px 20px;
+            z-index: -1;
+        }
+
+        .glow-text {
+            color: var(--neon-green);
+            text-shadow: 0 0 8px rgba(57, 255, 20, 0.7);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-gap: 30px;
+            margin-top: 50px;
+        }
+
+        .team-member {
+            background: rgba(74, 78, 87, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(0, 194, 255, 0.2);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .team-member:hover .member-img {
+            transform: scale(1.05);
+        }
+
+        .team-member:hover .member-overlay {
+            opacity: 0.7;
+        }
+
+        .member-img-container {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .member-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .member-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(10, 14, 23, 1), transparent);
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .member-details {
+            padding: 20px;
+            position: relative;
+        }
+
+        .member-name {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--cybernetic-blue);
+        }
+
+        .member-role {
+            color: var(--neon-green);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .member-bio {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .tech-container {
+            padding: 40px 0;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 30px;
+        }
+
+        .tech-item {
+            background: rgba(10, 14, 23, 0.8);
+            border-radius: 8px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 194, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-color: var(--cybernetic-blue);
+        }
+
+        .tech-icon {
+            font-size: 2.5rem;
+            color: var(--cybernetic-blue);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .tech-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--surgical-white);
+        }
+
+        .tech-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .facilities-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 20px;
+        }
+
+        .facility-item {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .facility-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .facility-item:hover .facility-img {
+            transform: scale(1.1);
+        }
+
+        .facility-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(10, 14, 23, 0.9), transparent);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .facility-item:hover .facility-overlay {
+            transform: translateY(0);
+        }
+
+        .facility-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--cybernetic-blue);
+        }
+
+        .facility-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Journey Timeline Section */
+        .journey-container {
+            padding: 50px 0;
+            position: relative;
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--cybernetic-blue), var(--neural-purple));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 100px;
+            opacity: 0;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: auto;
+            margin-right: 50%;
+            padding-right: 40px;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-right: auto;
+            margin-left: 50%;
+            padding-left: 40px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 0 15px var(--neon-green);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+
+        .timeline-content {
+            background: rgba(10, 14, 23, 0.8);
+            padding: 25px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            border: 1px solid rgba(0, 194, 255, 0.2);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-content {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            border-color: var(--neon-green);
+        }
+
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--neon-green);
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--cybernetic-blue);
+        }
+
+        .timeline-desc {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .timeline-item:after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            position: absolute;
+            top: 20px;
+        }
+
+        .timeline-item:nth-child(odd):after {
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent rgba(0, 194, 255, 0.2);
+            right: 30px;
+        }
+
+        .timeline-item:nth-child(even):after {
+            border-width: 10px 10px 10px 0;
+            border-color: transparent rgba(0, 194, 255, 0.2) transparent transparent;
+            left: 30px;
+        }
+
+        .partners-container {
+            padding: 40px 0;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-gap: 30px;
+            align-items: center;
+        }
+
+        .partner-item {
+            background: rgba(74, 78, 87, 0.3);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(0, 194, 255, 0.2);
+        }
+
+        .partner-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--cybernetic-blue);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .partner-logo {
+            height: 60px;
+            margin-bottom: 15px;
+            filter: grayscale(100%) brightness(1.2);
+            transition: filter 0.3s ease;
+        }
+
+        .partner-item:hover .partner-logo {
+            filter: grayscale(0%) brightness(1.2);
+        }
+
+        .partner-name {
+            font-size: 1.1rem;
+            color: var(--surgical-white);
+            margin-bottom: 10px;
+        }
+
+        .partner-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--deep-space);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .scanner {
+            width: 100px;
+            height: 100px;
+            border: 3px solid transparent;
+            border-top: 3px solid var(--cybernetic-blue);
+            border-right: 3px solid var(--neon-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            position: relative;
+            margin: 0 auto 20px;
+        }
+
+        .scanner:before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border: 3px solid transparent;
+            border-bottom: 3px solid var(--neural-purple);
+            border-left: 3px solid var(--hydraulic-red);
+            border-radius: 50%;
+            animation: spin 0.5s linear infinite reverse;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader-text {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--cybernetic-blue);
+            margin-top: 20px;
+        }
+
+        .loader-progress {
+            width: 200px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 20px auto 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loader-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--cybernetic-blue), var(--neon-green));
+        }
+
+        /* Holographic effect */
+        .hologram {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hologram::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0) 40%,
+                rgba(255, 255, 255, 0.4) 50%,
+                rgba(255, 255, 255, 0) 60%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(-45deg);
+            animation: hologram-sweep 6s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes hologram-sweep {
+            0% {
+                transform: rotate(-45deg) translateY(-100%);
+            }
+            100% {
+                transform: rotate(-45deg) translateY(100%);
+            }
+        }
+
+        .three-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+            
+            .timeline-container {
+                padding: 0 30px;
+            }
+            
+            .timeline-line {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                padding-left: 60px !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+                margin-bottom: 60px;
+            }
+            
+            .timeline-dot {
+                left: 28px !important;
+                right: auto !important;
+            }
+            
+            .timeline-item:after {
+                left: 50px !important;
+                right: auto !important;
+                border-width: 10px 10px 10px 0 !important;
+                border-color: transparent rgba(0, 194, 255, 0.2) transparent transparent !important;
+            }
+            
+            .timeline-content {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .tech-grid, .facilities-grid, .partners-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .story-container {
+                padding: 1rem;
+            }
+            
+            .timeline-container {
+                padding: 0 15px;
+            }
+            
+            .timeline-line {
+                left: 15px;
+            }
+            
+            .timeline-item {
+                padding-left: 45px !important;
+            }
+            
+            .timeline-dot {
+                left: 13px !important;
+            }
+            
+            .timeline-item:after {
+                left: 35px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="scanner"></div>
+            <div class="loader-text">INITIALIZING CYBERTECH SYSTEMS</div>
+            <div class="loader-progress">
+                <div class="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-container">
+                <a href="index.html" class="navbar-brand">
+                    <i class="fas fa-microchip"></i> CYBERTECH
+                </a>
+                
+                <button class="hamburger">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <div class="nav-menu">
+                    <ul class="nav-links">
+                        <li class="active"><a href="#home">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li class="dropdown">
+                            <a href="products.html">Products <i class="fas fa-chevron-down" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#neural">Neural Enhancements</a></li>
+                                <li><a href="#ocular">Ocular Systems</a></li>
+                                <li><a href="#limbs">Advanced Limbs</a></li>
+                                <li><a href="#core">Core Implants</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="inventory.html">Inventory</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-icons">
+                    <div class="nav-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="nav-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="nav-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="mobile-nav-overlay"></div>
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="hero-bg"></div>
+        <div class="glitch-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">We Are <span class="glow-text">CyberCorp</span></h1>
+            <p class="hero-subtitle">Redefining Human Potential Through Advanced Cybernetic Engineering Since 2035</p>
+        </div>
+    </section>
+
+    <!-- Company Story Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Story</h2>
+            <p class="section-subtitle">From a small research lab to the world's leading cybernetic enhancement provider</p>
+            <div class="story-container">
+                <p>Founded in 2035 by Dr. Elena Nakamura and a team of visionary bioengineers, CyberCorp began with a single mission: to transcend the limitations of the human body through seamless integration of cutting-edge technology and organic systems.</p>
+                <br>
+                <p>What started as a breakthrough neural interface developed for medical applications quickly evolved into the first generation of true cybernetic enhancements. Our proprietary <span class="glow-text">Synth-Neural™</span> technology changed the landscape of human augmentation forever, providing unprecedented levels of integration between artificial components and the human nervous system.</p>
+                <br>
+                <p>Today, CyberCorp stands at the forefront of the enhancement revolution, with research facilities spanning four continents and a commitment to pushing the boundaries of what's possible. Our team of over 3,000 scientists, engineers, and medical professionals continues to redefine human potential, one enhancement at a time.</p>
+                <br>
+                <p>We believe in a future where physical limitations are optional, where human ingenuity and technological advancement merge to create something greater than the sum of its parts. At CyberCorp, we're not just building better body parts—we're building a better future.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Team</h2>
+            <p class="section-subtitle">Meet the brilliant minds behind our cybernetic innovations</p>
+            <div class="team-grid">
+                <div class="team-member hologram">
+                    <div class="member-img-container">
+                        <img src="/api/placeholder/400/300" alt="Dr. Elena Nakamura" class="member-img">
+                        <div class="member-overlay"></div>
+                    </div>
+                    <div class="member-details">
+                        <h3 class="member-name">Dr. Elena Nakamura</h3>
+                        <p class="member-role">FOUNDER & CHIEF SCIENCE OFFICER</p>
+                        <p class="member-bio">Pioneer in neural interface technology with over 25 years of experience in bioelectronics. Holds 47 patents and has revolutionized the field of brain-machine interfaces.</p>
+                    </div>
+                </div>
+                <div class="team-member hologram">
+                    <div class="member-img-container">
+                        <img src="/api/placeholder/400/300" alt="Dr. Marcus Wei" class="member-img">
+                        <div class="member-overlay"></div>
+                    </div>
+                    <div class="member-details">
+                        <h3 class="member-name">Dr. Marcus Wei</h3>
+                        <p class="member-role">HEAD OF BIOMECHANICAL ENGINEERING</p>
+                        <p class="member-bio">Former prosthetics designer whose groundbreaking work in muscle-synthetic interfaces has earned him the prestigious Global Innovation Award three years running.</p>
+                    </div>
+                </div>
+                <div class="team-member hologram">
+                    <div class="member-img-container">
+                        <img src="/api/placeholder/400/300" alt="Dr. Sophia Chen" class="member-img">
+                        <div class="member-overlay"></div>
+                    </div>
+                    <div class="member-details">
+                        <h3 class="member-name">Dr. Sophia Chen</h3>
+                        <p class="member-role">DIRECTOR OF NEURAL SYSTEMS</p>
+                        <p class="member-bio">Neuroscientist specializing in sensory augmentation and synthetic neural pathways. Led the development of our revolutionary OmniSense™ technology.</p>
+                    </div>
+                </div>
+                <div class="team-member hologram">
+                    <div class="member-img-container">
+                        <img src="/api/placeholder/400/300" alt="Jamal Washington" class="member-img">
+                        <div class="member-overlay"></div>
+                    </div>
+                    <div class="member-details">
+                        <h3 class="member-name">Jamal Washington</h3>
+                        <p class="member-role">CHIEF TECHNICAL OFFICER</p>
+                        <p class="member-bio">Software architect responsible for the autonomous optimization systems that allow our cybernetic enhancements to learn and adapt to their users over time.</p>
+                    </div>
+                </div>
+                <div class="team-member hologram">
+                    <div class="member-img-container">
+                        <img src="/api/placeholder/400/300" alt="Dr. Anya Petrova" class="member-img">
+                        <div class="member-overlay"></div>
+                    </div>
+                    <div class="member-details">
+                        <h3 class="member-name">Dr. Anya Petrova</h3>
+                        <p class="member-role">HEAD OF MATERIALS SCIENCE</p>
+                        <p class="member-bio">Creator of our proprietary NanoCarbon alloys and bio-compatible composites that make our enhancements lighter, stronger, and more durable than the competition.</p>
+                    </div>
+                </div>
+                <div class="team-member hologram">
+                    <div class="member-img-container">
+                        <img src="/api/placeholder/400/300" alt="Dr. Kwame Osei" class="member-img">
+                        <div class="member-overlay"></div>
+                    </div>
+                    <div class="member-details">
+                        <h3 class="member-name">Dr. Kwame Osei</h3>
+                        <p class="member-role">MEDICAL DIRECTOR</p>
+                        <p class="member-bio">Pioneering surgeon who developed our minimally invasive installation techniques and oversees the medical safety protocols for all CyberCorp enhancements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Technology</h2>
+            <p class="section-subtitle">Pushing the boundaries of what's technologically possible</p>
+            <div class="tech-container">
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="tech-title">Synth-Neural™ Integration</h3>
+                        <p class="tech-desc">Our patented neural interface technology creates a seamless connection between synthetic components and your nervous system, enabling intuitive control with zero latency and full sensory feedback.</p>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3 class="tech-title">Quantum Processing Units</h3>
+                        <p class="tech-desc">Every CyberCorp enhancement contains our proprietary QPU-7 processor, capable of handling complex operational algorithms while continuously learning and adapting to your unique neural patterns.</p>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-atom"></i>
+                        </div>
+                        <h3 class="tech-title">NanoCarbon Composites</h3>
+                        <p class="tech-desc">Our revolutionary materials combine unparalleled strength-to-weight ratios with bio-compatibility, resulting in enhancements that are 78% lighter and 320% stronger than traditional prosthetics.</p>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="tech-title">BioShield Protection</h3>
+                        <p class="tech-desc">All CyberCorp enhancements feature our proprietary anti-rejection technology, eliminating the need for immunosuppressants and ensuring seamless biological integration.</p>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                        <h3 class="tech-title">MicroFusion Power</h3>
+                        <p class="tech-desc">Our self-sustaining power systems harness the body's natural energy, supplemented by ambient energy harvesting, providing decades of maintenance-free operation.</p>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="tech-title">Adaptive Performance</h3>
+                        <p class="tech-desc">Intelligent systems that continuously optimize for changing conditions and usage patterns, evolving with you to provide peak performance in any situation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Facilities</h2>
+            <p class="section-subtitle">Where innovation meets precision manufacturing</p>
+            <div class="facilities-container">
+                <div class="facilities-grid">
+                    <div class="facility-item">
+                        <img src="/api/placeholder/600/400" alt="Neo-Tokyo Research Center" class="facility-img">
+                        <div class="facility-overlay">
+                            <h3 class="facility-title">Neo-Tokyo Research Center</h3>
+                            <p class="facility-desc">Our flagship R&D facility housing over 1,200 scientists and engineers developing next-generation cybernetic technologies.</p>
+                        </div>
+                    </div>
+                    <div class="facility-item">
+                        <img src="/api/placeholder/600/400" alt="Silicon Valley Innovation Lab" class="facility-img">
+                        <div class="facility-overlay">
+                            <h3 class="facility-title">Silicon Valley Innovation Lab</h3>
+                            <p class="facility-desc">Where our software development team creates the advanced AI systems that power our cybernetic enhancements.</p>
+                        </div>
+                    </div>
+                    <div class="facility-item">
+                        <img src="/api/placeholder/600/400" alt="Geneva Medical Center" class="facility-img">
+                        <div class="facility-overlay">
+                            <h3 class="facility-title">Geneva Medical Center</h3>
+                            <p class="facility-desc">Our premier installation and calibration facility, where clients receive personalized fitting and optimization of their enhancements.</p>
+                        </div>
+                    </div>
+                    <div class="facility-item">
+                        <img src="/api/placeholder/600/400" alt="Shenzhen Manufacturing Hub" class="facility-img">
+                        <div class="facility-overlay">
+                            <h3 class="facility-title">Shenzhen Manufacturing Hub</h3>
+                            <p class="facility-desc">State-of-the-art production facility using quantum fabrication techniques to create precision cybernetic components.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Timeline Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Journey</h2>
+            <p class="section-subtitle">The evolution of CyberCorp from startup to global leader</p>
+            <div class="journey-container">
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2035</div>
+                            <h3 class="timeline-title">The Foundation</h3>
+                            <p class="timeline-desc">Dr. Elena Nakamura establishes CyberCorp with a small team of researchers and a revolutionary patent for neural interface technology.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2037</div>
+                            <h3 class="timeline-title">First Breakthrough</h3>
+                            <p class="timeline-desc">Development of the first successful Synth-Neural™ interface, allowing direct communication between electronic systems and the human nervous system.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2039</div>
+                            <h3 class="timeline-title">Medical Applications</h3>
+                            <p class="timeline-desc">First generation of medical-grade neural prosthetics helps thousands of patients regain lost functionality with unprecedented precision.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2041</div>
+                            <h3 class="timeline-title">Global Expansion</h3>
+                            <p class="timeline-desc">Opening of research facilities in Neo-Tokyo and Silicon Valley, bringing together the world's top talent in cybernetics and AI.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2043</div>
+                            <h3 class="timeline-title">Enhancement Revolution</h3>
+                            <p class="timeline-desc">Launch of the first commercial enhancements for non-medical use, sparking the global enhancement revolution.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2045</div>
+                            <h3 class="timeline-title">Present Day</h3>
+                            <p class="timeline-desc">CyberCorp stands as the industry leader with over 2 million enhanced individuals worldwide and groundbreaking new technologies in development.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnerships Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Partners</h2>
+            <p class="section-subtitle">Collaborating with industry leaders to push the boundaries of human enhancement</p>
+            <div class="partners-container">
+                <div class="partners-grid">
+                    <div class="partner-item">
+                        <img src="/api/placeholder/200/80" alt="NeuraTech" class="partner-logo">
+                        <h3 class="partner-name">NeuraTech</h3>
+                        <p class="partner-desc">Pioneers in brain-computer interfaces and neural mapping technology.</p>
+                    </div>
+                    <div class="partner-item">
+                        <img src="/api/placeholder/200/80" alt="Quantum Medical" class="partner-logo">
+                        <h3 class="partner-name">Quantum Medical</h3>
+                        <p class="partner-desc">Leading healthcare provider specializing in cybernetic installation procedures.</p>
+                    </div>
+                    <div class="partner-item">
+                        <img src="/api/placeholder/200/80" alt="FutureMaterials Inc." class="partner-logo">
+                        <h3 class="partner-name">FutureMaterials Inc.</h3>
+                        <p class="partner-desc">Developers of advanced bio-compatible composites and alloys.</p>
+                    </div>
+                    <div class="partner-item">
+                        <img src="/api/placeholder/200/80" alt="Global Health Organization" class="partner-logo">
+                        <h3 class="partner-name">Global Health Organization</h3>
+                        <p class="partner-desc">International standards body for cybernetic enhancement safety protocols.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer placeholder -->
+        <footer class="footer pt-16 pb-6">
+            <!-- Circuit overlay -->
+            <div class="circuit-overlay"></div>
+            
+            <!-- Main footer content -->
+            <div class="footer-container container mx-auto px-4">
+                <!-- Top footer section with logo and main content -->
+                <div class="footer-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+                    <!-- Company Info Column -->
+                    <div class="footer-col">
+                        <div class="mb-4">
+                            <h2 class="text-3xl font-bold mb-2 animated-text" style="font-family: 'Audiowide', cursive;">CYBERTECH</h2>
+                            <p class="text-sm tracking-wide" style="font-family: 'JetBrains Mono', monospace;">HUMAN POTENTIAL · ENHANCED</p>
+                        </div>
+                        <p class="text-sm mb-6">Revolutionizing human capabilities through cutting-edge cybernetic enhancements. Build your future, enhance your potential.</p>
+                        <div class="flex space-x-4 mb-4">
+                            <a href="#" class="social-icon h-10 w-10 flex items-center justify-center hover:text-deep-space-black">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon h-10 w-10 flex items-center justify-center hover:text-deep-space-black">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-icon h-10 w-10 flex items-center justify-center hover:text-deep-space-black">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="social-icon h-10 w-10 flex items-center justify-center hover:text-deep-space-black">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="pulsing-dot"></span>
+                            <span class="text-sm text-cybernetic-blue">All systems operational</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Links Column -->
+                    <div class="footer-col">
+                        <h3 class="footer-heading text-lg font-semibold mb-6">Navigation</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Home</a></li>
+                            <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>About Us</a></li>
+                            <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Products</a></li>
+                            <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Services</a></li>
+                            <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Contact</a></li>
+                            <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Inventory</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Contact Column -->
+                    <div class="footer-col">
+                        <h3 class="footer-heading text-lg font-semibold mb-6">Connect With Us</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-cybernetic-blue mt-1 mr-3"></i>
+                                <span>Neo-Tokyo Research Complex<br>Building 42, Sector 7<br>Tokyo, Japan</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-phone-alt text-cybernetic-blue mr-3"></i>
+                                <span>+81 3-1234-5678</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-envelope text-cybernetic-blue mr-3"></i>
+                                <span>enhancements@cyborg.tech</span>
+                            </li>
+                            <li class="mt-4">
+                                <a href="#" class="cybernetic-border inline-block px-4 py-2 text-sm">
+                                    <i class="fas fa-calendar-check mr-2"></i>Schedule Consultation
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Newsletter Column -->
+                    <div class="footer-col">
+                        <h3 class="footer-heading text-lg font-semibold mb-6">Enhancement Updates</h3>
+                        <p class="mb-4 text-sm">Stay informed about the latest cybernetic innovations and exclusive offers.</p>
+                        <form class="mb-4">
+                            <div class="flex flex-col space-y-3">
+                                <input type="email" placeholder="Enter your email" class="newsletter-input px-4 py-3 rounded text-sm w-full" required>
+                                <button type="submit" class="subscribe-btn px-4 py-3 rounded text-sm font-medium text-surgical-white">
+                                    SUBSCRIBE <i class="fas fa-arrow-right ml-2"></i>
+                                </button>
+                            </div>
+                        </form>
+                        <div class="text-xs">
+                            <div class="flex items-center mb-1">
+                                <i class="fas fa-shield-alt text-neon-green mr-2"></i>
+                                <span>Encrypted transmission</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-lock text-neon-green mr-2"></i>
+                                <span>We respect your privacy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Divider -->
+                <div class="cybernetic-divider my-6"></div>
+                
+                <!-- Secondary links section -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div>
+                        <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Support</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#" class="footer-link">FAQs</a></li>
+                            <li><a href="#" class="footer-link">Help Center</a></li>
+                            <li><a href="#" class="footer-link">Maintenance</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Legal</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#" class="footer-link">Terms of Service</a></li>
+                            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                            <li><a href="#" class="footer-link">Warranty</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Resources</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#" class="footer-link">Blog</a></li>
+                            <li><a href="#" class="footer-link">Research Papers</a></li>
+                            <li><a href="#" class="footer-link">Case Studies</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Partners</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#" class="footer-link">Medical Institutions</a></li>
+                            <li><a href="#" class="footer-link">Tech Companies</a></li>
+                            <li><a href="#" class="footer-link">Become a Partner</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Bottom footer with copyright, language, payment -->
+                <div class="footer-bottom flex flex-col md:flex-row justify-between items-center py-4 text-sm">
+                    <div class="mb-4 md:mb-0">
+                        <p>&copy; 2025 Cyborg Enhancement Tech. All rights reserved.</p>
+                    </div>
+                    
+                    <div class="flex space-x-6 items-center mb-4 md:mb-0">
+                        <div class="language-selector flex items-center">
+                            <i class="fas fa-globe mr-2 text-cybernetic-blue"></i>
+                            <span>English</span>
+                            <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                            
+                            <div class="language-options">
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="footer-link">English</a></li>
+                                    <li><a href="#" class="footer-link">日本語</a></li>
+                                    <li><a href="#" class="footer-link">Español</a></li>
+                                    <li><a href="#" class="footer-link">Français</a></li>
+                                    <li><a href="#" class="footer-link">Deutsch</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="footer-link flex items-center">
+                            <i class="fas fa-headset mr-2"></i>
+                            <span>24/7 Support</span>
+                        </a>
+                    </div>
+                    
+                    <div class="payment-methods">
+                        <span class="mr-2 text-xs">SECURE PAYMENT</span>
+                        <div class="flex space-x-2">
+                            <i class="fab fa-cc-visa text-xl"></i>
+                            <i class="fab fa-cc-mastercard text-xl"></i>
+                            <i class="fab fa-cc-amex text-xl"></i>
+                            <i class="fab fa-bitcoin text-xl"></i>
+                            <i class="fab fa-ethereum text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tech certification badges -->
+                <div class="flex flex-wrap justify-center gap-4 my-6">
+                    <div class="cybernetic-border px-3 py-2 flex items-center text-xs">
+                        <i class="fas fa-medal text-neon-green mr-2"></i>
+                        <span>ISO 9001 Certified</span>
+                    </div>
+                    <div class="cybernetic-border px-3 py-2 flex items-center text-xs">
+                        <i class="fas fa-shield-alt text-neon-green mr-2"></i>
+                        <span>Medical Grade Security</span>
+                    </div>
+                    <div class="cybernetic-border px-3 py-2 flex items-center text-xs">
+                        <i class="fas fa-robot text-neon-green mr-2"></i>
+                        <span>Advanced AI Support</span>
+                    </div>
+                    <div class="cybernetic-border px-3 py-2 flex items-center text-xs">
+                        <i class="fas fa-leaf text-neon-green mr-2"></i>
+                        <span>Carbon Neutral Tech</span>
+                    </div>
+                </div>
+                
+                <!-- Back to top button -->
+                <div class="flex justify-center mt-6">
+                    <button id="backToTop" class="back-to-top rounded-full h-12 w-12 flex items-center justify-center">
+                        <i class="fas fa-arrow-up"></i>
+                    </button>
+                </div>
+            </div>
+        </footer>
+
+    <!-- Three.js background -->
+    <div id="three-container" class="three-container"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="navbar.js"></script>
+
+    <script>
+        // Loading animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const loader = document.querySelector('.loader');
+            const loaderBar = document.querySelector('.loader-bar');
+            const loaderText = document.querySelector('.loader-text');
+            
+            let progress = 0;
+            const loadingTexts = [
+                "INITIALIZING SYSTEMS",
+                "LOADING NEURAL INTERFACES",
+                "CALIBRATING SYNTHETIC COMPONENTS",
+                "SYNCING DATA ARCHIVES",
+                "ESTABLISHING SECURE CONNECTION"
+            ];
+            
+            const interval = setInterval(() => {
+                progress += Math.random() * 2;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    
+                    setTimeout(() => {
+                        loader.classList.add('hidden');
+                        initAnimations();
+                    }, 500);
+                }
+                
+                loaderBar.style.width = `${progress}%`;
+                loaderText.textContent = loadingTexts[Math.floor((progress / 100) * loadingTexts.length)];
+            }, 100);
+        });
+
+        // Initialize GSAP animations
+        function initAnimations() {
+            // Animate hero section
+            gsap.from('.hero-content', {
+                duration: 1.5,
+                y: 50,
+                opacity: 0,
+                ease: 'power3.out'
+            });
+            
+            // Animate section titles
+            gsap.utils.toArray('.section-title').forEach(title => {
+                gsap.from(title, {
+                    scrollTrigger: {
+                        trigger: title,
+                        start: 'top 80%'
+                    },
+                    duration: 1,
+                    y: 30,
+                    opacity: 0,
+                    ease: 'power3.out'
+                });
+            });
+            
+            // Animate team members
+            gsap.utils.toArray('.team-member').forEach((member, i) => {
+                gsap.from(member, {
+                    scrollTrigger: {
+                        trigger: member,
+                        start: 'top 85%'
+                    },
+                    duration: 0.8,
+                    y: 50,
+                    opacity: 0,
+                    delay: i * 0.15,
+                    ease: 'power2.out'
+                });
+            });
+            
+            // Animate tech items
+            gsap.utils.toArray('.tech-item').forEach((item, i) => {
+                gsap.from(item, {
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 85%'
+                    },
+                    duration: 0.8,
+                    y: 30,
+                    opacity: 0,
+                    delay: i * 0.1,
+                    ease: 'back.out(1.2)'
+                });
+            });
+            
+            // Animate facility items
+            gsap.utils.toArray('.facility-item').forEach((item, i) => {
+                gsap.from(item, {
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 85%'
+                    },
+                    duration: 1,
+                    scale: 0.9,
+                    opacity: 0,
+                    delay: i * 0.15,
+                    ease: 'power2.out'
+                });
+            });
+            
+            // Animate timeline items
+            gsap.utils.toArray('.timeline-item').forEach((item, i) => {
+                gsap.to(item, {
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 75%'
+                    },
+                    duration: 0.8,
+                    opacity: 1,
+                    ease: 'power2.out',
+                    delay: i * 0.2
+                });
+            });
+            
+            // Animate partner items
+            gsap.utils.toArray('.partner-item').forEach((item, i) => {
+                gsap.from(item, {
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 85%'
+                    },
+                    duration: 0.7,
+                    y: 30,
+                    opacity: 0,
+                    delay: i * 0.1,
+                    ease: 'power2.out'
+                });
+            });
+        }
+        
+        // Initialize Three.js background
+        function initThreeBackground() {
+            const container = document.getElementById('three-container');
+            
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 30;
+            
+            const renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000000, 0);
+            container.appendChild(renderer.domElement);
+            
+            // Create grid of particles
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCount = 1500;
+            const posArray = new Float32Array(particlesCount * 3);
+            
+            for(let i = 0; i < particlesCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 100;
+            }
+            
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            
+            // Materials
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.2,
+                color: 0x00C2FF,
+                transparent: true,
+                opacity: 0.8
+            });
+            
+            // Mesh
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+            
+            // Animation
+            const animate = () => {
+                requestAnimationFrame(animate);
+                
+                particlesMesh.rotation.x += 0.0003;
+                particlesMesh.rotation.y += 0.0005;
+                
+                renderer.render(scene, camera);
+            };
+            
+            animate();
+        }
+        
+        // Initialize Three.js after the page loads
+        window.addEventListener('load', initThreeBackground);
+    </script>
+
+
+</body>
+</html>

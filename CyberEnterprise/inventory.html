@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory | CyberTech Enterprise</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Titillium+Web:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Navbar CSS -->
+    <link rel="stylesheet" href="navbar.css">
+    
+    <!-- Three.js for 3D model -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    
+    <!-- GSAP Draggable -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/Draggable.min.js"></script>
+    
+    <!-- Popper.js for tooltips -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    
+    <!-- Tippy.js for tooltips -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tippy.js/6.3.7/tippy.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tippy.js/6.3.7/tippy.css">
+    
+    <link rel="stylesheet" href="footer.css">
+    <script src="footer.js"></script>
+    
+    <style>
+        :root {
+            --deep-space-black: #0A0E17;
+            --cybernetic-blue: #00C2FF;
+            --titanium-silver: #D8DEE9;
+            --neon-green: #39FF14;
+            --neural-purple: #BF5AF2;
+            --surgical-white: #F8F9FC;
+            --hydraulic-red: #FF3B30;
+            --alloy-gray: #4A4E57;
+            --grid-overlay: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M1,1 L19,1 L19,19 L1,19 L1,1" fill="none" stroke-width="0.3" stroke="rgba(0, 194, 255, 0.1)"/></svg>');
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Titillium Web', sans-serif;
+            background-color: var(--deep-space-black);
+            color: var(--titanium-silver);
+            background-image: var(--grid-overlay);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .closet-header {
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+        }
+        
+        .closet-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, var(--cybernetic-blue), var(--neural-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(0, 194, 255, 0.5);
+        }
+        
+        .closet-header p {
+            font-size: 1.1rem;
+            color: var(--titanium-silver);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .gender-toggle {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .toggle-btn {
+            background: var(--alloy-gray);
+            color: var(--titanium-silver);
+            border: 2px solid var(--cybernetic-blue);
+            padding: 10px 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-btn:first-child {
+            border-radius: 20px 0 0 20px;
+        }
+        
+        .toggle-btn:last-child {
+            border-radius: 0 20px 20px 0;
+        }
+        
+        .toggle-btn.active {
+            background: var(--cybernetic-blue);
+            color: var(--deep-space-black);
+            box-shadow: 0 0 15px var(--cybernetic-blue);
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        
+        @media (min-width: 992px) {
+            .main-content {
+                flex-direction: row;
+                gap: 20px;
+            }
+        }
+        
+        .model-viewer {
+            position: relative;
+            flex: 1;
+            min-height: 400px;
+            background: rgba(10, 14, 23, 0.8);
+            border-radius: 10px;
+            border: 1px solid var(--alloy-gray);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .model-canvas {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+        }
+        
+        .model-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .model-btn {
+            background: rgba(10, 14, 23, 0.7);
+            color: var(--cybernetic-blue);
+            border: 1px solid var(--cybernetic-blue);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .model-btn:hover {
+            background: var(--cybernetic-blue);
+            color: var(--deep-space-black);
+            box-shadow: 0 0 10px var(--cybernetic-blue);
+        }
+        
+        .stats-panel {
+            background: rgba(10, 14, 23, 0.8);
+            border: 1px solid var(--alloy-gray);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .stats-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .stats-title {
+            font-size: 1.2rem;
+            color: var(--cybernetic-blue);
+        }
+        
+        .stats-info {
+            font-size: 0.9rem;
+            color: var(--titanium-silver);
+            font-family: 'JetBrains Mono', monospace;
+            opacity: 0.8;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+            color: var(--titanium-silver);
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .stat-bar {
+            height: 8px;
+            background: rgba(74, 78, 87, 0.5);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .stat-fill {
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 4px;
+        }
+        
+        .strength .stat-fill {
+            background: linear-gradient(to right, var(--hydraulic-red), #FF7E65);
+        }
+        
+        .speed .stat-fill {
+            background: linear-gradient(to right, var(--neon-green), #85FF71);
+        }
+        
+        .durability .stat-fill {
+            background: linear-gradient(to right, #3D7EFF, var(--cybernetic-blue));
+        }
+        
+        .intelligence .stat-fill {
+            background: linear-gradient(to right, var(--neural-purple), #E39AFF);
+        }
+        
+        .power .stat-fill {
+            background: linear-gradient(to right, #FFD700, #FFF07C);
+        }
+        
+        .energy .stat-fill {
+            background: linear-gradient(to right, #00FFFF, #80FFFF);
+        }
+        
+        .stat-value {
+            font-size: 0.8rem;
+            color: var(--surgical-white);
+            font-family: 'JetBrains Mono', monospace;
+            margin-top: 5px;
+            text-align: right;
+        }
+        
+        .inventory-section {
+            flex: 1;
+            max-width: 100%;
+        }
+        
+        @media (min-width: 992px) {
+            .inventory-section {
+                max-width: 40%;
+            }
+        }
+        
+        .tabs {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 5px;
+            margin-bottom: 20px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--cybernetic-blue) var(--alloy-gray);
+            padding-bottom: 5px;
+        }
+        
+        .tabs::-webkit-scrollbar {
+            height: 5px;
+        }
+        
+        .tabs::-webkit-scrollbar-track {
+            background: var(--alloy-gray);
+            border-radius: 5px;
+        }
+        
+        .tabs::-webkit-scrollbar-thumb {
+            background: var(--cybernetic-blue);
+            border-radius: 5px;
+        }
+        
+        .tab {
+            padding: 10px 15px;
+            background: rgba(74, 78, 87, 0.5);
+            border: 1px solid var(--alloy-gray);
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .tab i {
+            font-size: 0.9rem;
+        }
+        
+        .tab.active {
+            background: var(--cybernetic-blue);
+            color: var(--deep-space-black);
+            border-color: var(--cybernetic-blue);
+            box-shadow: 0 0 10px var(--cybernetic-blue);
+        }
+        
+        .tab:hover:not(.active) {
+            background: rgba(0, 194, 255, 0.2);
+            border-color: var(--cybernetic-blue);
+        }
+        
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .item-card {
+            background: rgba(10, 14, 23, 0.8);
+            border: 1px solid var(--alloy-gray);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 194, 255, 0.3);
+            border-color: var(--cybernetic-blue);
+        }
+        
+        .item-card.selected {
+            border: 2px solid var(--neon-green);
+            box-shadow: 0 0 15px var(--neon-green);
+        }
+        
+        .item-image {
+            height: 120px;
+            background-color: rgba(74, 78, 87, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .item-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .item-rarity {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 1px solid var(--surgical-white);
+        }
+        
+        .rarity-common {
+            background: #80BEF3;
+            box-shadow: 0 0 5px #80BEF3;
+        }
+        
+        .rarity-rare {
+            background: #66EBFF;
+            box-shadow: 0 0 5px #66EBFF;
+        }
+        
+        .rarity-elite {
+            background: var(--neural-purple);
+            box-shadow: 0 0 5px var(--neural-purple);
+        }
+        
+        .rarity-prototype {
+            background: var(--neon-green);
+            box-shadow: 0 0 5px var(--neon-green);
+        }
+        
+        .item-info {
+            padding: 10px;
+        }
+        
+        .item-name {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: var(--surgical-white);
+            font-family: 'Orbitron', sans-serif;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .item-model {
+            font-size: 0.7rem;
+            color: var(--titanium-silver);
+            font-family: 'JetBrains Mono', monospace;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+        
+        .item-stats {
+            display: flex;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        
+        .item-stat {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            font-size: 0.7rem;
+        }
+        
+        .item-stat i {
+            font-size: 0.7rem;
+        }
+        
+        .item-power {
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            color: #FFD700;
+            margin-top: 5px;
+        }
+        
+        .item-price {
+            font-size: 0.8rem;
+            color: var(--surgical-white);
+            font-weight: 600;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .detail-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--deep-space-black);
+            border-left: 1px solid var(--cybernetic-blue);
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .detail-panel.active {
+            right: 0;
+        }
+        
+        .detail-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--titanium-silver);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .detail-close:hover {
+            color: var(--cybernetic-blue);
+        }
+        
+        .detail-image {
+            width: 100%;
+            height: 200px;
+            background: rgba(74, 78, 87, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .detail-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .detail-title {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--surgical-white);
+        }
+        
+        .detail-model {
+            font-size: 0.9rem;
+            color: var(--titanium-silver);
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .detail-rarity {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        
+        .detail-specs {
+            margin-bottom: 20px;
+        }
+        
+        .detail-section-title {
+            font-size: 1rem;
+            color: var(--cybernetic-blue);
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--alloy-gray);
+            padding-bottom: 5px;
+        }
+        
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px dashed rgba(74, 78, 87, 0.5);
+        }
+        
+        .spec-label {
+            font-size: 0.9rem;
+            color: var(--titanium-silver);
+        }
+        
+        .spec-value {
+            font-size: 0.9rem;
+            color: var(--surgical-white);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .detail-description {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--titanium-silver);
+        }
+        
+        .detail-benefits {
+            margin-bottom: 20px;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .benefit-icon {
+            color: var(--neon-green);
+            font-size: 1rem;
+            margin-top: 2px;
+        }
+        
+        .benefit-text {
+            font-size: 0.9rem;
+            color: var(--titanium-silver);
+        }
+        
+        .detail-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .action-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .equip-btn {
+            background: var(--neon-green);
+            color: var(--deep-space-black);
+        }
+        
+        .equip-btn:hover {
+            background: #48FF2A;
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+        
+        .wishlist-btn {
+            background: var(--alloy-gray);
+            color: var(--titanium-silver);
+        }
+        
+        .wishlist-btn:hover {
+            background: #636970;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 23, 0.8);
+            z-index: 999;
+            display: none;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        .save-build {
+            background: var(--cybernetic-blue);
+            color: var(--deep-space-black);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-family: 'Orbitron', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .save-build:hover {
+            background: #33D3FF;
+            box-shadow: 0 0 15px var(--cybernetic-blue);
+        }
+        
+        @media (max-width: 991px) {
+            .closet-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .closet-header p {
+                font-size: 0.9rem;
+            }
+            
+            .model-viewer {
+                order: 1;
+            }
+            
+            .inventory-section {
+                order: 2;
+            }
+            
+            .stats-panel {
+                order: 3;
+            }
+            
+            .detail-panel {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .closet-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .items-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-container">
+                <a href="index.html" class="navbar-brand">
+                    <i class="fas fa-microchip"></i> CYBERTECH
+                </a>
+                
+                <button class="hamburger">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <div class="nav-menu">
+                    <ul class="nav-links">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li class="dropdown">
+                            <a href="products.html">Products <i class="fas fa-chevron-down" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#neural">Neural Enhancements</a></li>
+                                <li><a href="#ocular">Ocular Systems</a></li>
+                                <li><a href="#limbs">Advanced Limbs</a></li>
+                                <li><a href="#core">Core Implants</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="inventory.html">Inventory</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-icons">
+                    <div class="nav-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="nav-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="nav-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-nav-overlay"></div>
+
+    <div class="container">
+        <div class="closet-header">
+            <h1>CYBORG ENHANCEMENTS CLOSET</h1>
+            <p>Customize your cybernetic enhancements and create the perfect build for your needs.</p>
+            
+            <div class="gender-toggle">
+                <button class="toggle-btn active" data-gender="male">
+                    <i class="fas fa-mars"></i> Male
+                </button>
+                <button class="toggle-btn" data-gender="female">
+                    <i class="fas fa-venus"></i> Female
+                </button>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="model-viewer">
+                <div class="model-canvas" id="model-canvas"></div>
+                <div class="model-controls">
+                    <button class="model-btn" id="rotate-left"><i class="fas fa-undo"></i></button>
+                    <button class="model-btn" id="zoom-in"><i class="fas fa-search-plus"></i></button>
+                    <button class="model-btn" id="zoom-out"><i class="fas fa-search-minus"></i></button>
+                    <button class="model-btn" id="rotate-right"><i class="fas fa-redo"></i></button>
+                </div>
+            </div>
+            
+            <div class="inventory-section">
+                <div class="tabs">
+                    <div class="tab active" data-category="neural">
+                        <i class="fas fa-brain"></i> Neural
+                    </div>
+                    <div class="tab" data-category="ocular">
+                        <i class="fas fa-eye"></i> Ocular
+                    </div>
+                    <div class="tab" data-category="auditory">
+                        <i class="fas fa-ear"></i> Auditory
+                    </div>
+                    <div class="tab" data-category="respiratory">
+                        <i class="fas fa-lungs"></i> Respiratory
+                    </div>
+                    <div class="tab" data-category="cardio">
+                        <i class="fas fa-heartbeat"></i> Cardio
+                    </div>
+                    <div class="tab" data-category="upper">
+                        <i class="fas fa-hand-fist"></i> Upper Limbs
+                    </div>
+                    <div class="tab" data-category="lower">
+                        <i class="fas fa-shoe-prints"></i> Lower Limbs
+                    </div>
+                    <div class="tab" data-category="dermal">
+                        <i class="fas fa-shield"></i> Dermal
+                    </div>
+                    <div class="tab" data-category="core">
+                        <i class="fas fa-microchip"></i> Core
+                    </div>
+                </div>
+                
+                <div class="items-grid" id="items-container">
+                    <!-- Items populated via JavaScript -->
+                </div>
+                
+                <button class="save-build">
+                    <i class="fas fa-save"></i> Save Current Build
+                </button>
+            </div>
+        </div>
+        
+        <div class="stats-panel">
+            <div class="stats-header">
+                <h3 class="stats-title">ENHANCEMENT STATISTICS</h3>
+                <div class="stats-info">Build v1.0</div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item strength">
+                    <div class="stat-label">
+                        <i class="fas fa-dumbbell"></i> Strength
+                    </div>
+                    <div class="stat-bar">
+                        <div class="stat-fill"></div>
+                    </div>
+                    <div class="stat-value">0/100</div>
+                </div>
+                
+                <div class="stat-item speed">
+                    <div class="stat-label">
+                        <i class="fas fa-bolt"></i> Speed
+                    </div>
+                    <div class="stat-bar">
+                        <div class="stat-fill"></div>
+                    </div>
+                    <div class="stat-value">0/100</div>
+                </div>
+                
+                <div class="stat-item durability">
+                    <div class="stat-label">
+                        <i class="fas fa-shield-alt"></i> Durability
+                    </div>
+                    <div class="stat-bar">
+                        <div class="stat-fill"></div>
+                    </div>
+                    <div class="stat-value">0/100</div>
+                </div>
+                
+                <div class="stat-item intelligence">
+                    <div class="stat-label">
+                        <i class="fas fa-brain"></i> Intelligence
+                    </div>
+                    <div class="stat-bar">
+                        <div class="stat-fill"></div>
+                    </div>
+                    <div class="stat-value">0/100</div>
+                </div>
+                
+                <div class="stat-item power">
+                    <div class="stat-label">
+                        <i class="fas fa-bolt"></i> Power
+                    </div>
+                    <div class="stat-bar">
+                        <div class="stat-fill"></div>
+                    </div>
+                    <div class="stat-value">0/100</div>
+                </div>
+                
+                <div class="stat-item energy">
+                    <div class="stat-label">
+                        <i class="fas fa-battery-three-quarters"></i> Energy
+                    </div>
+                    <div class="stat-bar">
+                        <div class="stat-fill"></div>
+                    </div>
+                    <div class="stat-value">0/100</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="detail-panel" id="detail-panel">
+            <button class="detail-close" id="detail-close">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="detail-image">
+                <img id="detail-img" src="/api/placeholder/300/200" alt="Part Detail">
+            </div>
+            
+            <h2 class="detail-title" id="detail-title">Item Name</h2>
+            
+            <div class="detail-model">
+                <span id="detail-model">Model XZ-100</span>
+                <span class="detail-rarity" id="detail-rarity">Elite</span>
+            </div>
+            
+            <div class="detail-specs">
+                <h4 class="detail-section-title">Specifications</h4>
+                
+                <div class="spec-item">
+                    <div class="spec-label">Manufacturer</div>
+                    <div class="spec-value" id="detail-manufacturer">NeuroCorp</div>
+                </div>
+                
+                <div class="spec-item">
+                    <div class="spec-label">Generation</div>
+                    <div class="spec-value" id="detail-generation">4th Gen</div>
+                </div>
+                
+                <div class="spec-item">
+                    <div class="spec-label">Weight</div>
+                    <div class="spec-value" id="detail-weight">1.2 kg</div>
+                </div>
+                
+                <div class="spec-item">
+                    <div class="spec-label">Power Consumption</div>
+                    <div class="spec-value" id="detail-power">18.5 W/h</div>
+                </div>
+                
+                <div class="spec-item">
+                    <div class="spec-label">Compatibility</div>
+                    <div class="spec-value" id="detail-compatibility">Universal</div>
+                </div>
+            </div>
+            
+            <div class="detail-description" id="detail-description">
+                This state-of-the-art enhancement provides superior performance while maintaining optimal energy efficiency.
+            </div>
+            
+            <div class="detail-benefits">
+                <h4 class="detail-section-title">Benefits</h4>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="benefit-text" id="benefit-1">Increases neural processing speed by 45%</div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="benefit-text" id="benefit-2">Enhances memory recall capabilities</div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="benefit-text" id="benefit-3">Reduces activation latency by 30%</div>
+                </div>
+            </div>
+            
+            <div class="detail-actions">
+                <button class="action-btn equip-btn" id="equip-btn">
+                    <i class="fas fa-check"></i> Equip
+                </button>
+                <button class="action-btn wishlist-btn" id="wishlist-btn">
+                    <i class="far fa-bookmark"></i> Wishlist
+                </button>
+            </div>
+        </div>
+        
+        <div class="overlay" id="overlay"></div>
+    </div>
+    
+    <footer class="footer pt-16 pb-6">
+        <div class="circuit-overlay"></div>
+        
+        <div class="footer-container container mx-auto px-4">
+            <div class="footer-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+                <div class="footer-col">
+                    <div class="mb-4">
+                        <h2 class="text-3xl font-bold mb-2 animated-text" style="font-family: 'Audiowide', cursive;">CYBERTECH</h2>
+                        <p class="text-sm tracking-wide" style="font-family: 'JetBrains Mono', monospace;">HUMAN POTENTIAL · ENHANCED</p>
+                    </div>
+                    <p class="text-sm mb-6">Revolutionizing human capabilities through cutting-edge cybernetic enhancements. Build your future, enhance your potential.</p>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="social-icon h-10 w-10 flex items-center justify-center hover:text-deep-space-black">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon h-10 w-10 flex items-center justify-center hover:text-deep-space-black">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon h-10 w-10 flex items-center justify-center hover:text-deep-space-black">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-icon h-10 w-10 flex items-center justify-center hover:text-deep-space-black">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="pulsing-dot"></span>
+                        <span class="text-sm text-cybernetic-blue">All systems operational</span>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-heading text-lg font-semibold mb-6">Navigation</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Home</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>About Us</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Products</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Services</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Contact</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Inventory</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-heading text-lg font-semibold mb-6">Connect With Us</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-cybernetic-blue mt-1 mr-3"></i>
+                            <span>Neo-Tokyo Research Complex<br>Building 42, Sector 7<br>Tokyo, Japan</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-cybernetic-blue mr-3"></i>
+                            <span>+81 3-1234-5678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-cybernetic-blue mr-3"></i>
+                            <span>enhancements@cyborg.tech</span>
+                        </li>
+                        <li class="mt-4">
+                            <a href="#" class="cybernetic-border inline-block px-4 py-2 text-sm">
+                                <i class="fas fa-calendar-check mr-2"></i>Schedule Consultation
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-heading text-lg font-semibold mb-6">Enhancement Updates</h3>
+                    <p class="mb-4 text-sm">Stay informed about the latest cybernetic innovations and exclusive offers.</p>
+                    <form class="mb-4">
+                        <div class="flex flex-col space-y-3">
+                            <input type="email" placeholder="Enter your email" class="newsletter-input px-4 py-3 rounded text-sm w-full" required>
+                            <button type="submit" class="subscribe-btn px-4 py-3 rounded text-sm font-medium text-surgical-white">
+                                SUBSCRIBE <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <div class="text-xs">
+                        <div class="flex items-center mb-1">
+                            <i class="fas fa-shield-alt text-neon-green mr-2"></i>
+                            <span>Encrypted transmission</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-lock text-neon-green mr-2"></i>
+                            <span>We respect your privacy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cybernetic-divider my-6"></div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div>
+                    <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Support</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="footer-link">FAQs</a></li>
+                        <li><a href="#" class="footer-link">Help Center</a></li>
+                        <li><a href="#" class="footer-link">Maintenance</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="footer-link">Terms of Service</a></li>
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">Warranty</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Resources</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                        <li><a href="#" class="footer-link">Research Papers</a></li>
+                        <li><a href="#" class="footer-link">Case Studies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Partners</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="footer-link">Medical Institutions</a></li>
+                        <li><a href="#" class="footer-link">Tech Companies</a></li>
+                        <li><a href="#" class="footer-link">Become a Partner</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom flex flex-col md:flex-row justify-between items-center py-4 text-sm">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2025 Cyborg Enhancement Tech. All rights reserved.</p>
+                </div>
+                
+                <div class="flex space-x-6 items-center mb-4 md:mb-0">
+                    <div class="language-selector flex items-center">
+                        <i class="fas fa-globe mr-2 text-cybernetic-blue"></i>
+                        <span>English</span>
+                        <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                        
+                        <div class="language-options">
+                            <ul class="space-y-2">
+                                <li><a href="#" class="footer-link">English</a></li>
+                                <li><a href="#" class="footer-link">日本語</a></li>
+                                <li><a href="#" class="footer-link">Español</a></li>
+                                <li><a href="#" class="footer-link">Français</a></li>
+                                <li><a href="#" class="footer-link">Deutsch</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="footer-link flex items-center">
+                        <i class="fas fa-headset mr-2"></i>
+                        <span>24/7 Support</span>
+                    </a>
+                </div>
+                
+                <div class="payment-methods">
+                    <span class="mr-2 text-xs">SECURE PAYMENT</span>
+                    <div class="flex space-x-2">
+                        <i class="fab fa-cc-visa text-xl"></i>
+                        <i class="fab fa-cc-mastercard text-xl"></i>
+                        <i class="fab fa-cc-amex text-xl"></i>
+                        <i class="fab fa-bitcoin text-xl"></i>
+                        <i class="fab fa-ethereum text-xl"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-4 my-6">
+                <div class="cybernetic-border px-3 py-2 flex items-center text-xs">
+                    <i class="fas fa-medal text-neon-green mr-2"></i>
+                    <span>ISO 9001 Certified</span>
+                </div>
+                <div class="cybernetic-border px-3 py-2 flex items-center text-xs">
+                    <i class="fas fa-shield-alt text-neon-green mr-2"></i>
+                    <span>Medical Grade Security</span>
+                </div>
+                <div class="cybernetic-border px-3 py-2 flex items-center text-xs">
+                    <i class="fas fa-robot text-neon-green mr-2"></i>
+                    <span>Advanced AI Support</span>
+                </div>
+                <div class="cybernetic-border px-3 py-2 flex items-center text-xs">
+                    <i class="fas fa-leaf text-neon-green mr-2"></i>
+                    <span>Carbon Neutral Tech</span>
+                </div>
+            </div>
+            
+            <div class="flex justify-center mt-6">
+                <button id="backToTop" class="back-to-top rounded-full h-12 w-12 flex items-center justify-center">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/Draggable.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="navbar.js"></script>
+    
+    <script>
+        // Sample data for cyborg parts (continued from core)
+        const cyborgParts = {
+            neural: [
+                {
+                    id: 'neural-1',
+                    name: 'NeuroBoost X9',
+                    model: 'NBX9-450',
+                    rarity: 'elite',
+                    image: '/assets/Products/Quantum Core Processor.png',
+                    strength: 10,
+                    speed: 15,
+                    durability: 20,
+                    intelligence: 85,
+                    power: 45,
+                    energy: 40,
+                    price: 12500,
+                    manufacturer: 'NeuroCorp',
+                    generation: '9th Gen',
+                    weight: '0.3 kg',
+                    powerConsumption: '12.5 W/h',
+                    compatibility: 'Universal',
+                    description: 'The NeuroBoost X9 offers unparalleled cognitive processing capabilities.',
+                    benefits: [
+                        'Increases cognitive processing speed by 85%',
+                        'Enhances multi-tasking capabilities',
+                        'Enables instant memory access'
+                    ]
+                },
+                {
+                    id: 'neural-2',
+                    name: 'Cortex Amplifier',
+                    model: 'CA-200',
+                    rarity: 'rare',
+                    image: '/assets/Products/Quantum Core Processor.png',
+                    strength: 5,
+                    speed: 30,
+                    durability: 15,
+                    intelligence: 65,
+                    power: 30,
+                    energy: 35,
+                    price: 8700,
+                    manufacturer: 'SynapTech',
+                    generation: '7th Gen',
+                    weight: '0.2 kg',
+                    powerConsumption: '9.8 W/h',
+                    compatibility: 'Universal',
+                    description: 'Enhances natural neural pathways with intuitive integration.',
+                    benefits: [
+                        'Boosts brain function by 65%',
+                        'Adaptive learning algorithms',
+                        'Reduces mental fatigue'
+                    ]
+                }
+            ],
+            ocular: [
+                {
+                    id: 'ocular-1',
+                    name: 'OptiView Pro',
+                    model: 'OVP-720',
+                    rarity: 'prototype',
+                    image: '/assets/Products/Cyborg OptiView X3.png',
+                    strength: 5,
+                    speed: 40,
+                    durability: 30,
+                    intelligence: 25,
+                    power: 35,
+                    energy: 30,
+                    price: 15800,
+                    manufacturer: 'Iris Technologies',
+                    generation: 'Prototype',
+                    weight: '0.08 kg',
+                    powerConsumption: '8.7 W/h',
+                    compatibility: 'Universal',
+                    description: 'Cutting-edge ocular enhancement with advanced vision modes.',
+                    benefits: [
+                        '16K resolution per eye',
+                        '12 vision modes including infrared',
+                        'Integrated AR overlay'
+                    ]
+                }
+            ],
+            auditory: [
+                {
+                    id: 'auditory-1',
+                    name: 'SonicMaster',
+                    model: 'SM-800',
+                    rarity: 'elite',
+                    image: '/assets/Products/Cyborg OptiView X3.png',
+                    strength: 0,
+                    speed: 20,
+                    durability: 35,
+                    intelligence: 20,
+                    power: 25,
+                    energy: 30,
+                    price: 9800,
+                    manufacturer: 'AudioTech Advanced',
+                    generation: '8th Gen',
+                    weight: '0.02 kg',
+                    powerConsumption: '5.4 W/h',
+                    compatibility: 'Universal',
+                    description: 'Advanced digital auditory system with extended frequency range.',
+                    benefits: [
+                        'Hearing range from 5Hz to 150kHz',
+                        'Advanced noise filtering',
+                        '72-hour audio recording buffer'
+                    ]
+                }
+            ],
+            respiratory: [
+                {
+                    id: 'respiratory-1',
+                    name: 'OxyGen Ultra',
+                    model: 'OGU-900',
+                    rarity: 'elite',
+                    image: '/assets/Products/PulseCore Titanium Display.png',
+                    strength: 30,
+                    speed: 35,
+                    durability: 40,
+                    intelligence: 0,
+                    power: 20,
+                    energy: 45,
+                    price: 14200,
+                    manufacturer: 'RespiTech Solutions',
+                    generation: '9th Gen',
+                    weight: '1.4 kg',
+                    powerConsumption: '7.8 W/h',
+                    compatibility: 'Universal',
+                    description: 'Complete respiratory system with high oxygen efficiency.',
+                    benefits: [
+                        '300% oxygen utilization efficiency',
+                        '30-minute underwater breathing',
+                        'Immunity to airborne toxins'
+                    ]
+                }
+            ],
+            cardio: [
+                {
+                    id: 'cardio-1',
+                    name: 'HeartForge Pro',
+                    model: 'HFP-1000',
+                    rarity: 'prototype',
+                    image: '/assets/Products/PulseCore Titanium Display.png',
+                    strength: 40,
+                    speed: 45,
+                    durability: 50,
+                    intelligence: 15,
+                    power: 40,
+                    energy: 50,
+                    price: 22500,
+                    manufacturer: 'CardioTech Advanced',
+                    generation: 'Prototype',
+                    weight: '0.85 kg',
+                    powerConsumption: '9.2 W/h',
+                    compatibility: 'Universal',
+                    description: 'Advanced cardiovascular replacement with adaptive output.',
+                    benefits: [
+                        'Cardiac output up to 40 L/min',
+                        'Blood purification system',
+                        'Smart rhythm control'
+                    ]
+                }
+            ],
+            upper: [
+                {
+                    id: 'upper-1',
+                    name: 'TitanArm X5',
+                    model: 'TAX5-1200',
+                    rarity: 'elite',
+                    image: '/assets/Products/TitanArm MK-IV Cyberpunk.png',
+                    strength: 95,
+                    speed: 70,
+                    durability: 80,
+                    intelligence: 20,
+                    power: 85,
+                    energy: 75,
+                    price: 18500,
+                    manufacturer: 'Titan Cybernetics',
+                    generation: '10th Gen',
+                    weight: '4.8 kg',
+                    powerConsumption: '22.5 W/h',
+                    compatibility: 'Universal',
+                    description: 'Premium upper limb with exceptional strength and precision.',
+                    benefits: [
+                        '500kg lifting capacity',
+                        'Micron-level precision',
+                        'Enhanced tactile sensation'
+                    ]
+                }
+            ],
+            lower: [
+                {
+                    id: 'lower-1',
+                    name: 'SprintTech Pro',
+                    model: 'STP-950',
+                    rarity: 'prototype',
+                    image: '/assets/Products/Oxygen System.png',
+                    strength: 85,
+                    speed: 95,
+                    durability: 70,
+                    intelligence: 25,
+                    power: 80,
+                    energy: 85,
+                    price: 20500,
+                    manufacturer: 'VelocityTech',
+                    generation: 'Prototype',
+                    weight: '5.2 kg',
+                    powerConsumption: '24.8 W/h',
+                    compatibility: 'Universal',
+                    description: 'Top-tier lower limb for speed and agility.',
+                    benefits: [
+                        '80 km/h running speed',
+                        '3-meter vertical leap',
+                        '10-meter fall protection'
+                    ]
+                }
+            ],
+            dermal: [
+                {
+                    id: 'dermal-1',
+                    name: 'TitaniumSkin',
+                    model: 'TS-850',
+                    rarity: 'elite',
+                    image: '/assets/Products/PulseCore Titanium Display.png',
+                    strength: 20,
+                    speed: 0,
+                    durability: 90,
+                    intelligence: 10,
+                    power: 15,
+                    energy: 25,
+                    price: 16400,
+                    manufacturer: 'ArmorTech Systems',
+                    generation: '9th Gen',
+                    weight: '8.5 kg',
+                    powerConsumption: '7.2 W/h',
+                    compatibility: 'Universal',
+                    description: 'Premium dermal armor with adaptive hardening.',
+                    benefits: [
+                        'Level IIIA armor protection',
+                        'Instant threat response',
+                        'Extreme temperature regulation'
+                    ]
+                }
+            ],
+            core: [
+                {
+                    id: 'core-1',
+                    name: 'Quantum Core',
+                    model: 'QC-1500',
+                    rarity: 'prototype',
+                    image: '/assets/Products/PulseCore Titanium Display.png',
+                    strength: 50,
+                    speed: 60,
+                    durability: 65,
+                    intelligence: 80,
+                    power: 95,
+                    energy: 90,
+                    price: 28500,
+                    manufacturer: 'QuantumTech',
+                    generation: '10th Gen',
+                    weight: '2.1 kg',
+                    powerConsumption: '15.5 W/h',
+                    compatibility: 'Universal',
+                    description: 'The Quantum Core integrates quantum processing with vital systems.',
+                    benefits: [
+                        'Quantum-enhanced processing speed',
+                        '90% energy efficiency boost',
+                        'Centralized system optimization'
+                    ]
+                },
+                {
+                    id: 'core-2',
+                    name: 'Fusion Reactor',
+                    model: 'FR-700',
+                    rarity: 'elite',
+                    image: '/assets/Products/PulseCore Titanium Display.png',
+                    strength: 30,
+                    speed: 40,
+                    durability: 50,
+                    intelligence: 60,
+                    power: 85,
+                    energy: 80,
+                    price: 19800,
+                    manufacturer: 'EnergyCore Labs',
+                    generation: '8th Gen',
+                    weight: '2.5 kg',
+                    powerConsumption: '14.2 W/h',
+                    compatibility: 'Universal',
+                    description: 'A compact fusion reactor for sustained power output.',
+                    benefits: [
+                        'Continuous high-energy output',
+                        'Reduces system downtime by 70%',
+                        'Enhanced power distribution'
+                    ]
+                }
+            ]
+        };
+
+        // Global state
+        let currentGender = 'male';
+        let equippedParts = {
+            neural: null,
+            ocular: null,
+            auditory: null,
+            respiratory: null,
+            cardio: null,
+            upper: null,
+            lower: null,
+            dermal: null,
+            core: null
+        };
+        let totalStats = {
+            strength: 0,
+            speed: 0,
+            durability: 0,
+            intelligence: 0,
+            power: 0,
+            energy: 0
+        };
+        let currentItem = null;
+
+        // DOM elements
+        const tabs = document.querySelectorAll('.tab');
+        const itemsContainer = document.getElementById('items-container');
+        const detailPanel = document.getElementById('detail-panel');
+        const overlay = document.getElementById('overlay');
+        const genderButtons = document.querySelectorAll('.toggle-btn');
+        const saveBuildButton = document.querySelector('.save-build');
+        const closeDetailButton = document.getElementById('detail-close');
+
+        // Functions
+        function loadItems(category) {
+            const items = cyborgParts[category];
+            itemsContainer.innerHTML = '';
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('item-card');
+                if (equippedParts[category] === item.id) {
+                    card.classList.add('selected');
+                }
+                card.innerHTML = `
+                    <div class="item-image">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="item-rarity rarity-${item.rarity}"></div>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-model">${item.model}</div>
+                        <div class="item-stats">
+                            <div class="item-stat"><i class="fas fa-dumbbell"></i> ${item.strength}</div>
+                            <div class="item-stat"><i class="fas fa-bolt"></i> ${item.speed}</div>
+                            <div class="item-stat"><i class="fas fa-shield-alt"></i> ${item.durability}</div>
+                        </div>
+                        <div class="item-power"><i class="fas fa-bolt"></i> Power: ${item.power}</div>
+                        <div class="item-price"><i class="fas fa-coins"></i> ${item.price}</div>
+                    </div>
+                `;
+                card.addEventListener('click', () => showDetail(item));
+                itemsContainer.appendChild(card);
+            });
+        }
+
+        function showDetail(item) {
+            currentItem = item;
+            document.getElementById('detail-img').src = item.image;
+            document.getElementById('detail-title').textContent = item.name;
+            document.getElementById('detail-model').textContent = item.model;
+            document.getElementById('detail-rarity').textContent = item.rarity.charAt(0).toUpperCase() + item.rarity.slice(1);
+            document.getElementById('detail-manufacturer').textContent = item.manufacturer;
+            document.getElementById('detail-generation').textContent = item.generation;
+            document.getElementById('detail-weight').textContent = item.weight;
+            document.getElementById('detail-power').textContent = item.powerConsumption;
+            document.getElementById('detail-compatibility').textContent = item.compatibility;
+            document.getElementById('detail-description').textContent = item.description;
+            item.benefits.forEach((benefit, index) => {
+                document.getElementById(`benefit-${index + 1}`).textContent = benefit;
+            });
+
+            const category = getCategory(item.id);
+            const isEquipped = equippedParts[category] === item.id;
+            const equipBtn = document.getElementById('equip-btn');
+            equipBtn.textContent = isEquipped ? 'Unequip' : 'Equip';
+            equipBtn.onclick = null;
+            equipBtn.addEventListener('click', () => {
+                if (isEquipped) {
+                    subtractStats(item);
+                    equippedParts[category] = null;
+                } else {
+                    if (equippedParts[category]) {
+                        const prevItem = getItemById(equippedParts[category]);
+                        subtractStats(prevItem);
+                    }
+                    equippedParts[category] = item.id;
+                    addStats(item);
+                }
+                updateModel();
+                updateStatsDisplay();
+                loadItems(category);
+                detailPanel.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+
+            detailPanel.classList.add('active');
+            overlay.classList.add('active');
+        }
+
+        function getCategory(id) {
+            return id.split('-')[0];
+        }
+
+        function getItemById(id) {
+            const category = getCategory(id);
+            return cyborgParts[category].find(item => item.id === id);
+        }
+
+        function addStats(item) {
+            totalStats.strength += item.strength;
+            totalStats.speed += item.speed;
+            totalStats.durability += item.durability;
+            totalStats.intelligence += item.intelligence;
+            totalStats.power += item.power;
+            totalStats.energy += item.energy;
+        }
+
+        function subtractStats(item) {
+            totalStats.strength -= item.strength;
+            totalStats.speed -= item.speed;
+            totalStats.durability -= item.durability;
+            totalStats.intelligence -= item.intelligence;
+            totalStats.power -= item.power;
+            totalStats.energy -= item.energy;
+        }
+
+        function updateStatsDisplay() {
+            const stats = ['strength', 'speed', 'durability', 'intelligence', 'power', 'energy'];
+            stats.forEach(stat => {
+                const fill = document.querySelector(`.${stat} .stat-fill`);
+                const value = document.querySelector(`.${stat} .stat-value`);
+                const total = totalStats[stat];
+                const percentage = Math.min((total / 100) * 100, 100); // Cap at 100%
+                fill.style.width = `${percentage}%`;
+                value.textContent = `${total}/100`;
+            });
+        }
+
+        function updateModel() {
+            // Placeholder for 3D model update using Three.js
+            console.log(`Updating model for gender: ${currentGender}, equipped parts:`, equippedParts);
+            // In a real implementation, this would update the Three.js scene
+        }
+
+        // Event listeners
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const category = tab.dataset.category;
+                loadItems(category);
+            });
+        });
+
+        genderButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                genderButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                currentGender = button.dataset.gender;
+                updateModel();
+            });
+        });
+
+        saveBuildButton.addEventListener('click', () => {
+            console.log('Saving build:', {
+                gender: currentGender,
+                equippedParts: equippedParts,
+                totalStats: totalStats
+            });
+            alert('Build saved to console!');
+        });
+
+        closeDetailButton.addEventListener('click', () => {
+            detailPanel.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            detailPanel.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Initialize
+        loadItems('neural');
+        updateStatsDisplay();
+    </script>
+</body>
+</html>

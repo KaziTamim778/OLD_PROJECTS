@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DCITC Events</title>
+
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.4.8/sweetalert2.min.css"
+    />
+    <link rel="stylesheet" href="/styles/events.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  <body>
+    <div class="nav-navbar-container" id="nav-navbarContainer">
+      <nav class="nav-navbar">
+        <div class="nav-logo-container">
+          <img
+            src="/Public/logo/dcitc-logo-trans.png"
+            alt="Logo"
+            class="nav-logo-img"
+            onerror="this.style.display='none'"
+          />
+          <div class="nav-logo-text">DCITC</div>
+          <div class="theme-toggle" id="themeToggle">
+            <div class="theme-toggle-track">
+              <div class="theme-toggle-thumb"></div>
+            </div>
+          </div>
+          <div class="nav-tech-circles">
+            <div class="nav-circle"></div>
+            <div class="nav-circle"></div>
+            <div class="nav-circle"></div>
+            <div class="nav-circle"></div>
+          </div>
+        </div>
+        <ul class="nav-links" id="nav-navLinks">
+          <li>
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+          </li>
+          <li>
+            <a href="About.html"><i class="fas fa-info-circle"></i> About</a>
+          </li>
+          <li>
+            <a href="Executives.html"><i class="fas fa-users"></i> Executive</a>
+          </li>
+          <li>
+            <a href="Events.html" class="active"
+              ><i class="fas fa-calendar-alt"></i> Events</a
+            >
+          </li>
+          <li>
+            <a href="Projects.html"
+              ><i class="fas fa-project-diagram"></i> Projects</a
+            >
+          </li>
+          <li>
+            <a href="Gallery.html"><i class="fas fa-images"></i> Gallery</a>
+          </li>
+          <li>
+            <a href="Departments.html"
+              ><i class="fas fa-sitemap"></i> Departments</a
+            >
+          </li>
+        </ul>
+        <button class="nav-menu-btn" id="nav-menuBtn">
+          <div class="nav-hamburger" id="nav-hamburger">
+            <span></span> <span></span> <span></span> <span></span>
+          </div>
+        </button>
+      </nav>
+    </div>
+    <div class="nav-overlay" id="nav-overlay"></div>
+
+    <div id="particles-js"></div>
+    <div id="content-wrapper">
+      <div class="section-header" data-aos="fade-down">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="search-wrapper">
+          <i class="fas fa-search search-icon"></i>
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search events..."
+          />
+        </div>
+        <div class="sorting-options">
+          <button
+            class="sort-btn active"
+            data-sort="all"
+            title="Show all events"
+          >
+            All
+          </button>
+          <button
+            class="sort-btn"
+            data-sort="conference"
+            title="Filter by Conferences"
+          >
+            Conferences
+          </button>
+          <button
+            class="sort-btn"
+            data-sort="workshop"
+            title="Filter by Workshops"
+          >
+            Workshops
+          </button>
+          <button
+            class="sort-btn"
+            data-sort="webinar"
+            title="Filter by Webinars"
+          >
+            Webinars
+          </button>
+          <button class="sort-btn" data-sort="meetup" title="Filter by Meetups">
+            Meetups
+          </button>
+        </div>
+        <div class="view-toggle">
+          <button class="view-btn active" data-view="grid" title="Grid View">
+            <i class="fas fa-th-large"></i> Grid
+          </button>
+          <button class="view-btn" data-view="calendar" title="Calendar View">
+            <i class="fas fa-calendar-alt"></i> Calendar
+          </button>
+        </div>
+        <div class="event-counter"><span id="event-count">12</span> events</div>
+      </div>
+
+      <div class="event-tags" data-aos="fade-up">
+        <div class="event-tag active" data-filter="all" title="Show all">
+          All Events <span>12</span>
+        </div>
+        <div class="event-tag" data-filter="upcoming" title="Show upcoming">
+          Upcoming <span>8</span>
+        </div>
+        <div class="event-tag" data-filter="featured" title="Show featured">
+          Featured <span>3</span>
+        </div>
+        <div class="event-tag" data-filter="free" title="Show free">
+          Free <span>5</span>
+        </div>
+        <div class="event-tag" data-filter="paid" title="Show paid">
+          Premium <span>7</span>
+        </div>
+        <div class="event-tag" data-filter="virtual" title="Show virtual">
+          Virtual <span>6</span>
+        </div>
+        <div class="event-tag" data-filter="in-person" title="Show in-person">
+          In-Person <span>6</span>
+        </div>
+      </div>
+
+      <div class="featured-events" data-aos="fade-up">
+        <div class="standalone-event" data-event-id="12">
+          <div class="standalone-content">
+            <div
+              class="standalone-image"
+              style="
+                background-image: url('https://placehold.co/800x400/00b4db/0c0c14?text=Innovation+Summit');
+              "
+              onerror="this.style.backgroundImage='url(https://placehold.co/800x400/cccccc/333333?text=Image+Error)'"
+            ></div>
+            <div class="standalone-details">
+              <div class="standalone-date">
+                <i class="fas fa-calendar-alt"></i> May 15-17, 2025
+              </div>
+              <h3 class="standalone-title">Tech Innovation Summit 2025</h3>
+              <p class="standalone-subtitle">
+                The premier tech conference for innovators and entrepreneurs
+              </p>
+              <p class="standalone-description">
+                Join us for three days of immersive learning and networking. The
+                Tech Innovation Summit brings together industry leaders,
+                visionaries, and developers to explore cutting-edge technologies
+                and future trends.
+              </p>
+              <div class="event-countdown" id="summit-countdown">
+                <div class="countdown-item">
+                  <div class="countdown-number" id="countdown-days">0</div>
+                  <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                  <div class="countdown-number" id="countdown-hours">0</div>
+                  <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                  <div class="countdown-number" id="countdown-mins">0</div>
+                  <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                  <div class="countdown-number" id="countdown-secs">0</div>
+                  <div class="countdown-label">Seconds</div>
+                </div>
+              </div>
+              <div class="standalone-footer">
+                <div class="standalone-meta">
+                  <div class="standalone-type">Conference</div>
+                  <div class="standalone-location">
+                    <i class="fas fa-map-marker-alt"></i> San Francisco, CA
+                  </div>
+                </div>
+                <button class="standalone-button">
+                  Register Now <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header-mini" data-aos="fade-up">
+        <h3 class="section-title">Recommended For You</h3>
+        <a
+          href="#"
+          class="view-all"
+          id="view-all-recommended"
+          title="See all recommendations"
+          >View All</a
+        >
+      </div>
+      <div class="draggable-container" data-aos="fade-up">
+        <div class="draggable-content" id="draggable-events"></div>
+        <button
+          class="draggable-nav draggable-prev"
+          aria-label="Previous Recommended Event"
+        >
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button
+          class="draggable-nav draggable-next"
+          aria-label="Next Recommended Event"
+        >
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="events-container" id="events-grid"></div>
+
+      <div class="calendar-container" id="calendar-view" data-aos="fade-up">
+        <div class="calendar-header">
+          <div class="calendar-title" id="calendar-month-year">Month Year</div>
+          <div class="calendar-navigation">
+            <button
+              class="calendar-nav-btn"
+              id="prev-month"
+              aria-label="Previous Month"
+            >
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button
+              class="calendar-nav-btn"
+              id="today"
+              aria-label="Go to Today"
+            >
+              <i class="fas fa-calendar-day"></i>
+            </button>
+            <button
+              class="calendar-nav-btn"
+              id="next-month"
+              aria-label="Next Month"
+            >
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+        <div class="calendar-grid" id="calendar-grid-body"></div>
+      </div>
+
+      <div class="modal-overlay" id="event-modal">
+        <div
+          class="modal-content"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title-h2"
+        >
+          <button class="modal-close" aria-label="Close modal">
+            <i class="fas fa-times"></i>
+          </button>
+          <div class="event-details">
+            <div class="event-details-image" id="modal-event-image"></div>
+            <h2 class="event-details-title" id="modal-title-h2">Event Title</h2>
+            <div class="event-details-meta">
+              <div class="event-meta-item event-details-date">
+                <i class="fas fa-calendar-alt"></i>
+                <span id="modal-event-date">Date</span>
+              </div>
+              <div class="event-meta-item event-details-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span id="modal-event-location">Location</span>
+              </div>
+              <div class="event-meta-item event-details-type">
+                <i class="fas fa-tag"></i>
+                <span id="modal-event-type">Type</span>
+              </div>
+            </div>
+            <div class="tabs-container">
+              <div
+                class="tabs-header"
+                role="tablist"
+                aria-label="Event Details Tabs"
+              >
+                <button
+                  class="tab-btn active"
+                  id="tab-btn-about"
+                  data-tab="about"
+                  role="tab"
+                  aria-selected="true"
+                  aria-controls="tab-about"
+                >
+                  About
+                </button>
+                <button
+                  class="tab-btn"
+                  id="tab-btn-schedule"
+                  data-tab="schedule"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="tab-schedule"
+                >
+                  Schedule
+                </button>
+                <button
+                  class="tab-btn"
+                  id="tab-btn-speakers"
+                  data-tab="speakers"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="tab-speakers"
+                >
+                  Speakers
+                </button>
+              </div>
+              <div
+                class="tab-content active"
+                id="tab-about"
+                role="tabpanel"
+                aria-labelledby="tab-btn-about"
+              >
+                <p
+                  class="event-details-description"
+                  id="modal-event-description"
+                >
+                  Full event description goes here.
+                </p>
+              </div>
+              <div
+                class="tab-content"
+                id="tab-schedule"
+                role="tabpanel"
+                aria-labelledby="tab-btn-schedule"
+                hidden
+              >
+                <div class="schedule-list" id="modal-schedule-list">
+                  <p>No schedule available.</p>
+                </div>
+              </div>
+              <div
+                class="tab-content"
+                id="tab-speakers"
+                role="tabpanel"
+                aria-labelledby="tab-btn-speakers"
+                hidden
+              >
+                <div class="speakers-grid" id="modal-speakers-grid">
+                  <p>No speaker information available.</p>
+                </div>
+              </div>
+            </div>
+            <div class="event-details-actions">
+              <button class="event-action-btn action-register">
+                <i class="fas fa-user-plus"></i> Register Now
+              </button>
+              <button class="event-action-btn action-remind">
+                <i class="fas fa-bell"></i> Remind Me
+              </button>
+              <button class="event-action-btn action-share">
+                <i class="fas fa-share-alt"></i> Share
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notification-center" id="notification-center"></div>
+    </div>
+    <footer class="footer-footer">
+      <div id="footer-particles-js" class="footer-particles-container"></div>
+      <div class="footer-container">
+        <div class="footer-top">
+          <div class="footer-logo-container" data-aos="fade-right">
+            <img
+              src="/Public/logo/dcitc-logo-trans.png"
+              alt="DCITC Logo"
+              class="footer-logo-img"
+              id="footer-club-logo"
+              onerror="this.style.display='none'"
+            />
+          </div>
+          <div
+            class="footer-links-section"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <h3>Quick Links</h3>
+            <ul class="footer-vertical-links">
+              <li>
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+              </li>
+              <li>
+                <a href="About.html"
+                  ><i class="fas fa-info-circle"></i> About Us</a
+                >
+              </li>
+              <li>
+                <a href="Events.html"
+                  ><i class="fas fa-calendar-alt"></i> Events</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div
+            class="footer-links-section"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <h3>Resources</h3>
+            <ul class="footer-vertical-links">
+              <li>
+                <a href="#tutorials"
+                  ><i class="fas fa-book-open"></i> Tutorials</a
+                >
+              </li>
+              <li>
+                <a href="#workshops"><i class="fas fa-tools"></i> Workshops</a>
+              </li>
+              <li>
+                <a href="#blog"><i class="fas fa-blog"></i> Blog</a>
+              </li>
+              <li>
+                <a href="#faqs"><i class="fas fa-question-circle"></i> FAQs</a>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="footer-links-section"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <h3>Contact Us</h3>
+            <ul class="footer-vertical-links">
+              <li>
+                <a href="mailto:info@dcitc.com"
+                  ><i class="fas fa-envelope"></i> info@dcitc.com</a
+                >
+              </li>
+              <li>
+                <a href="tel:+8801234567890"
+                  ><i class="fas fa-phone-alt"></i> +880 123 456 7890</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-map-marker-alt"></i> Dhaka College, Dhaka</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-divider" data-aos="fade-in"></div>
+        <div class="footer-social-row" data-aos="zoom-in">
+          <div class="footer-social-icons">
+            <a
+              href="#"
+              aria-label="Facebook"
+              class="footer-social-icon"
+              title="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="Twitter"
+              class="footer-social-icon"
+              title="Twitter"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="Instagram"
+              class="footer-social-icon"
+              title="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              class="footer-social-icon"
+              title="LinkedIn"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="YouTube"
+              class="footer-social-icon"
+              title="YouTube"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="GitHub"
+              class="footer-social-icon"
+              title="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer-divider" data-aos="fade-in"></div>
+        <div class="footer-copyright" data-aos="fade-up">
+          <p>© 2025 DCITC - Dhaka College IT Club. All rights reserved.</p>
+          <p>
+            Designed with <i class="fas fa-heart footer-heart-icon"></i> by
+            <a href="/executives.html" class="footer-hover-effect">DCITC Team</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-back-to-top" id="footer-backToTop" title="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.3.0/luxon.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.4.8/sweetalert2.min.js"></script>
+    <script src="/scripts/events.js" defer></script>
+  </body>
+</html>

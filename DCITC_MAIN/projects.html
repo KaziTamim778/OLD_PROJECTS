@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Projects</title>
+
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.4.8/sweetalert2.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="/styles/projects.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  <body>
+    <div class="nav-navbar-container" id="nav-navbarContainer">
+      <nav class="nav-navbar">
+        <div class="nav-logo-container">
+          <img
+            src="/Public/logo/dcitc-logo-trans.png"
+            alt="Logo"
+            class="nav-logo-img"
+            onerror="this.onerror=null; this.src='https://placehold.co/40x40/0c0c14/00b4db?text=DC';"
+          />
+          <div class="nav-logo-text">DCITC</div>
+          <div class="theme-toggle" id="themeToggle">
+            <div class="theme-toggle-track">
+              <div class="theme-toggle-thumb"></div>
+            </div>
+          </div>
+          <div class="nav-tech-circles">
+            <div class="nav-circle"></div>
+            <div class="nav-circle"></div>
+            <div class="nav-circle"></div>
+            <div class="nav-circle"></div>
+          </div>
+        </div>
+        <ul class="nav-links" id="nav-navLinks">
+          <li>
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+          </li>
+          <li>
+            <a href="About.html"><i class="fas fa-info-circle"></i> About</a>
+          </li>
+          <li>
+            <a href="Executives.html"><i class="fas fa-users"></i> Executive</a>
+          </li>
+          <li>
+            <a href="Events.html"><i class="fas fa-calendar-alt"></i> Events</a>
+          </li>
+          <li>
+            <a href="projects.html" class="active"
+              ><i class="fas fa-project-diagram"></i> Projects</a
+            >
+          </li>
+          <li>
+            <a href="Gallery.html"><i class="fas fa-images"></i> Gallery</a>
+          </li>
+          <li>
+            <a href="Departments.html"
+              ><i class="fas fa-sitemap"></i> Departments</a
+            >
+          </li>
+        </ul>
+        <button class="nav-menu-btn" id="nav-menuBtn">
+          <div class="nav-hamburger" id="nav-hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </nav>
+    </div>
+    <div class="nav-overlay" id="nav-overlay"></div>
+
+    <div id="particles-js"></div>
+
+    <div class="container">
+      <header class="page-header">
+        <h1 class="page-title" data-aos="fade-down">My Projects</h1>
+        <p class="page-subtitle" data-aos="fade-up">
+          Explore my portfolio of technical projects across different domains -
+          from web development to AI/ML solutions
+        </p>
+      </header>
+
+      <nav class="category-nav" data-aos="fade-up">
+        <span class="category-label">Filter by:</span>
+        <button class="category-button active" data-category="all">
+          All Projects
+        </button>
+        <button class="category-button" data-category="web-development">
+          Web Development
+        </button>
+        <button class="category-button" data-category="competitive-programming">
+          Competitive Programming
+        </button>
+        <button class="category-button" data-category="graphics-designing">
+          Graphics Designing
+        </button>
+        <button class="category-button" data-category="cyber-security">
+          Cyber Security
+        </button>
+        <button class="category-button" data-category="robotics-ai-ml">
+          Robotics & AI/ML
+        </button>
+      </nav>
+
+      <div class="projects-container">
+        <section class="projects-section" data-category="web-development">
+          <div class="category-header" data-aos="fade-right">
+            <i class="fas fa-globe category-icon"></i>
+            <h2>Web Development</h2>
+            <span class="category-count">4 Projects</span>
+          </div>
+
+          <div class="projects-grid">
+            <div class="project-card" data-aos="fade-up">
+              <img
+                src="https://placehold.co/400x180/0083b0/ffffff?text=E-commerce"
+                alt="E-commerce Platform"
+                class="project-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="project-image-fallback" style="display: none">
+                Image Unavailable
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">E-commerce Platform</h3>
+                <div class="tech-stack">
+                  <span class="tech-tag">React</span>
+                  <span class="tech-tag">Node.js</span>
+                  <span class="tech-tag">MongoDB</span>
+                </div>
+                <p class="project-description">
+                  A full-stack e-commerce solution with user authentication,
+                  product management, and payment integration.
+                </p>
+                <div class="project-meta">
+                  <div class="project-stats">
+                    <span class="stat"
+                      ><i class="fas fa-code-branch"></i> 15</span
+                    >
+                    <span class="stat"
+                      ><i class="fas fa-user-friends"></i> 3</span
+                    >
+                  </div>
+                  <div class="project-links">
+                    <a
+                      href="#"
+                      class="project-link"
+                      aria-label="GitHub Repository"
+                      ><i class="fab fa-github"></i
+                    ></a>
+                    <a href="#" class="project-link" aria-label="Live Demo"
+                      ><i class="fas fa-external-link-alt"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+              <img
+                src="https://placehold.co/400x180/00b4db/ffffff?text=Portfolio"
+                alt="Portfolio Website"
+                class="project-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="project-image-fallback" style="display: none">
+                Image Unavailable
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Portfolio Website</h3>
+                <div class="tech-stack">
+                  <span class="tech-tag">HTML/CSS</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">GSAP</span>
+                </div>
+                <p class="project-description">
+                  A responsive portfolio website with smooth animations and
+                  interactive elements.
+                </p>
+                <div class="project-meta">
+                  <div class="project-stats">
+                    <span class="stat"
+                      ><i class="fas fa-code-branch"></i> 8</span
+                    >
+                    <span class="stat"
+                      ><i class="fas fa-user-friends"></i> 1</span
+                    >
+                  </div>
+                  <div class="project-links">
+                    <a
+                      href="#"
+                      class="project-link"
+                      aria-label="GitHub Repository"
+                      ><i class="fab fa-github"></i
+                    ></a>
+                    <a href="#" class="project-link" aria-label="Live Demo"
+                      ><i class="fas fa-external-link-alt"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+              <img
+                src="https://placehold.co/400x180/0083b0/ffffff?text=Blog"
+                alt="Blog Platform"
+                class="project-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="project-image-fallback" style="display: none">
+                Image Unavailable
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Blog Platform</h3>
+                <div class="tech-stack">
+                  <span class="tech-tag">Vue.js</span>
+                  <span class="tech-tag">Firebase</span>
+                  <span class="tech-tag">Tailwind CSS</span>
+                </div>
+                <p class="project-description">
+                  A modern blogging platform with rich text editing and
+                  real-time updates.
+                </p>
+                <div class="project-meta">
+                  <div class="project-stats">
+                    <span class="stat"
+                      ><i class="fas fa-code-branch"></i> 12</span
+                    >
+                    <span class="stat"
+                      ><i class="fas fa-user-friends"></i> 2</span
+                    >
+                  </div>
+                  <div class="project-links">
+                    <a
+                      href="#"
+                      class="project-link"
+                      aria-label="GitHub Repository"
+                      ><i class="fab fa-github"></i
+                    ></a>
+                    <a href="#" class="project-link" aria-label="Live Demo"
+                      ><i class="fas fa-external-link-alt"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+              <img
+                src="https://placehold.co/400x180/00b4db/ffffff?text=Weather"
+                alt="Weather Dashboard"
+                class="project-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="project-image-fallback" style="display: none">
+                Image Unavailable
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Weather Dashboard</h3>
+                <div class="tech-stack">
+                  <span class="tech-tag">React</span>
+                  <span class="tech-tag">Weather API</span>
+                  <span class="tech-tag">Chart.js</span>
+                </div>
+                <p class="project-description">
+                  A weather dashboard app that displays current and forecast
+                  weather data with visualizations.
+                </p>
+                <div class="project-meta">
+                  <div class="project-stats">
+                    <span class="stat"
+                      ><i class="fas fa-code-branch"></i> 6</span
+                    >
+                    <span class="stat"
+                      ><i class="fas fa-user-friends"></i> 1</span
+                    >
+                  </div>
+                  <div class="project-links">
+                    <a
+                      href="#"
+                      class="project-link"
+                      aria-label="GitHub Repository"
+                      ><i class="fab fa-github"></i
+                    ></a>
+                    <a href="#" class="project-link" aria-label="Live Demo"
+                      ><i class="fas fa-external-link-alt"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="projects-section"
+          data-category="competitive-programming"
+        >
+          <div class="category-header" data-aos="fade-right">
+            <i class="fas fa-code category-icon"></i>
+            <h2>Competitive Programming</h2>
+            <span class="category-count">3 Projects</span>
+          </div>
+
+          <div class="projects-grid">
+            <div class="project-card" data-aos="fade-up">
+              <img
+                src="https://placehold.co/400x180/0083b0/ffffff?text=AlgoViz"
+                alt="Algorithm Visualizer"
+                class="project-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="project-image-fallback" style="display: none">
+                Image Unavailable
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Algorithm Visualizer</h3>
+                <div class="tech-stack">
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">D3.js</span>
+                  <span class="tech-tag">CSS</span>
+                </div>
+                <p class="project-description">
+                  A web app that visualizes common algorithms used in
+                  competitive programming.
+                </p>
+                <div class="project-meta">
+                  <div class="project-stats">
+                    <span class="stat"
+                      ><i class="fas fa-code-branch"></i> 10</span
+                    >
+                    <span class="stat"
+                      ><i class="fas fa-user-friends"></i> 2</span
+                    >
+                  </div>
+                  <div class="project-links">
+                    <a
+                      href="#"
+                      class="project-link"
+                      aria-label="GitHub Repository"
+                      ><i class="fab fa-github"></i
+                    ></a>
+                    <a href="#" class="project-link" aria-label="Live Demo"
+                      ><i class="fas fa-external-link-alt"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+              <img
+                src="https://placehold.co/400x180/00b4db/ffffff?text=CP+Lib"
+                alt="Competitive Programming Library"
+                class="project-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="project-image-fallback" style="display: none">
+                Image Unavailable
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">CP Library</h3>
+                <div class="tech-stack">
+                  <span class="tech-tag">C++</span>
+                  <span class="tech-tag">Algorithms</span>
+                  <span class="tech-tag">Data Structures</span>
+                </div>
+                <p class="project-description">
+                  A comprehensive library of algorithms and data structures for
+                  competitive programming.
+                </p>
+                <div class="project-meta">
+                  <div class="project-stats">
+                    <span class="stat"
+                      ><i class="fas fa-code-branch"></i> 23</span
+                    >
+                    <span class="stat"
+                      ><i class="fas fa-user-friends"></i> 4</span
+                    >
+                  </div>
+                  <div class="project-links">
+                    <a
+                      href="#"
+                      class="project-link"
+                      aria-label="GitHub Repository"
+                      ><i class="fab fa-github"></i
+                    ></a>
+                    <a href="#" class="project-link" aria-label="Live Demo"
+                      ><i class="fas fa-external-link-alt"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+              <img
+                src="https://placehold.co/400x180/0083b0/ffffff?text=Contest"
+                alt="Coding Contest Platform"
+                class="project-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="project-image-fallback" style="display: none">
+                Image Unavailable
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Contest Platform</h3>
+                <div class="tech-stack">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">Django</span>
+                  <span class="tech-tag">PostgreSQL</span>
+                </div>
+                <p class="project-description">
+                  A platform for hosting coding contests with real-time judging
+                  and leaderboards.
+                </p>
+                <div class="project-meta">
+                  <div class="project-stats">
+                    <span class="stat"
+                      ><i class="fas fa-code-branch"></i> 18</span
+                    >
+                    <span class="stat"
+                      ><i class="fas fa-user-friends"></i> 3</span
+                    >
+                  </div>
+                  <div class="project-links">
+                    <a
+                      href="#"
+                      class="project-link"
+                      aria-label="GitHub Repository"
+                      ><i class="fab fa-github"></i
+                    ></a>
+                    <a href="#" class="project-link" aria-label="Live Demo"
+                      ><i class="fas fa-external-link-alt"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="projects-section" data-category="graphics-designing">
+          <div class="category-header" data-aos="fade-right">
+            <i class="fas fa-paint-brush category-icon"></i>
+            <h2>Graphics Designing</h2>
+            <span class="category-count">3 Projects</span>
+          </div>
+
+          <div class="projects-grid">
+            <div class="project-card" data-aos="fade-up">
+              <img
+                src="https://placehold.co/400x180/00b4db/ffffff?text=Branding"
+                alt="Brand Identity Package"
+                class="project-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="project-image-fallback" style="display: none">
+                Image Unavailable
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Brand Identity Package</h3>
+                <div class="tech-stack">
+                  <span class="tech-tag">Adobe Illustrator</span>
+                  <span class="tech-tag">Branding</span>
+                  <span class="tech-tag">Logo Design</span>
+                </div>
+                <p class="project-description">
+                  A complete brand identity package including logo, color
+                  palette, typography, and brand guidelines.
+                </p>
+                <div class="project-meta">
+                  <div class="project-stats">
+                    <span class="stat"
+                      ><i class="fas fa-code-branch"></i> 7</span
+                    >
+                    <span class="stat"
+                      ><i class="fas fa-user-friends"></i> 2</span
+                    >
+                  </div>
+                  <div class="project-links">
+                    <a
+                      href="#"
+                      class="project-link"
+                      aria-label="Behance Portfolio"
+                      ><i class="fab fa-behance"></i
+                    ></a>
+                    <a href="#" class="project-link" aria-label="View Gallery"
+                      ><i class="fas fa-image"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+              <img
+                src="https://placehold.co/400x180/0083b0/ffffff?text=DesignSys"
+                alt="UI/UX Design System"
+                class="project-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="project-image-fallback" style="display: none">
+                Image Unavailable
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">UI/UX Design System</h3>
+                <div class="tech-stack">
+                  <span class="tech-tag">Figma</span>
+                  <span class="tech-tag">UI Components</span>
+                  <span class="tech-tag">Design System</span>
+                </div>
+                <p class="project-description">
+                  A comprehensive design system with reusable UI components and
+                  design patterns.
+                </p>
+                <div class="project-meta">
+                  <div class="project-stats">
+                    <span class="stat"
+                      ><i class="fas fa-code-branch"></i> 12</span
+                    >
+                    <span class="stat"
+                      ><i class="fas fa-user-friends"></i> 3</span
+                    >
+                  </div>
+                  <div class="project-links">
+                    <a href="#" class="project-link" aria-label="Figma File"
+                      ><i class="fab fa-figma"></i
+                    ></a>
+                    <a href="#" class="project-link" aria-label="View Gallery"
+                      ><i class="fas fa-image"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+              <img
+                src="https://placehold.co/400x180/00b4db/ffffff?text=3D+Model"
+                alt="3D Character Modeling"
+                class="project-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="project-image-fallback" style="display: none">
+                Image Unavailable
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">3D Character Modeling</h3>
+                <div class="tech-stack">
+                  <span class="tech-tag">Blender</span>
+                  <span class="tech-tag">3D Modeling</span>
+                  <span class="tech-tag">Character Design</span>
+                </div>
+                <p class="project-description">
+                  A collection of 3D character models designed for animation and
+                  gaming projects.
+                </p>
+                <div class="project-meta">
+                  <div class="project-stats">
+                    <span class="stat"
+                      ><i class="fas fa-code-branch"></i> 5</span
+                    >
+                    <span class="stat"
+                      ><i class="fas fa-user-friends"></i> 1</span
+                    >
+                  </div>
+                  <div class="project-links">
+                    <a href="#" class="project-link" aria-label="ArtStation"
+                      ><i class="fab fa-artstation"></i
+                    ></a>
+                    <a href="#" class="project-link" aria-label="View 3D Model"
+                      ><i class="fas fa-cube"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="projects-section" data-category="cyber-security">
+          <div class="category-header" data-aos="fade-right">
+            <i class="fas fa-shield-alt category-icon"></i>
+            <h2>Cyber Security</h2>
+            <span class="category-count">3 Projects</span>
+          </div>
+
+          <div class="projects-grid">
+            <div class="project-card" data-aos="fade-up">
+              <img
+                src="https://placehold.co/400x180/0083b0/ffffff?text=NetSecMon"
+                alt="Network Security Monitor"
+                class="project-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="project-image-fallback" style="display: none">
+                Image Unavailable
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Network Security Monitor</h3>
+                <div class="tech-stack">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">Flask</span>
+                  <span class="tech-tag">Network Analysis</span>
+                </div>
+                <p class="project-description">
+                  A tool for monitoring network traffic and detecting security
+                  threats in real-time.
+                </p>
+                <div class="project-meta">
+                  <div class="project-stats">
+                    <span class="stat"
+                      ><i class="fas fa-code-branch"></i> 14</span
+                    >
+                    <span class="stat"
+                      ><i class="fas fa-user-friends"></i> 2</span
+                    >
+                  </div>
+                  <div class="project-links">
+                    <a
+                      href="#"
+                      class="project-link"
+                      aria-label="GitHub Repository"
+                      ><i class="fab fa-github"></i
+                    ></a>
+                    <a href="#" class="project-link" aria-label="Live Demo"
+                      ><i class="fas fa-external-link-alt"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+              <img
+                src="https://placehold.co/400x180/00b4db/ffffff?text=VulnScan"
+                alt="Vulnerability Scanner"
+                class="project-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="project-image-fallback" style="display: none">
+                Image Unavailable
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Vulnerability Scanner</h3>
+                <div class="tech-stack">
+                  <span class="tech-tag">Go</span>
+                  <span class="tech-tag">Security</span>
+                  <span class="tech-tag">Penetration Testing</span>
+                </div>
+                <p class="project-description">
+                  An automated vulnerability scanner that identifies security
+                  weaknesses in web applications and networks.
+                </p>
+                <div class="project-meta">
+                  <div class="project-stats">
+                    <span class="stat"
+                      ><i class="fas fa-code-branch"></i> 21</span
+                    >
+                    <span class="stat"
+                      ><i class="fas fa-user-friends"></i> 3</span
+                    >
+                  </div>
+                  <div class="project-links">
+                    <a
+                      href="#"
+                      class="project-link"
+                      aria-label="GitHub Repository"
+                      ><i class="fab fa-github"></i
+                    ></a>
+                    <a href="#" class="project-link" aria-label="Live Demo"
+                      ><i class="fas fa-external-link-alt"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+              <img
+                src="https://placehold.co/400x180/0083b0/ffffff?text=Encrypt"
+                alt="Encryption Tool"
+                class="project-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="project-image-fallback" style="display: none">
+                Image Unavailable
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Encryption Tool</h3>
+                <div class="tech-stack">
+                  <span class="tech-tag">Rust</span>
+                  <span class="tech-tag">Cryptography</span>
+                  <span class="tech-tag">Security</span>
+                </div>
+                <p class="project-description">
+                  A secure file encryption and decryption tool with multiple
+                  cryptographic algorithms.
+                </p>
+                <div class="project-meta">
+                  <div class="project-stats">
+                    <span class="stat"
+                      ><i class="fas fa-code-branch"></i> 9</span
+                    >
+                    <span class="stat"
+                      ><i class="fas fa-user-friends"></i> 1</span
+                    >
+                  </div>
+                  <div class="project-links">
+                    <a
+                      href="#"
+                      class="project-link"
+                      aria-label="GitHub Repository"
+                      ><i class="fab fa-github"></i
+                    ></a>
+                    <a href="#" class="project-link" aria-label="Live Demo"
+                      ><i class="fas fa-external-link-alt"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="projects-section" data-category="robotics-ai-ml">
+          <div class="category-header" data-aos="fade-right">
+            <i class="fas fa-robot category-icon"></i>
+            <h2>Robotics & AI/ML</h2>
+            <span class="category-count">4 Projects</span>
+          </div>
+
+          <div class="projects-grid">
+            <div class="project-card" data-aos="fade-up">
+              <img
+                src="https://placehold.co/400x180/00b4db/ffffff?text=ObjDetect"
+                alt="Object Detection System"
+                class="project-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="project-image-fallback" style="display: none">
+                Image Unavailable
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Object Detection System</h3>
+                <div class="tech-stack">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">TensorFlow</span>
+                  <span class="tech-tag">Computer Vision</span>
+                </div>
+                <p class="project-description">
+                  A real-time object detection system using deep learning
+                  techniques for video streams.
+                </p>
+                <div class="project-meta">
+                  <div class="project-stats">
+                    <span class="stat"
+                      ><i class="fas fa-code-branch"></i> 17</span
+                    >
+                    <span class="stat"
+                      ><i class="fas fa-user-friends"></i> 3</span
+                    >
+                  </div>
+                  <div class="project-links">
+                    <a
+                      href="#"
+                      class="project-link"
+                      aria-label="GitHub Repository"
+                      ><i class="fab fa-github"></i
+                    ></a>
+                    <a href="#" class="project-link" aria-label="Live Demo"
+                      ><i class="fas fa-external-link-alt"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+              <img
+                src="https://placehold.co/400x180/0083b0/ffffff?text=Sentiment"
+                alt="Natural Language Processing"
+                class="project-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="project-image-fallback" style="display: none">
+                Image Unavailable
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Sentiment Analysis API</h3>
+                <div class="tech-stack">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">NLP</span>
+                  <span class="tech-tag">FastAPI</span>
+                </div>
+                <p class="project-description">
+                  An API that analyzes text sentiment using natural language
+                  processing techniques.
+                </p>
+                <div class="project-meta">
+                  <div class="project-stats">
+                    <span class="stat"
+                      ><i class="fas fa-code-branch"></i> 11</span
+                    >
+                    <span class="stat"
+                      ><i class="fas fa-user-friends"></i> 2</span
+                    >
+                  </div>
+                  <div class="project-links">
+                    <a
+                      href="#"
+                      class="project-link"
+                      aria-label="GitHub Repository"
+                      ><i class="fab fa-github"></i
+                    ></a>
+                    <a href="#" class="project-link" aria-label="Live Demo"
+                      ><i class="fas fa-external-link-alt"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+              <img
+                src="https://placehold.co/400x180/00b4db/ffffff?text=Robot"
+                alt="Smart Home Robot"
+                class="project-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="project-image-fallback" style="display: none">
+                Image Unavailable
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Smart Home Robot</h3>
+                <div class="tech-stack">
+                  <span class="tech-tag">Arduino</span>
+                  <span class="tech-tag">IoT</span>
+                  <span class="tech-tag">Robotics</span>
+                </div>
+                <p class="project-description">
+                  A programmable home robot with voice recognition, movement
+                  capabilities, and smart home integration.
+                </p>
+                <div class="project-meta">
+                  <div class="project-stats">
+                    <span class="stat"
+                      ><i class="fas fa-code-branch"></i> 24</span
+                    >
+                    <span class="stat"
+                      ><i class="fas fa-user-friends"></i> 4</span
+                    >
+                  </div>
+                  <div class="project-links">
+                    <a
+                      href="#"
+                      class="project-link"
+                      aria-label="GitHub Repository"
+                      ><i class="fab fa-github"></i
+                    ></a>
+                    <a href="#" class="project-link" aria-label="Live Demo"
+                      ><i class="fas fa-external-link-alt"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+              <img
+                src="https://placehold.co/400x180/0083b0/ffffff?text=Predictive"
+                alt="Predictive Analytics Dashboard"
+                class="project-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="project-image-fallback" style="display: none">
+                Image Unavailable
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Predictive Analytics</h3>
+                <div class="tech-stack">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">Scikit-Learn</span>
+                  <span class="tech-tag">Dash</span>
+                </div>
+                <p class="project-description">
+                  A dashboard for data visualization and predictive analytics
+                  using machine learning models.
+                </p>
+                <div class="project-meta">
+                  <div class="project-stats">
+                    <span class="stat"
+                      ><i class="fas fa-code-branch"></i> 16</span
+                    >
+                    <span class="stat"
+                      ><i class="fas fa-user-friends"></i> 3</span
+                    >
+                  </div>
+                  <div class="project-links">
+                    <a
+                      href="#"
+                      class="project-link"
+                      aria-label="GitHub Repository"
+                      ><i class="fab fa-github"></i
+                    ></a>
+                    <a href="#" class="project-link" aria-label="Live Demo"
+                      ><i class="fas fa-external-link-alt"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="projects-overview" data-aos="fade-up">
+        <h2 class="overview-title">
+          <i class="fas fa-chart-bar"></i> Projects Overview
+        </h2>
+        <div class="stats-grid">
+          <div class="stat-card" data-aos="zoom-in" data-aos-delay="0">
+            <div class="stat-value" id="total-projects">17</div>
+            <div class="stat-label">Total Projects</div>
+          </div>
+          <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+            <div class="stat-value" id="total-contributors">28</div>
+            <div class="stat-label">Contributors</div>
+          </div>
+          <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="stat-value" id="total-commits">186</div>
+            <div class="stat-label">Commits</div>
+          </div>
+          <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+            <div class="stat-value" id="active-projects">12</div>
+            <div class="stat-label">Active Projects</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer-footer">
+      <div id="footer-particles-js" class="footer-particles-container"></div>
+
+      <div class="footer-container">
+        <div class="footer-top">
+          <div class="footer-logo-container" data-aos="fade-right">
+            <img
+              src="/Public/logo/dcitc-logo-trans.png"
+              alt="DCITC Logo"
+              class="footer-logo-img"
+              id="footer-club-logo"
+              onerror="this.onerror=null; this.src='https://placehold.co/120x40/0c0c14/00b4db?text=DCITC';"
+            />
+          </div>
+          <div
+            class="footer-links-section"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <h3>Quick Links</h3>
+            <ul class="footer-vertical-links">
+              <li>
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+              </li>
+              <li>
+                <a href="About.html"
+                  ><i class="fas fa-info-circle"></i> About Us</a
+                >
+              </li>
+              <li>
+                <a href="Events.html"
+                  ><i class="fas fa-calendar-alt"></i> Events</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div
+            class="footer-links-section"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <h3>Resources</h3>
+            <ul class="footer-vertical-links">
+              <li>
+                <a href="#tutorials"
+                  ><i class="fas fa-book-open"></i> Tutorials</a
+                >
+              </li>
+              <li>
+                <a href="#workshops"><i class="fas fa-tools"></i> Workshops</a>
+              </li>
+              <li>
+                <a href="#blog"><i class="fas fa-blog"></i> Blog</a>
+              </li>
+              <li>
+                <a href="#faqs"><i class="fas fa-question-circle"></i> FAQs</a>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="footer-links-section"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <h3>Contact Us</h3>
+            <ul class="footer-vertical-links">
+              <li>
+                <a href="mailto:info@dcitc.com"
+                  ><i class="fas fa-envelope"></i> info@dcitc.com</a
+                >
+              </li>
+              <li>
+                <a href="tel:+8801234567890"
+                  ><i class="fas fa-phone-alt"></i> +880 123 456 7890</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-map-marker-alt"></i> Dhaka College, Dhaka</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-divider" data-aos="fade-in"></div>
+        <div class="footer-social-row" data-aos="zoom-in">
+          <div class="footer-social-icons">
+            <a
+              href="#"
+              aria-label="Facebook"
+              class="footer-social-icon"
+              data-tooltip="Follow us on Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="Twitter"
+              class="footer-social-icon"
+              data-tooltip="Follow us on Twitter"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="Instagram"
+              class="footer-social-icon"
+              data-tooltip="Follow us on Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              class="footer-social-icon"
+              data-tooltip="Connect on LinkedIn"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="YouTube"
+              class="footer-social-icon"
+              data-tooltip="Watch our videos"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="GitHub"
+              class="footer-social-icon"
+              data-tooltip="Check out our code"
+              ><i class="fab fa-github"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer-divider" data-aos="fade-in"></div>
+        <div class="footer-copyright" data-aos="fade-up">
+          <p>© 2025 DCITC - Dhaka College IT Club. All rights reserved.</p>
+          <p>
+            Designed with <i class="fas fa-heart footer-heart-icon"></i> by
+            <a href="/executives.html" class="footer-hover-effect">DCITC Team</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-back-to-top" id="footer-backToTop">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.8/countUp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.4.8/sweetalert2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script src="/scripts/projects.js"></script>
+  </body>
+</html>

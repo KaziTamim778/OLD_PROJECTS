@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | CyberTech Enterprise</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Titillium+Web:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Navbar CSS -->
+    <link rel="stylesheet" href="navbar.css">
+    
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="footer.css">
+    <script src="footer.js"></script>
+    <style>
+        :root {
+            --deep-space-black: #0A0E17;
+            --cybernetic-blue: #00C2FF;
+            --titanium-silver: #D8DEE9;
+            --neon-green: #39FF14;
+            --neural-purple: #BF5AF2;
+            --surgical-white: #F8F9FC;
+            --hydraulic-red: #FF3B30;
+            --alloy-gray: #4A4E57;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Titillium Web', sans-serif;
+            background-color: var(--deep-space-black);
+            color: var(--titanium-silver);
+            line-height: 1.6;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--surgical-white);
+            margin-bottom: 1rem;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--alloy-gray);
+            padding-bottom: 1rem;
+        }
+        
+        .cart-title {
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .cart-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--cybernetic-blue), var(--neural-purple));
+        }
+        
+        .cart-item-count {
+            background-color: var(--cybernetic-blue);
+            color: var(--deep-space-black);
+            border-radius: 50%;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+            font-weight: bold;
+            vertical-align: super;
+        }
+        
+        .cart-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .cart-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .cart-items {
+            background-color: rgba(74, 78, 87, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .cart-items::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(rgba(10, 14, 23, 0.8), rgba(10, 14, 23, 0.8)),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232A2E37' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2V6h4V4H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            border-radius: 8px;
+            z-index: -1;
+        }
+        
+        .cart-item {
+            display: grid;
+            grid-template-columns: 100px 3fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(216, 222, 233, 0.1);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .cart-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 194, 255, 0.1);
+        }
+        
+        .cart-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .cart-item-image {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid var(--alloy-gray);
+            background-color: rgba(10, 14, 23, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .cart-item:hover .cart-item-image img {
+            transform: scale(1.1);
+        }
+        
+        .cart-item-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .item-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--surgical-white);
+            margin-bottom: 0.5rem;
+        }
+        
+        .item-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .item-meta span {
+            font-size: 0.85rem;
+            color: var(--titanium-silver);
+            display: flex;
+            align-items: center;
+        }
+        
+        .item-meta i {
+            margin-right: 0.4rem;
+            color: var(--cybernetic-blue);
+        }
+        
+        .item-description {
+            font-size: 0.9rem;
+            color: var(--titanium-silver);
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+        
+        .compatibility {
+            font-size: 0.8rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            background-color: rgba(191, 90, 242, 0.2);
+            color: var(--neural-purple);
+            border: 1px solid var(--neural-purple);
+        }
+        
+        .item-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .action-btn {
+            background: none;
+            border: none;
+            color: var(--titanium-silver);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .action-btn:hover {
+            color: var(--cybernetic-blue);
+        }
+        
+        .action-btn i {
+            margin-right: 0.3rem;
+        }
+        
+        .cart-item-price {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+        
+        .item-price {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            color: var(--cybernetic-blue);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-btn {
+            background-color: rgba(74, 78, 87, 0.5);
+            border: 1px solid var(--alloy-gray);
+            color: var(--titanium-silver);
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quantity-btn:hover {
+            background-color: var(--cybernetic-blue);
+            color: var(--deep-space-black);
+        }
+        
+        .quantity-display {
+            background-color: rgba(10, 14, 23, 0.7);
+            border-top: 1px solid var(--alloy-gray);
+            border-bottom: 1px solid var(--alloy-gray);
+            color: var(--surgical-white);
+            padding: 0.3rem 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+            user-select: none;
+        }
+        
+        .remove-btn {
+            background-color: transparent;
+            border: none;
+            color: var(--titanium-silver);
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 100%;
+        }
+        
+        .remove-btn:hover {
+            color: var(--hydraulic-red);
+        }
+        
+        .remove-btn i {
+            margin-right: 0.4rem;
+        }
+        
+        .order-summary {
+            background-color: rgba(74, 78, 87, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            position: sticky;
+            top: 2rem;
+        }
+        
+        .summary-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--surgical-white);
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(216, 222, 233, 0.1);
+        }
+        
+        .summary-row:last-child {
+            border-bottom: none;
+        }
+        
+        .summary-label {
+            color: var(--titanium-silver);
+        }
+        
+        .summary-value {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--surgical-white);
+        }
+        
+        .summary-total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--cybernetic-blue);
+            border-top: 2px solid var(--alloy-gray);
+            margin-top: 1rem;
+            padding-top: 1rem;
+        }
+        
+        .promo-code {
+            margin: 1.5rem 0;
+        }
+        
+        .promo-input {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .promo-field {
+            flex: 1;
+            background-color: rgba(10, 14, 23, 0.7);
+            border: 1px solid var(--alloy-gray);
+            padding: 0.8rem 1rem;
+            color: var(--surgical-white);
+            font-family: 'JetBrains Mono', monospace;
+            border-radius: 4px;
+        }
+        
+        .promo-field:focus {
+            outline: none;
+            border-color: var(--cybernetic-blue);
+            box-shadow: 0 0 0 2px rgba(0, 194, 255, 0.3);
+        }
+        
+        .promo-btn {
+            background-color: var(--alloy-gray);
+            color: var(--titanium-silver);
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .promo-btn:hover {
+            background-color: var(--cybernetic-blue);
+            color: var(--deep-space-black);
+        }
+        
+        .checkout-btn {
+            background: linear-gradient(90deg, var(--cybernetic-blue), var(--neural-purple));
+            color: var(--surgical-white);
+            border: none;
+            padding: 1rem;
+            width: 100%;
+            border-radius: 4px;
+            margin-top: 1.5rem;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 194, 255, 0.2);
+        }
+        
+        .checkout-btn:active {
+            transform: translateY(0);
+        }
+        
+        .checkout-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+        
+        .checkout-btn:hover::before {
+            left: 100%;
+        }
+        
+        .payment-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .payment-option {
+            width: 40px;
+            height: 25px;
+            background-color: rgba(216, 222, 233, 0.1);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--titanium-silver);
+        }
+        
+        .shipping-estimate {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: rgba(57, 255, 20, 0.1);
+            border-left: 3px solid var(--neon-green);
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .shipping-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-green);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .shipping-text {
+            font-size: 0.85rem;
+            color: var(--titanium-silver);
+        }
+        
+        .rarity-indicator {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .rarity-common {
+            background-color: rgba(216, 222, 233, 0.2);
+            color: var(--titanium-silver);
+        }
+        
+        .rarity-rare {
+            background-color: rgba(0, 194, 255, 0.2);
+            color: var(--cybernetic-blue);
+        }
+        
+        .rarity-elite {
+            background-color: rgba(191, 90, 242, 0.2);
+            color: var(--neural-purple);
+        }
+        
+        .rarity-prototype {
+            background-color: rgba(57, 255, 20, 0.2);
+            color: var(--neon-green);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 0 10px;
+            }
+            
+            .cart-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .cart-item {
+                grid-template-columns: 80px 1fr;
+                gap: 1rem;
+            }
+            
+            .cart-item-image {
+                height: 80px;
+            }
+            
+            .cart-item-price {
+                grid-column: span 2;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 1rem;
+            }
+            
+            .item-price {
+                margin-bottom: 0;
+            }
+            
+            .order-summary {
+                position: static;
+                margin-top: 2rem;
+            }
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .cybernetic-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(0, 194, 255, 0.05) 1px, transparent 1px),
+                             linear-gradient(90deg, rgba(0, 194, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 4rem 2rem;
+            display: none;
+        }
+        
+        .empty-cart i {
+            font-size: 3rem;
+            color: var(--alloy-gray);
+            margin-bottom: 1rem;
+        }
+        
+        .empty-cart h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .empty-cart p {
+            color: var(--titanium-silver);
+            margin-bottom: 2rem;
+        }
+        
+        .shop-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--cybernetic-blue), var(--alloy-gray));
+            color: var(--surgical-white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .shop-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 194, 255, 0.3);
+        }
+        
+        /* Toast Notification */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .toast {
+            background-color: var(--deep-space-black);
+            border-left: 4px solid var(--cybernetic-blue);
+            color: var(--surgical-white);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            animation: slideInRight 0.3s ease, fadeOut 0.5s ease 2.5s forwards;
+            max-width: 300px;
+        }
+        
+        .toast.error {
+            border-left-color: var(--hydraulic-red);
+        }
+        
+        .toast.success {
+            border-left-color: var(--neon-green);
+        }
+        
+        .toast i {
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; display: none; }
+        }
+        
+        /* Recommendation section */
+        .recommendations {
+            margin-top: 3rem;
+        }
+        
+        .recommendations-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--surgical-white);
+        }
+        
+        .recommendations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .recommendation-card {
+            background-color: rgba(74, 78, 87, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .recommendation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 194, 255, 0.15);
+        }
+        
+        .recommendation-image {
+            height: 140px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .recommendation-details {
+            padding: 1rem;
+        }
+        
+        .recommendation-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: var(--surgical-white);
+        }
+        
+        .recommendation-price {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--cybernetic-blue);
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        
+        .add-to-cart {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background-color: rgba(0, 194, 255, 0.2);
+            border: 1px solid var(--cybernetic-blue);
+            color: var(--cybernetic-blue);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .add-to-cart:hover {
+            background-color: var(--cybernetic-blue);
+            color: var(--deep-space-black);
+        }
+        
+        /* Loading animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 14, 23, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            display: none;
+        }
+        
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(0, 194, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--cybernetic-blue);
+            animation: spin 1s infinite linear;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-container">
+                <a href="index.html" class="navbar-brand">
+                    <i class="fas fa-microchip"></i> CYBERTECH
+                </a>
+                
+                <button class="hamburger">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <div class="nav-menu">
+                    <ul class="nav-links">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li class="dropdown">
+                            <a href="products.html">Products <i class="fas fa-chevron-down" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#neural">Neural Enhancements</a></li>
+                                <li><a href="#ocular">Ocular Systems</a></li>
+                                <li><a href="#limbs">Advanced Limbs</a></li>
+                                <li><a href="#core">Core Implants</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="inventory.html">Inventory</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-icons">
+                    <div class="nav-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="nav-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="nav-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-nav-overlay"></div>
+
+    <div class="cybernetic-grid"></div>
+    
+    <div class="container">
+        <div class="cart-header fade-in">
+            <h1 class="cart-title">Your Cart<span class="cart-item-count">3</span></h1>
+            <div class="cart-actions">
+                <button class="action-btn" id="continue-shopping">
+                    <i class="fas fa-arrow-left"></i> Continue Shopping
+                </button>
+            </div>
+        </div>
+        
+        <div class="cart-grid">
+            <div class="cart-items fade-in">
+                <div class="cart-item">
+                    <div class="cart-item-image">
+                        <img src="/api/placeholder/100/100" alt="Neural Accelerator">
+                        <span class="rarity-indicator rarity-elite">Elite</span>
+                    </div>
+                    <div class="cart-item-details">
+                        <div>
+                            <h3 class="item-name">Neural Accelerator X7</h3>
+                            <div class="item-meta">
+                                <span><i class="fas fa-microchip"></i> Model: NA-X7-2025</span>
+                                <span><i class="fas fa-bolt"></i> Power: 1.2kW</span>
+                            </div>
+                            <p class="item-description">State-of-the-art neural processing unit that increases cognitive functions by 250%. Features adaptive learning capabilities and dream-state programming.</p>
+                            <span class="compatibility">Compatible with all Neuralink interfaces</span>
+                            <div class="item-actions">
+                                <button class="action-btn save-for-later" data-item="1">
+                                    <i class="far fa-bookmark"></i> Save for later
+                                </button>
+                                <button class="action-btn add-to-wishlist" data-item="1">
+                                    <i class="far fa-heart"></i> Add to wishlist
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-item-price">
+                        <span class="item-price">¢ 12,499</span>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn decrease-quantity" data-item="1">-</button>
+                            <span class="quantity-display">1</span>
+                            <button class="quantity-btn increase-quantity" data-item="1">+</button>
+                        </div>
+                        <button class="remove-btn" data-item="1">
+                            <i class="fas fa-trash-alt"></i> Remove
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="cart-item">
+                    <div class="cart-item-image">
+                        <img src="/api/placeholder/100/100" alt="Ocular Enhancement">
+                        <span class="rarity-indicator rarity-rare">Rare</span>
+                    </div>
+                    <div class="cart-item-details">
+                        <div>
+                            <h3 class="item-name">Ocular Enhancement V3</h3>
+                            <div class="item-meta">
+                                <span><i class="fas fa-eye"></i> Model: OE-V3-2025</span>
+                                <span><i class="fas fa-bolt"></i> Power: 0.8kW</span>
+                            </div>
+                            <p class="item-description">Advanced vision augmentation system with 50x optical zoom, infrared capabilities, and augmented reality overlay. Includes night vision and underwater modes.</p>
+                            <span class="compatibility">Compatible with Nerve-Optical Interface v2+</span>
+                            <div class="item-actions">
+                                <button class="action-btn save-for-later" data-item="2">
+                                    <i class="far fa-bookmark"></i> Save for later
+                                </button>
+                                <button class="action-btn add-to-wishlist" data-item="2">
+                                    <i class="far fa-heart"></i> Add to wishlist
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-item-price">
+                        <span class="item-price">¢ 8,750</span>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn decrease-quantity" data-item="2">-</button>
+                            <span class="quantity-display">2</span>
+                            <button class="quantity-btn increase-quantity" data-item="2">+</button>
+                        </div>
+                        <button class="remove-btn" data-item="2">
+                            <i class="fas fa-trash-alt"></i> Remove
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="cart-item">
+                    <div class="cart-item-image">
+                        <img src="/api/placeholder/100/100" alt="Titanium Exoskeleton">
+                        <span class="rarity-indicator rarity-prototype">Prototype</span>
+                    </div>
+                    <div class="cart-item-details">
+                        <div>
+                            <h3 class="item-name">Titanium Exoskeleton Pro</h3>
+                            <div class="item-meta">
+                                <span><i class="fas fa-cog"></i> Model: TE-PRO-2025</span>
+                                <span><i class="fas fa-bolt"></i> Power: 3.5kW</span>
+                            </div>
+                            <p class="item-description">Military-grade titanium-carbon alloy exoskeleton with reactive strength amplification. Increases user strength by 500% with adaptive pressure sensors and neural response system.</p>
+                            <span class="compatibility">Requires Spinal Interface v4</span>
+                            <div class="item-actions">
+                                <button class="action-btn save-for-later" data-item="3">
+                                    <i class="far fa-bookmark"></i> Save for later
+                                </button>
+                                <button class="action-btn add-to-wishlist" data-item="3">
+                                    <i class="far fa-heart"></i> Add to wishlist
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-item-price">
+                        <span class="item-price">¢ 28,999</span>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn decrease-quantity" data-item="3">-</button>
+                            <span class="quantity-display">1</span>
+                            <button class="quantity-btn increase-quantity" data-item="3">+</button>
+                        </div>
+                        <button class="remove-btn" data-item="3">
+                            <i class="fas fa-trash-alt"></i> Remove
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="empty-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Your cart is empty</h3>
+                    <p>Looks like you haven't added any cyborg enhancements to your cart yet.</p>
+                    <a href="products.html" class="shop-btn">Browse Products</a>
+                </div>
+            </div>
+            
+            <div class="order-summary fade-in">
+                <h2 class="summary-title">Order Summary</h2>
+                
+                <div class="summary-row">
+                    <span class="summary-label">Items (4)</span>
+                    <span class="summary-value">¢ 58,998</span>
+                </div>
+                
+                <div class="summary-row">
+                    <span class="summary-label">Installation Fee</span>
+                    <span class="summary-value">¢ 4,500</span>
+                </div>
+                
+                <div class="summary-row">
+                    <span class="summary-label">Warranty (Extended)</span>
+                    <span class="summary-value">¢ 3,200</span>
+                </div>
+                
+                <div class="summary-row">
+                    <span class="summary-label">Shipping</span>
+                    <span class="summary-value">¢ 0</span>
+                </div>
+                
+                <div class="summary-row">
+                    <span class="summary-label">Tax</span>
+                    <span class="summary-value">¢ 6,669</span>
+                </div>
+                
+                <div class="summary-row summary-total">
+                    <span class="summary-label">Total</span>
+                    <span class="summary-value">¢ 73,367</span>
+                </div>
+                
+                <div class="promo-code">
+                    <div class="promo-input">
+                        <input type="text" class="promo-field" placeholder="Enter promo code">
+                        <button class="promo-btn">Apply</button>
+                    </div>
+                </div>
+                
+                <div class="shipping-estimate">
+                    <h4 class="shipping-title">ESTIMATED DELIVERY</h4>
+                    <p class="shipping-text">Your order qualifies for free express shipping and will arrive at our installation center within 2-3 business days.</p>
+                </div>
+                
+                <button class="checkout-btn pulse">Proceed to Checkout</button>
+                
+                <div class="payment-options">
+                    <div class="payment-option"><i class="fab fa-cc-visa"></i></div>
+                    <div class="payment-option"><i class="fab fa-cc-mastercard"></i></div>
+                    <div class="payment-option"><i class="fab fa-cc-amex"></i></div>
+                    <div class="payment-option"><i class="fab fa-cc-paypal"></i></div>
+                    <div class="payment-option"><i class="fab fa-bitcoin"></i></div>
+                    <div class="payment-option"><i class="fas fa-microchip"></i></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="recommendations fade-in">
+            <h2 class="recommendations-title">Recommended Enhancements</h2>
+            
+            <div class="recommendations-grid">
+                <div class="recommendation-card">
+                    <img src="/assets/Products/Cyborg OptiView X3.png" alt="Auditory System" class="recommendation-image">
+                    <div class="recommendation-details">
+                        <h3 class="recommendation-name">Quantum Auditory System</h3>
+                        <span class="recommendation-price">¢ 7,899</span>
+                        <button class="add-to-cart" data-id="rec1"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+                
+                <div class="recommendation-card">
+                    <img src="/assets/Products/NanoShield Showcase.png" alt="Dermal Shield" class="recommendation-image">
+                    <div class="recommendation-details">
+                        <h3 class="recommendation-name">Graphene Dermal Shield</h3>
+                        <span class="recommendation-price">¢ 9,450</span>
+                        <button class="add-to-cart" data-id="rec2"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+                
+                <div class="recommendation-card">
+                    <img src="/assets/Products/PulseCore Titanium Display.png" alt="Core Enhancement" class="recommendation-image">
+                    <div class="recommendation-details">
+                        <h3 class="recommendation-name">Cardiac Regulator Plus</h3>
+                        <span class="recommendation-price">¢ 11,299</span>
+                        <button class="add-to-cart" data-id="rec3"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+                
+                <div class="recommendation-card">
+                    <img src="/assets/Products/Quantum Core Processor.png" alt="Neuro Interface" class="recommendation-image">
+                    <div class="recommendation-details">
+                        <h3 class="recommendation-name">Neural Interface Hub</h3>
+                        <span class="recommendation-price">¢ 15,750</span>
+                        <button class="add-to-cart" data-id="rec4"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <div class="loading-overlay">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Footer placeholder -->
+    <footer class="footer pt-16 pb-6">
+        <!-- Circuit overlay -->
+        <div class="circuit-overlay"></div>
+        
+        <!-- Main footer content -->
+        <div class="footer-container container mx-auto px-4">
+            <!-- Top footer section with logo and main content -->
+            <div class="footer-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+                <!-- Company Info Column -->
+                <div class="footer-col">
+                    <div class="mb-4">
+                        <h2 class="text-3xl font-bold mb-2 animated-text" style="font-family: 'Audiowide', cursive;">CYBERTECH</h2>
+                        <p class="text-sm tracking-wide" style="font-family: 'JetBrains Mono', monospace;">HUMAN POTENTIAL · ENHANCED</p>
+                    </div>
+                    <p class="text-sm mb-6">Revolutionizing human capabilities through cutting-edge cybernetic enhancements. Build your future, enhance your potential.</p>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="social-icon h-10 w-10 flex items-center justify-center hover:text-deep-space-black">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon h-10 w-10 flex items-center justify-center hover:text-deep-space-black">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon h-10 w-10 flex items-center justify-center hover:text-deep-space-black">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-icon h-10 w-10 flex items-center justify-center hover:text-deep-space-black">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="pulsing-dot"></span>
+                        <span class="text-sm text-cybernetic-blue">All systems operational</span>
+                    </div>
+                </div>
+                
+                <!-- Quick Links Column -->
+                <div class="footer-col">
+                    <h3 class="footer-heading text-lg font-semibold mb-6">Navigation</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Home</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>About Us</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Products</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Services</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Contact</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Inventory</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Column -->
+                <div class="footer-col">
+                    <h3 class="footer-heading text-lg font-semibold mb-6">Connect With Us</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-cybernetic-blue mt-1 mr-3"></i>
+                            <span>Neo-Tokyo Research Complex<br>Building 42, Sector 7<br>Tokyo, Japan</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-cybernetic-blue mr-3"></i>
+                            <span>+81 3-1234-5678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-cybernetic-blue mr-3"></i>
+                            <span>enhancements@cyborg.tech</span>
+                        </li>
+                        <li class="mt-4">
+                            <a href="#" class="cybernetic-border inline-block px-4 py-2 text-sm">
+                                <i class="fas fa-calendar-check mr-2"></i>Schedule Consultation
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Newsletter Column -->
+                <div class="footer-col">
+                    <h3 class="footer-heading text-lg font-semibold mb-6">Enhancement Updates</h3>
+                    <p class="mb-4 text-sm">Stay informed about the latest cybernetic innovations and exclusive offers.</p>
+                    <form class="mb-4">
+                        <div class="flex flex-col space-y-3">
+                            <input type="email" placeholder="Enter your email" class="newsletter-input px-4 py-3 rounded text-sm w-full" required>
+                            <button type="submit" class="subscribe-btn px-4 py-3 rounded text-sm font-medium text-surgical-white">
+                                SUBSCRIBE <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <div class="text-xs">
+                        <div class="flex items-center mb-1">
+                            <i class="fas fa-shield-alt text-neon-green mr-2"></i>
+                            <span>Encrypted transmission</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-lock text-neon-green mr-2"></i>
+                            <span>We respect your privacy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Divider -->
+            <div class="cybernetic-divider my-6"></div>
+            
+            <!-- Secondary links section -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div>
+                    <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Support</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="footer-link">FAQs</a></li>
+                        <li><a href="#" class="footer-link">Help Center</a></li>
+                        <li><a href="#" class="footer-link">Maintenance</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="footer-link">Terms of Service</a></li>
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">Warranty</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Resources</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                        <li><a href="#" class="footer-link">Research Papers</a></li>
+                        <li><a href="#" class="footer-link">Case Studies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Partners</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="footer-link">Medical Institutions</a></li>
+                        <li><a href="#" class="footer-link">Tech Companies</a></li>
+                        <li><a href="#" class="footer-link">Become a Partner</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom footer with copyright, language, payment -->
+            <div class="footer-bottom flex flex-col md:flex-row justify-between items-center py-4 text-sm">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2025 Cyborg Enhancement Tech. All rights reserved.</p>
+                </div>
+                
+                <div class="flex space-x-6 items-center mb-4 md:mb-0">
+                    <div class="language-selector flex items-center">
+                        <i class="fas fa-globe mr-2 text-cybernetic-blue"></i>
+                        <span>English</span>
+                        <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                        
+                        <div class="language-options">
+                            <ul class="space-y-2">
+                                <li><a href="#" class="footer-link">English</a></li>
+                                <li><a href="#" class="footer-link">日本語</a></li>
+                                <li><a href="#" class="footer-link">Español</a></li>
+                                <li><a href="#" class="footer-link">Français</a></li>
+                                <li><a href="#" class="footer-link">Deutsch</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="footer-link flex items-center">
+                        <i class="fas fa-headset mr-2"></i>
+                        <span>24/7 Support</span>
+                    </a>
+                </div>
+                
+                <div class="payment-methods">
+                    <span class="mr-2 text-xs">SECURE PAYMENT</span>
+                    <div class="flex space-x-2">
+                        <i class="fab fa-cc-visa text-xl"></i>
+                        <i class="fab fa-cc-mastercard text-xl"></i>
+                        <i class="fab fa-cc-amex text-xl"></i>
+                        <i class="fab fa-bitcoin text-xl"></i>
+                        <i class="fab fa-ethereum text-xl"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tech certification badges -->
+            <div class="flex flex-wrap justify-center gap-4 my-6">
+                <div class="cybernetic-border px-3 py-2 flex items-center text-xs">
+                    <i class="fas fa-medal text-neon-green mr-2"></i>
+                    <span>ISO 9001 Certified</span>
+                </div>
+                <div class="cybernetic-border px-3 py-2 flex items-center text-xs">
+                    <i class="fas fa-shield-alt text-neon-green mr-2"></i>
+                    <span>Medical Grade Security</span>
+                </div>
+                <div class="cybernetic-border px-3 py-2 flex items-center text-xs">
+                    <i class="fas fa-robot text-neon-green mr-2"></i>
+                    <span>Advanced AI Support</span>
+                </div>
+                <div class="cybernetic-border px-3 py-2 flex items-center text-xs">
+                    <i class="fas fa-leaf text-neon-green mr-2"></i>
+                    <span>Carbon Neutral Tech</span>
+                </div>
+            </div>
+            
+            <!-- Back to top button -->
+            <div class="flex justify-center mt-6">
+                <button id="backToTop" class="back-to-top rounded-full h-12 w-12 flex items-center justify-center">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script src="navbar.js"></script>
+    <script>
+        
+        $(document).ready(function() {
+        
+            // Items data
+            const cartItems = [
+                {
+                    id: 1,
+                    name: "Neural Accelerator X7",
+                    price: 12499,
+                    quantity: 1,
+                    model: "NA-X7-2025",
+                    power: "1.2kW",
+                    rarity: "elite"
+                },
+                {
+                    id: 2,
+                    name: "Ocular Enhancement V3",
+                    price: 8750,
+                    quantity: 2,
+                    model: "OE-V3-2025",
+                    power: "0.8kW",
+                    rarity: "rare"
+                },
+                {
+                    id: 3,
+                    name: "Titanium Exoskeleton Pro",
+                    price: 28999,
+                    quantity: 1,
+                    model: "TE-PRO-2025",
+                    power: "3.5kW",
+                    rarity: "prototype"
+                }
+            ];
+
+            // Show loader
+            function showLoader() {
+                $(".loading-overlay").fadeIn(300);
+                setTimeout(function() {
+                    $(".loading-overlay").fadeOut(300);
+                }, 800);
+            }
+            
+            // Update cart summary
+            function updateCartSummary() {
+                let subtotal = 0;
+                let itemCount = 0;
+                
+                cartItems.forEach(item => {
+                    subtotal += item.price * item.quantity;
+                    itemCount += item.quantity;
+                });
+                
+                const installationFee = 4500;
+                const warranty = 3200;
+                const shipping = 0;
+                const tax = subtotal * 0.1;
+                const total = subtotal + installationFee + warranty + shipping + tax;
+                
+                $(".cart-item-count").text(itemCount);
+                $(".summary-row:nth-child(1) .summary-value").text(`¢ ${numberWithCommas(subtotal)}`);
+                $(".summary-row:nth-child(5) .summary-value").text(`¢ ${numberWithCommas(tax.toFixed(0))}`);
+                $(".summary-total .summary-value").text(`¢ ${numberWithCommas(total.toFixed(0))}`);
+                
+                // Show empty cart if no items
+                if (itemCount === 0) {
+                    $(".cart-items > .cart-item").hide();
+                    $(".empty-cart").show();
+                } else {
+                    $(".cart-items > .cart-item").show();
+                    $(".empty-cart").hide();
+                }
+            }
+            
+            // Format number with commas
+            function numberWithCommas(x) {
+                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+            
+            // Update quantity
+            $(".quantity-btn").on("click", function() {
+                const itemId = $(this).data("item");
+                const item = cartItems.find(item => item.id === itemId);
+                const $quantityDisplay = $(this).siblings(".quantity-display");
+                
+                if ($(this).hasClass("increase-quantity")) {
+                    if (item.quantity < 10) {
+                        item.quantity++;
+                        showToast("Item quantity updated", "success");
+                    } else {
+                        showToast("Maximum quantity reached", "error");
+                    }
+                } else if ($(this).hasClass("decrease-quantity")) {
+                    if (item.quantity > 1) {
+                        item.quantity--;
+                        showToast("Item quantity updated", "success");
+                    } else {
+                        // prompt removal
+                        if (confirm("Remove this item from cart?")) {
+                            removeItem(itemId);
+                        }
+                    }
+                }
+                
+                $quantityDisplay.text(item.quantity);
+                updateCartSummary();
+            });
+            
+            // Remove item
+            $(".remove-btn").on("click", function() {
+                const itemId = $(this).data("item");
+                removeItem(itemId);
+            });
+            
+            function removeItem(itemId) {
+                showLoader();
+                
+                setTimeout(function() {
+                    const index = cartItems.findIndex(item => item.id === itemId);
+                    if (index !== -1) {
+                        const removedItem = cartItems[index];
+                        cartItems.splice(index, 1);
+                        
+                        $(`.cart-item:has(.remove-btn[data-item="${itemId}"])`).slideUp(300, function() {
+                            $(this).remove();
+                            updateCartSummary();
+                            showToast(`Removed ${removedItem.name} from cart`, "success");
+                        });
+                    }
+                }, 800);
+            }
+            
+            // Show toast notification
+            function showToast(message, type = "info") {
+                const toast = $(`
+                    <div class="toast ${type}">
+                        <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'}"></i>
+                        <span>${message}</span>
+                    </div>
+                `);
+                
+                $("#toastContainer").append(toast);
+                
+                setTimeout(function() {
+                    toast.remove();
+                }, 3000);
+            }
+            
+            // Save for later
+            $(".save-for-later").on("click", function() {
+                const itemId = $(this).data("item");
+                const item = cartItems.find(item => item.id === itemId);
+                
+                showLoader();
+                
+                setTimeout(function() {
+                    showToast(`${item.name} saved for later`, "success");
+                }, 800);
+            });
+            
+            // Add to wishlist
+            $(".add-to-wishlist").on("click", function() {
+                const itemId = $(this).data("item");
+                const item = cartItems.find(item => item.id === itemId);
+                
+                if ($(this).find("i").hasClass("far")) {
+                    $(this).find("i").removeClass("far").addClass("fas");
+                    showToast(`${item.name} added to wishlist`, "success");
+                } else {
+                    $(this).find("i").removeClass("fas").addClass("far");
+                    showToast(`${item.name} removed from wishlist`, "info");
+                }
+            });
+            
+            // Continue shopping button
+            $("#continue-shopping").on("click", function() {
+                window.location.href = "products.html";
+            });
+            
+            // Checkout button
+            $(".checkout-btn").on("click", function() {
+                showLoader();
+                
+                setTimeout(function() {
+                    window.location.href = "checkout.html";
+                }, 800);
+            });
+            
+            // Apply promo code
+            $(".promo-btn").on("click", function() {
+                const promoCode = $(".promo-field").val().trim().toUpperCase();
+                
+                if (promoCode === "") {
+                    showToast("Please enter a promo code", "error");
+                    return;
+                }
+                
+                showLoader();
+                
+                setTimeout(function() {
+                    if (promoCode === "CYBORG25") {
+                        showToast("Promo code applied! 25% discount", "success");
+                        $(".promo-field").attr("disabled", true);
+                        $(".promo-btn").text("Applied").attr("disabled", true);
+                        
+                        // Add discount row
+                        $(".summary-row").eq(4).after(`
+                            <div class="summary-row discount-row">
+                                <span class="summary-label">Discount (25%)</span>
+                                <span class="summary-value" style="color: var(--neon-green);">- ¢ ${numberWithCommas((58998 * 0.25).toFixed(0))}</span>
+                            </div>
+                        `);
+                        
+                        // Update total
+                        const newTotal = 73367 - (58998 * 0.25);
+                        $(".summary-total .summary-value").text(`¢ ${numberWithCommas(newTotal.toFixed(0))}`);
+                    } else {
+                        showToast("Invalid promo code", "error");
+                    }
+                }, 800);
+            });
+            
+            // Add recommended item to cart
+            $(".recommendations .add-to-cart").on("click", function() {
+                const recId = $(this).data("id");
+                const $card = $(this).closest(".recommendation-card");
+                const name = $card.find(".recommendation-name").text();
+                
+                showLoader();
+                
+                setTimeout(function() {
+                    // Animation effect
+                    $card.addClass("animate__animated animate__pulse");
+                    setTimeout(() => $card.removeClass("animate__animated animate__pulse"), 1000);
+                    
+                    // Update cart count
+                    const currentCount = parseInt($(".cart-item-count").text());
+                    $(".cart-item-count").text(currentCount + 1);
+                    
+                    showToast(`${name} added to cart`, "success");
+                }, 800);
+            });
+            
+            // Hover effects for recommendation cards
+            $(".recommendation-card").hover(
+                function() {
+                    $(this).find(".add-to-cart").css("opacity", "1");
+                },
+                function() {
+                    $(this).find(".add-to-cart").css("opacity", "0.7");
+                }
+            );
+            
+            // Initialize
+            updateCartSummary();
+            
+            // Add cyberpunk glitch effect on load
+            setTimeout(function() {
+                $(".cart-title").addClass("glitch");
+                setTimeout(() => $(".cart-title").removeClass("glitch"), 500);
+            }, 1500);
+            
+            // Simulated dynamic loading effect on page load
+            showLoader();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DCITC Executive Team</title> <!-- Updated Title -->
+
+
+  <!-- External Libraries -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <!-- Tilt.js doesn't have a standalone CSS, it's JS based -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.4.8/sweetalert2.min.css">
+  <!-- Added for consistency if modals use it -->
+  <link rel="stylesheet" href="/styles/executives.css">
+  <link rel="stylesheet" href="/styles/global.css">
+
+
+
+
+</head>
+
+<body>
+  <!-- Loading Animation -->
+  <div class="loader">
+    <div class="loader-inner"></div>
+  </div>
+
+  <!-- Navbar -->
+  <div class="nav-navbar-container" id="nav-navbarContainer">
+    <nav class="nav-navbar">
+      <div class="nav-logo-container">
+        <img
+          src="/Public/logo/dcitc-logo-trans.png"
+          alt="Logo" class="nav-logo-img" />
+        <div class="nav-logo-text">DCITC</div>
+        <div class="theme-toggle" id="themeToggle">
+          <div class="theme-toggle-track">
+            <div class="theme-toggle-thumb"></div>
+          </div>
+        </div>
+        <div class="nav-tech-circles">
+          <div class="nav-circle"></div>
+          <div class="nav-circle"></div>
+          <div class="nav-circle"></div>
+          <div class="nav-circle"></div>
+        </div>
+      </div>
+      <ul class="nav-links" id="nav-navLinks">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="About.html"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="Executives.html" class="active"><i class="fas fa-users"></i> Executive</a></li>
+        <li><a href="Events.html"><i class="fas fa-calendar-alt"></i> Events</a></li>
+        <li><a href="Projects.html"><i class="fas fa-project-diagram"></i> Projects</a></li>
+        <li><a href="Gallery.html"><i class="fas fa-images"></i> Gallery</a></li>
+        <li><a href="Departments.html"><i class="fas fa-sitemap"></i> Departments</a></li>
+      </ul>
+      <button class="nav-menu-btn" id="nav-menuBtn">
+        <div class="nav-hamburger" id="nav-hamburger">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </button>
+    </nav>
+  </div>
+  <div class="nav-overlay" id="nav-overlay"></div>
+
+  <!-- Particles.js Background -->
+  <div id="particles-js"></div>
+
+  <!-- Scroll to top button REMOVED from here, handled by footer -->
+
+  <div class="container">
+    <div class="section-title" data-aos="fade-down">
+      <h2>Our Executive Team</h2>
+      <p>Meet the dedicated individuals who drive our organization forward</p>
+    </div>
+
+    <!-- Search Filter -->
+    <div class="search-container" data-aos="fade-up">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" class="search-input" placeholder="Search by name, position, or department...">
+    </div>
+
+    <!-- Year filter - Sticky position -->
+    <div class="year-filter-container" data-aos="fade-up">
+      <div class="year-filter">
+        <button class="year-btn active" data-year="2023-2024">2023-2024</button>
+        <button class="year-btn" data-year="2022-2023">2022-2023</button>
+        <button class="year-btn" data-year="2021-2022">2021-2022</button>
+      </div>
+    </div>
+
+    <!-- Department filter buttons - Only show for current year -->
+    <div class="department-filter-container year-content" data-year="2023-2024">
+      <button class="department-btn active" data-department="all">All Departments</button>
+      <button class="department-btn" data-department="Core Executive Team">Core Team</button>
+      <button class="department-btn" data-department="Competitive Programming">Competitive Programming</button>
+      <button class="department-btn" data-department="Web Development">Web Development</button>
+      <button class="department-btn" data-department="Cybersecurity">Cybersecurity</button>
+      <button class="department-btn" data-department="Graphics Design">Graphics Design</button>
+      <button class="department-btn" data-department="Public Relations">Public Relations</button>
+      <button class="department-btn" data-department="AI/ML">AI/ML</button>
+    </div>
+
+    <!-- No results message -->
+    <div class="no-results">
+      <i class="fas fa-search fa-3x"></i>
+      <p>No matching team members found.</p>
+      <p>Try adjusting your search criteria.</p>
+    </div>
+
+    <!-- Faculty Supervisors Section - Not affected by year filter -->
+    <div class="team-section faculty-section" data-aos="fade-up">
+      <h3 class="category-title">Faculty Supervisors</h3>
+      <div class="cards-grid">
+        <!-- Teacher 1 -->
+        <div class="team-card" data-aos="zoom-in" data-aos-delay="100"
+          data-member-json='{"name":"Dr. Jane Smith","position":"Faculty Supervisor","department":"Computer Science Department","bio":"Dr. Jane Smith is a distinguished professor with over 15 years of experience in computer science education. Her research focuses on machine learning and algorithmic efficiency. She has been supervising student projects since 2015.","email":"jane.smith@university.edu","location":"Science Building, Room 305","phone":"(555) 123-4567","website":"janesmith.edu","social":{"linkedin":"#","twitter":"#","email":"mailto:jane.smith@university.edu"}}'>
+          <div class="card-image">
+            <img src="/Public/Panel/472370911_1003096085175096_220705137954445872_n.jpg" alt="Dr. Jane Smith">
+          </div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Dr. Jane Smith</h3>
+              <p class="position">Faculty Supervisor</p>
+              <p class="department">Computer Science Department</p>
+              <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Teacher 2 -->
+        <div class="team-card" data-aos="zoom-in" data-aos-delay="200"
+          data-member-json='{"name":"Prof. Michael Chen","position":"Faculty Supervisor","department":"Software Engineering Department","bio":"Professor Chen specializes in software architecture and development methodologies. With a background in industry at major tech companies, he brings practical experience to student supervision. He is passionate about mentoring the next generation of developers.","email":"michael.chen@university.edu","location":"Engineering Building, Room 210","phone":"(555) 234-5678","website":"michaelchen.tech","social":{"linkedin":"#","github":"#","email":"mailto:michael.chen@university.edu"}}'>
+          <div class="card-image">
+            <img src="/api/placeholder/300/400" alt="Prof. Michael Chen"> <!-- Placeholder -->
+          </div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Prof. Michael Chen</h3>
+              <p class="position">Faculty Supervisor</p>
+              <p class="department">Software Engineering Department</p>
+              <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Teacher 3 -->
+        <div class="team-card" data-aos="zoom-in" data-aos-delay="300"
+          data-member-json='{"name":"Dr. Sarah Johnson","position":"Faculty Supervisor","department":"Data Science Department","bio":"Dr. Johnson leads cutting-edge research in data analytics and visualization. Her work has been published in top-tier academic journals and she has received multiple grants for her innovative approaches to data science education.","email":"sarah.johnson@university.edu","location":"Innovation Center, Room 405","phone":"(555) 345-6789","website":"sarahjohnson.io","social":{"linkedin":"#","researchgate":"#","email":"mailto:sarah.johnson@university.edu"}}'>
+          <div class="card-image">
+            <img src="/api/placeholder/300/400" alt="Dr. Sarah Johnson"> <!-- Placeholder -->
+          </div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Dr. Sarah Johnson</h3>
+              <p class="position">Faculty Supervisor</p>
+              <p class="department">Data Science Department</p>
+              <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
+                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student Executive Team - 2023-2024 -->
+    <!-- Department filter buttons - Updated for 2025 Panel -->
+    <div class="department-filter-container year-content" data-year="2023-2024">
+      <button class="department-btn active" data-department="all">All Departments</button>
+      <button class="department-btn" data-department="Core Executive Team">Core Team</button>
+      <button class="department-btn" data-department="Administration">Administration</button>
+      <button class="department-btn" data-department="Public Relations">Public Relations</button>
+      <button class="department-btn" data-department="Graphics & Design">Graphics & Design</button>
+      <button class="department-btn" data-department="Web & App Development">Web & App Development</button>
+      <button class="department-btn" data-department="Robotics & Programming">Robotics & Programming</button>
+    </div>
+
+    <!-- No results message -->
+    <div class="no-results">
+      <i class="fas fa-search fa-3x"></i>
+      <p>No matching team members found.</p>
+      <p>Try adjusting your search criteria.</p>
+    </div>
+
+    <!-- Faculty Supervisors Section - Not affected by year filter -->
+
+
+    <!-- Student Executive Team - 2023-2024 -->
+    <div class="team-section students-section year-content" data-year="2023-2024" data-aos="fade-up">
+      <h3 class="category-title">Student Executive Team (2023-2024)</h3>
+      <div class="cards-grid">
+        <!-- Core Executives -->
+        <div class="team-card" data-aos="zoom-in" data-aos-delay="100"
+          data-member-json='{"name":"Ahnaf Hasan","position":"President","department":"Core Executive Team","bio":"Ahnaf is the current president of DCITC...","email":"ahnaf.hasan@student.edu","skills":["Leadership","Project Management","Public Speaking"],"social":{"linkedin":"#","github":"#","email":"mailto:ahnaf.hasan@student.edu"}}'>
+          <div class="card-image"><img src="/Public/Panel/President.jpg" alt="Ahnaf Hasan"></div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Ahnaf Hasan</h3>
+              <p class="position">President</p>
+              <p class="department">Core Executive Team</p>
+              <div class="social-links"><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a
+                  href="#" class="social-link"><i class="fab fa-github"></i></a><a href="#" class="social-link"><i
+                    class="fas fa-envelope"></i></a></div>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-aos="zoom-in" data-aos-delay="150"
+          data-member-json='{"name":"Maloy Roy Orko","position":"Vice President","department":"Core Executive Team","bio":"Maloy serves as the Vice President of DCITC...","email":"maloy.orko@student.edu","skills":["Leadership","Team Management","Strategic Planning"],"social":{"linkedin":"#","github":"#","email":"mailto:maloy.orko@student.edu"}}'>
+          <div class="card-image"><img src="/Public/Panel/VP.jpg" alt="Maloy Roy Orko"></div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Maloy Roy Orko</h3>
+              <p class="position">Vice President</p>
+              <p class="department">Core Executive Team</p>
+              <div class="social-links"><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a
+                  href="#" class="social-link"><i class="fab fa-github"></i></a><a href="#" class="social-link"><i
+                    class="fas fa-envelope"></i></a></div>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-aos="zoom-in" data-aos-delay="200"
+          data-member-json='{"name":"Muhammad Hasin Raihan","position":"General Secretary","department":"Core Executive Team","bio":"Muhammad manages all administrative aspects of DCITC...","email":"hasin.raihan@student.edu","skills":["Organization","Documentation","Event Planning"],"social":{"linkedin":"#","twitter":"#","email":"mailto:hasin.raihan@student.edu"}}'>
+          <div class="card-image"><img src="/Public/Panel/GS.jpg" alt="Muhammad Hasin Raihan"></div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Muhammad Hasin Raihan</h3>
+              <p class="position">General Secretary</p>
+              <p class="department">Core Executive Team</p>
+              <div class="social-links"><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a
+                  href="#" class="social-link"><i class="fab fa-twitter"></i></a><a href="#" class="social-link"><i
+                    class="fas fa-envelope"></i></a></div>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-aos="zoom-in" data-aos-delay="250"
+          data-member-json='{"name":"Solaiman Tanvir Raj","position":"Treasurer","department":"Core Executive Team","bio":"Solaiman brings financial expertise...","email":"solaiman.raj@student.edu","skills":["Financial Management","Budgeting","Analytics"],"social":{"linkedin":"#","github":"#","email":"mailto:solaiman.raj@student.edu"}}'>
+          <div class="card-image"><img src="/public/panel/trs.jpg" alt="Solaiman Tanvir Raj"></div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Solaiman Tanvir Raj</h3>
+              <p class="position">Treasurer</p>
+              <p class="department">Core Executive Team</p>
+              <div class="social-links"><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a
+                  href="#" class="social-link"><i class="fab fa-github"></i></a><a href="#" class="social-link"><i
+                    class="fas fa-envelope"></i></a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Administration -->
+        <div class="team-card" data-aos="zoom-in" data-aos-delay="300"
+          data-member-json='{"name":"Husain Zuhair Zuhan","position":"Chief Executive of Administration","department":"Administration","bio":"Husain Zuhair Zuhan leads the Administration department...","email":"husain.zuhan@student.edu","skills":["Administration","Management","Organization"],"social":{"linkedin":"#","github":"#","email":"mailto:husain.zuhan@student.edu"}}'>
+          <div class="card-image"><img src="/public/panel/cad.jpg" alt="Husain Zuhair Zuhan"></div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Husain Zuhair Zuhan</h3>
+              <p class="position">Chief Executive of Administration</p>
+              <p class="department">Administration</p>
+              <div class="social-links"><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a
+                  href="#" class="social-link"><i class="fab fa-github"></i></a><a href="#" class="social-link"><i
+                    class="fas fa-envelope"></i></a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Public Relations -->
+        <div class="team-card" data-aos="zoom-in" data-aos-delay="350"
+          data-member-json='{"name":"Muhammad Arman","position":"Chief Executive of Public Relation","department":"Public Relations","bio":"Muhammad Arman leads the Public Relations department, managing the club`s communications and outreach...","email":"muhammad.arman@student.edu","skills":["Communication","Event Planning","Media Relations"],"social":{"linkedin":"#","twitter":"#","instagram":"#"}}'>
+          <div class="card-image"><img src="/Public/Panel/CPR.jpg" alt="Muhammad Arman"></div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Muhammad Arman</h3>
+              <p class="position">Chief Executive of Public Relation</p>
+              <p class="department">Public Relations</p>
+              <div class="social-links"><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a
+                  href="#" class="social-link"><i class="fab fa-twitter"></i></a><a href="#" class="social-link"><i
+                    class="fab fa-instagram"></i></a></div>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-aos="zoom-in" data-aos-delay="400"
+          data-member-json='{"name":"Md. Tanzilur Rahman Fakir","position":"Joint Executive of Public Relation","department":"Public Relations","bio":"Tanzilur supports public relations initiatives and helps with community engagement...","email":"tanzilur.fakir@student.edu","skills":["Social Media Management","Content Creation","Community Building"],"social":{"linkedin":"#","twitter":"#","instagram":"#"}}'>
+          <div class="card-image"><img src="/Public/Panel/JPR.jpg" alt="Md. Tanzilur Rahman Fakir"></div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Md. Tanzilur Rahman Fakir</h3>
+              <p class="position">Joint Executive of Public Relation</p>
+              <p class="department">Public Relations</p>
+              <div class="social-links"><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a
+                  href="#" class="social-link"><i class="fab fa-twitter"></i></a><a href="#" class="social-link"><i
+                    class="fab fa-instagram"></i></a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Graphics & Design -->
+        <div class="team-card" data-aos="zoom-in" data-aos-delay="450"
+          data-member-json='{"name":"Muhtasim Muin","position":"Chief Executive of Graphics & Design","department":"Graphics & Design","bio":"Muhtasim Muin leads the Graphics & Design department...","email":"muhtasim.muin@student.edu","skills":["Digital Design","UI/UX","Visual Communication"],"social":{"linkedin":"#","behance":"#","dribbble":"#"}}'>
+          <div class="card-image"><img src="/public/panel/cgd.jpg" alt="Muhtasim Muin"></div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Muhtasim Muin</h3>
+              <p class="position">Chief Executive of Graphics & Design</p>
+              <p class="department">Graphics & Design</p>
+              <div class="social-links"><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a
+                  href="#" class="social-link"><i class="fab fa-behance"></i></a><a href="#" class="social-link"><i
+                    class="fab fa-dribbble"></i></a></div>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-aos="zoom-in" data-aos-delay="500"
+          data-member-json='{"name":"Sadid Hasan Dhurbak","position":"Joint Executive of Graphics & Design","department":"Graphics & Design","bio":"Sadid specializes in digital design and visual content...","email":"sadid.dhurbak@student.edu","skills":["Digital Design","UI/UX","Visual Communication"],"social":{"linkedin":"#","behance":"#","dribbble":"#"}}'>
+          <div class="card-image"><img src="/Public/Panel/JGD.jpg" alt="Sadid Hasan Dhurbak"></div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Sadid Hasan Dhurbak</h3>
+              <p class="position">Joint Executive of Graphics & Design</p>
+              <p class="department">Graphics & Design</p>
+              <div class="social-links"><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a
+                  href="#" class="social-link"><i class="fab fa-behance"></i></a><a href="#" class="social-link"><i
+                    class="fab fa-dribbble"></i></a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Web & App Development -->
+        <div class="team-card" data-aos="zoom-in" data-aos-delay="550"
+          data-member-json='{"name":"Kazi Md Mainul Islam Tanvir","position":"Chief Executive of Web & App Development","department":"Web & App Development","bio":"Tanvir leads the web and app development department...","email":"mainul.tanvir@student.edu","skills":["Full-Stack Development","UI/UX Design","Web Architecture"],"social":{"linkedin":"#","github":"#","website":"#"}}'>
+          <div class="card-image"><img src="/Public/Panel/CWD.jpg" alt="Kazi Md Mainul Islam Tanvir"></div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Kazi Md Mainul Islam Tanvir</h3>
+              <p class="position">Chief Executive of Web & App Development</p>
+              <p class="department">Web & App Development</p>
+              <div class="social-links"><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a
+                  href="#" class="social-link"><i class="fab fa-github"></i></a><a href="#" class="social-link"><i
+                    class="fas fa-globe"></i></a></div>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-aos="zoom-in" data-aos-delay="600"
+          data-member-json='{"name":"Kazi Md Amimul Ahsan Tamim","position":"Joint Executive of Web & App Development","department":"Web & App Development","bio":"Tamim focuses on web application development...","email":"amimul.tamim@student.edu","skills":["Frontend Development","Responsive Design","Web Technologies"],"social":{"linkedin":"#","github":"#","codepen":"#"}}'>
+          <div class="card-image"><img src="/Public/Panel/JWD.jpg" alt="Kazi Md Amimul Ahsan Tamim"></div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Kazi Md Amimul Ahsan Tamim</h3>
+              <p class="position">Joint Executive of Web & App Development</p>
+              <p class="department">Web & App Development</p>
+              <div class="social-links"><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a
+                  href="#" class="social-link"><i class="fab fa-github"></i></a><a href="#" class="social-link"><i
+                    class="fab fa-codepen"></i></a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Robotics & Programming -->
+        <div class="team-card" data-aos="zoom-in" data-aos-delay="650"
+          data-member-json='{"name":"Md. Junayet Hassan","position":"Chief Executive of Robotics & Programming","department":"Robotics & Programming","bio":"Md. Junayet Hassan leads the Robotics & Programming department...","email":"md.junayet.hassan@student.edu","skills":["Robotics","Programming","Hardware Integration"],"social":{"linkedin":"#","github":"#","website":"#"}}'>
+          <div class="card-image"><img src="/Public/Panel/CRP.jpg" alt="Md. Junayet Hassan"></div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Md. Junayet Hassan</h3>
+              <p class="position">Chief Executive of Robotics & Programming</p>
+              <p class="department">Robotics & Programming</p>
+              <div class="social-links"><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a
+                  href="#" class="social-link"><i class="fab fa-github"></i></a><a href="#" class="social-link"><i
+                    class="fas fa-globe"></i></a></div>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-aos="zoom-in" data-aos-delay="700"
+          data-member-json='{"name":"Abdullah Al Mahi","position":"Joint Executive of Robotics & Programming","department":"Robotics & Programming","bio":"Abdullah Al Mahi supports the Robotics & Programming department...","email":"abdullah.mahi@student.edu","skills":["Robotics","Programming","Hardware Integration"],"social":{"linkedin":"#","github":"#","website":"#"}}'>
+          <div class="card-image"><img src="/public/panel/jrp.jpg" alt="Abdullah Al Mahi"></div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Abdullah Al Mahi</h3>
+              <p class="position">Joint Executive of Robotics & Programming</p>
+              <p class="department">Robotics & Programming</p>
+              <div class="social-links"><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a
+                  href="#" class="social-link"><i class="fab fa-github"></i></a><a href="#" class="social-link"><i
+                    class="fas fa-globe"></i></a></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Student Executive Team - 2022-2023 -->
+    <div class="team-section students-section year-content" data-year="2022-2023" style="display: none;"
+      data-aos="fade-up">
+      <h3 class="category-title">Student Executive Team (2022-2023)</h3>
+      <div class="cards-grid">
+        <div class="team-card"
+          data-member-json='{"name":"Previous President","position":"President","department":"Core Executive Team","bio":"Led the organization during the 2022-2023 academic year...","email":"past.president@alumni.edu","skills":["Strategic Planning","Team Building","Fundraising"],"achievements":"Outstanding Leadership Award","social":{"linkedin":"#","github":"#","email":"mailto:past.president@alumni.edu"}}'>
+          <div class="card-image"><img src="/api/placeholder/300/400" alt="Previous President"></div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Previous President</h3>
+              <p class="position">President</p>
+              <p class="department">Core Executive Team</p>
+              <div class="social-links"><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a
+                  href="#" class="social-link"><i class="fab fa-github"></i></a><a href="#" class="social-link"><i
+                    class="fas fa-envelope"></i></a></div>
+            </div>
+          </div>
+        </div>
+        <div class="team-card"
+          data-member-json='{"name":"Previous Secretary","position":"General Secretary","department":"Core Executive Team","bio":"Managed all administrative aspects...","email":"past.secretary@alumni.edu","skills":["Documentation","Process Improvement","Communication"],"achievements":"Administrative Excellence Award","social":{"linkedin":"#","twitter":"#","email":"mailto:past.secretary@alumni.edu"}}'>
+          <div class="card-image"><img src="/api/placeholder/300/400" alt="Previous Secretary"></div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Previous Secretary</h3>
+              <p class="position">General Secretary</p>
+              <p class="department">Core Executive Team</p>
+              <div class="social-links"><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a
+                  href="#" class="social-link"><i class="fab fa-twitter"></i></a><a href="#" class="social-link"><i
+                    class="fas fa-envelope"></i></a></div>
+            </div>
+          </div>
+        </div>
+        <div class="team-card"
+          data-member-json='{"name":"Past Treasurer","position":"Treasurer","department":"Core Executive Team","bio":"Managed finances during significant growth...","email":"past.treasurer@alumni.edu","skills":["Financial Planning","Grant Writing","Budget Management"],"achievements":"Financial Growth Award","social":{"linkedin":"#","github":"#","email":"mailto:past.treasurer@alumni.edu"}}'>
+          <div class="card-image"><img src="/api/placeholder/300/400" alt="Past Treasurer"></div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Past Treasurer</h3>
+              <p class="position">Treasurer</p>
+              <p class="department">Core Executive Team</p>
+              <div class="social-links"><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a
+                  href="#" class="social-link"><i class="fab fa-github"></i></a><a href="#" class="social-link"><i
+                    class="fas fa-envelope"></i></a></div>
+            </div>
+          </div>
+        </div>
+        <div class="team-card"
+          data-member-json='{"name":"Former Web Lead","position":"Chief Executive","department":"Web Development","bio":"Led the web development team...","email":"web.lead@alumni.edu","skills":["Web Development","Project Management","UX Design"],"achievements":"Technical Innovation Award","social":{"linkedin":"#","github":"#","website":"#"}}'>
+          <div class="card-image"><img src="/api/placeholder/300/400" alt="Former Web Lead"></div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Former Web Lead</h3>
+              <p class="position">Chief Executive</p>
+              <p class="department">Web Development</p>
+              <div class="social-links"><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a
+                  href="#" class="social-link"><i class="fab fa-github"></i></a><a href="#" class="social-link"><i
+                    class="fas fa-globe"></i></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student Executive Team - 2021-2022 -->
+    <div class="team-section students-section year-content" data-year="2021-2022" style="display: none;"
+      data-aos="fade-up">
+      <h3 class="category-title">Student Executive Team (2021-2022)</h3>
+      <div class="cards-grid">
+        <div class="team-card"
+          data-member-json='{"name":"2021 President","position":"President","department":"Core Executive Team","bio":"Founding president who established the organization...","email":"founding.president@alumni.edu","skills":["Organizational Development","Strategic Vision","Community Building"],"achievements":"Founder\'
+          s Award","social":{"linkedin":"#","github":"#","email":"mailto:founding.president@alumni.edu"}}'>
+          <div class="card-image"><img src="/api/placeholder/300/400" alt="2021 President"></div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>2021 President</h3>
+              <p class="position">President</p>
+              <p class="department">Core Executive Team</p>
+              <div class="social-links"><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a
+                  href="#" class="social-link"><i class="fab fa-github"></i></a><a href="#" class="social-link"><i
+                    class="fas fa-envelope"></i></a></div>
+            </div>
+          </div>
+        </div>
+        <div class="team-card"
+          data-member-json='{"name":"Original Secretary","position":"Secretary","department":"Core Executive Team","bio":"Helped establish initial processes...","email":"original.secretary@alumni.edu","skills":["Documentation","Process Design","Administration"],"achievements":"Organizational Excellence Award","social":{"linkedin":"#","twitter":"#","email":"mailto:original.secretary@alumni.edu"}}'>
+          <div class="card-image"><img src="/api/placeholder/300/400" alt="Original Secretary"></div>
+          <div class="card-overlay">
+            <div class="card-info">
+              <h3>Original Secretary</h3>
+              <p class="position">Secretary</p>
+              <p class="department">Core Executive Team</p>
+              <div class="social-links"><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a
+                  href="#" class="social-link"><i class="fab fa-twitter"></i></a><a href="#" class="social-link"><i
+                    class="fas fa-envelope"></i></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team Member Modal -->
+    <div id="teamModal" class="modal" role="dialog" aria-labelledby="modalName" aria-modal="true">
+      <div class="modal-content fullpage-modal">
+        <span class="close" aria-label="Close modal">×</span>
+        <div class="modal-navigation">
+          <button class="modal-nav-button" id="prevTeamMember" aria-label="Previous team member">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="modal-nav-button" id="nextTeamMember" aria-label="Next team member">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image">
+            <img id="modalImage" src="https://placehold.co/300x400/00b4db/ffffff" alt="Team Member"
+              onerror="this.src='https://placehold.co/300x400/00b4db/ffffff'; this.alt='Image not available';">
+          </div>
+          <div class="modal-details">
+            <h2 id="modalName">Team Member Name</h2>
+            <p class="modal-position" id="modalPosition">Position</p>
+            <p class="modal-department" id="modalDepartment">Department</p>
+            <div class="modal-bio-container">
+              <p class="modal-bio" id="modalBio">Biography loading...</p>
+            </div>
+            <div class="modal-stats">
+              <div class="modal-stat" id="modalEmailContainer" style="display: none;"> <i class="fas fa-envelope"></i>
+                <span id="modalEmail"></span> </div>
+              <div class="modal-stat" id="modalSkillsContainer" style="display: none;"> <i class="fas fa-tools"></i>
+                <span id="modalSkills"></span> </div>
+              <div class="modal-stat" id="modalAchievementContainer" style="display: none;"> <i
+                  class="fas fa-trophy"></i> <span id="modalAchievement"></span> </div>
+              <div class="modal-stat" id="modalLocationContainer" style="display: none;"> <i
+                  class="fas fa-map-marker-alt"></i> <span id="modalLocation"></span> </div>
+              <div class="modal-stat" id="modalPhoneContainer" style="display: none;"> <i class="fas fa-phone"></i>
+                <span id="modalPhone"></span> </div>
+              <div class="modal-stat" id="modalWebsiteContainer" style="display: none;"> <i class="fas fa-globe"></i>
+                <span id="modalWebsite"></span> </div>
+            </div>
+            <div class="modal-social" id="modalSocialLinks">
+              <!-- Social links will be populated here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- End .container -->
+
+  <!-- Footer -->
+  <footer class="footer-footer">
+    <div id="footer-particles-js" class="footer-particles-container"></div>
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-logo-container" data-aos="fade-right">
+          <img
+            src="/Public/logo/dcitc-logo-trans.png"
+            alt="DCITC Logo" class="footer-logo-img" id="footer-club-logo" />
+        </div>
+        <div class="footer-links-section" data-aos="fade-up" data-aos-delay="100">
+          <h3>Quick Links</h3>
+          <ul class="footer-vertical-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="About.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="Events.html"><i class="fas fa-calendar-alt"></i> Events</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-section" data-aos="fade-up" data-aos-delay="200">
+          <h3>Resources</h3>
+          <ul class="footer-vertical-links">
+            <li><a href="#tutorials"><i class="fas fa-book-open"></i> Tutorials</a></li>
+            <li><a href="#workshops"><i class="fas fa-tools"></i> Workshops</a></li>
+            <li><a href="#blog"><i class="fas fa-blog"></i> Blog</a></li>
+            <li><a href="#faqs"><i class="fas fa-question-circle"></i> FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-section" data-aos="fade-up" data-aos-delay="300">
+          <h3>Contact Us</h3>
+          <ul class="footer-vertical-links">
+            <li><a href="mailto:info@dcitc.com"><i class="fas fa-envelope"></i> info@dcitc.com</a></li>
+            <li><a href="tel:+8801234567890"><i class="fas fa-phone-alt"></i> +880 123 456 7890</a></li>
+            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Dhaka College, Dhaka</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-divider" data-aos="fade-in"></div>
+      <div class="footer-social-row" data-aos="zoom-in">
+        <div class="footer-social-icons">
+          <a href="#" aria-label="Facebook" class="footer-social-icon" title="Facebook"><i
+              class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter" class="footer-social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram" class="footer-social-icon" title="Instagram"><i
+              class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn" class="footer-social-icon" title="LinkedIn"><i
+              class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="YouTube" class="footer-social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="GitHub" class="footer-social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="footer-divider" data-aos="fade-in"></div>
+      <div class="footer-copyright" data-aos="fade-up">
+        <p>© 2025 DCITC - Dhaka College IT Club. All rights reserved.</p>
+        <p>Designed with <i class="fas fa-heart footer-heart-icon"></i> by <a href="#" class="footer-hover-effect">DCITC
+            Team</a></p>
+      </div>
+    </div>
+    <div class="footer-back-to-top" id="footer-backToTop" title="Back to Top">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+  </footer>
+
+  <!-- Import JS libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.4.8/sweetalert2.min.js"></script>
+  <!-- Added for consistency -->
+  <script src="/scripts/placeholder-fix.js" defer></script>
+  <script src="/scripts/executives.js" defer></script>
+
+  <script>
+    // --- Theme Toggle (Dark/Light Mode) ---
+    const themeToggle = document.getElementById("themeToggle");
+    const rootElement = document.documentElement; // Target <html> for class toggle
+    let isDarkMode = localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+    function applyTheme() {
+      rootElement.classList.toggle('light', !isDarkMode);
+      if (themeToggle) {
+        themeToggle.setAttribute('aria-checked', String(isDarkMode)); // Use String() for attribute compatibility
+      }
+      // Optional: Add logic here to update other theme-dependent elements if needed
+    }
+
+    // Set initial state
+    applyTheme();
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        isDarkMode = !isDarkMode;
+        applyTheme();
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+      });
+    }
+  </script>
+
+</body>
+
+</html>

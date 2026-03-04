@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Departments</title>
+
+
+
+    <!-- External Libraries -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.4.8/sweetalert2.min.css"
+    />
+    <!-- Swiper CSS REMOVED as projects section is removed -->
+    <link rel="stylesheet" href="/styles/departments.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+
+  <body>
+    <!-- Loading Spinner -->
+    <div class="loader">
+      <div class="loader-content">
+        <div class="spinner"></div>
+        <div class="loader-text">Loading...</div>
+      </div>
+    </div>
+
+    <!-- Scroll Progress Indicator REMOVED -->
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navbar -->
+    <div class="nav-navbar-container" id="nav-navbarContainer">
+      <nav class="nav-navbar">
+        <div class="nav-logo-container">
+          <img
+            src="/Public/logo/dcitc-logo-trans.png"
+            alt="Logo"
+            class="nav-logo-img"
+          />
+          <div class="nav-logo-text">DCITC</div>
+          <!-- Moved Theme Toggle Here -->
+          <div class="theme-toggle" id="themeToggle">
+            <div class="theme-toggle-track">
+              <div class="theme-toggle-thumb"></div>
+            </div>
+          </div>
+          <div class="nav-tech-circles">
+            <div class="nav-circle"></div>
+            <div class="nav-circle"></div>
+            <div class="nav-circle"></div>
+            <div class="nav-circle"></div>
+          </div>
+        </div>
+        <ul class="nav-links" id="nav-navLinks">
+          <li>
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+          </li>
+          <li>
+            <a href="About.html"><i class="fas fa-info-circle"></i> About</a>
+          </li>
+          <li>
+            <a href="Executives.html"><i class="fas fa-users"></i> Executive</a>
+          </li>
+          <li>
+            <a href="Events.html"><i class="fas fa-calendar-alt"></i> Events</a>
+          </li>
+          <li>
+            <a href="Projects.html"
+              ><i class="fas fa-project-diagram"></i> Projects</a
+            >
+          </li>
+          <li>
+            <a href="Gallery.html"><i class="fas fa-images"></i> Gallery</a>
+          </li>
+          <li>
+            <a href="Departments.html" class="active"
+              ><i class="fas fa-sitemap"></i> Departments</a
+            >
+          </li>
+        </ul>
+        <button class="nav-menu-btn" id="nav-menuBtn">
+          <div class="nav-hamburger" id="nav-hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </nav>
+    </div>
+    <div class="nav-overlay" id="nav-overlay"></div>
+
+    <!-- Departments Section -->
+    <section class="departments">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Our Departments</h2>
+          <p>
+            Explore our specialized departments where innovation meets
+            expertise. Each team brings unique skills and passion to deliver
+            cutting-edge solutions.
+          </p>
+        </div>
+
+        <div class="filter-bar" data-aos="fade-up">
+          <button class="filter-button active" data-filter="all">
+            All Departments
+          </button>
+          <button class="filter-button" data-filter="webdev">
+            Web & App Dev
+          </button>
+          <button class="filter-button" data-filter="competitive">
+            Competitive Programming
+          </button>
+          <button class="filter-button" data-filter="robotics">Robotics</button>
+          <button class="filter-button" data-filter="design">
+            Graphics Designing
+          </button>
+          <button class="filter-button" data-filter="security">
+            Cyber Security
+          </button>
+        </div>
+
+        <div class="departments-grid">
+          <!-- Department 1: Web and App Development -->
+          <div
+            class="department-card"
+            data-category="webdev"
+            data-aos="fade-up"
+          >
+            <div class="pattern-overlay"></div>
+            <div class="glow-effect"></div>
+            <div class="department-featured-badge">Featured</div>
+            <div class="department-header">
+              <div class="department-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <h3 class="department-name">Web and App Development</h3>
+              <p class="department-tagline">
+                Building digital experiences that transform ideas into reality
+              </p>
+            </div>
+            <div class="department-content">
+              <p class="department-description">
+                Our Web and App Development team specializes in creating
+                responsive websites and mobile applications. We focus on modern
+                frameworks, clean code architecture, and user-centric designs to
+                deliver seamless digital solutions for various platforms.
+              </p>
+              <div class="department-stats">
+                <div class="stat-item">
+                  <div class="stat-value count-up" data-count="25">0</div>
+                  <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value count-up" data-count="12">0</div>
+                  <div class="stat-label">Members</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value count-up" data-count="8">0</div>
+                  <div class="stat-label">Awards</div>
+                </div>
+              </div>
+              <div class="department-techs">
+                <h4 class="techs-title">Technologies</h4>
+                <div class="tech-tags">
+                  <span class="tech-tag">React</span>
+                  <span class="tech-tag">Flutter</span>
+                  <span class="tech-tag">Node.js</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">Firebase</span>
+                </div>
+              </div>
+              <div class="department-action">
+                <a href="#" class="action-button">Learn More</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Department 2: Competitive Programming -->
+          <div
+            class="department-card"
+            data-category="competitive"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="pattern-overlay"></div>
+            <div class="glow-effect"></div>
+            <div class="department-header">
+              <div class="department-icon">
+                <i class="fas fa-laptop-code"></i>
+              </div>
+              <h3 class="department-name">Competitive Programming</h3>
+              <p class="department-tagline">
+                Solving complex problems with elegant algorithms
+              </p>
+            </div>
+            <div class="department-content">
+              <p class="department-description">
+                Our Competitive Programming team focuses on algorithmic problem
+                solving and optimization techniques. We participate in various
+                programming contests and train members to excel in competitive
+                environments while developing strong analytical thinking skills.
+              </p>
+              <div class="department-stats">
+                <div class="stat-item">
+                  <div class="stat-value count-up" data-count="30">0</div>
+                  <div class="stat-label">Contests</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value count-up" data-count="15">0</div>
+                  <div class="stat-label">Members</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value count-up" data-count="10">0</div>
+                  <div class="stat-label">Medals</div>
+                </div>
+              </div>
+              <div class="department-techs">
+                <h4 class="techs-title">Languages</h4>
+                <div class="tech-tags">
+                  <span class="tech-tag">C++</span>
+                  <span class="tech-tag">Java</span>
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">Data Structures</span>
+                  <span class="tech-tag">Algorithms</span>
+                </div>
+              </div>
+              <div class="department-action">
+                <a href="#" class="action-button">Learn More</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Department 3: Robotics -->
+          <div
+            class="department-card"
+            data-category="robotics"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="pattern-overlay"></div>
+            <div class="glow-effect"></div>
+            <div class="department-featured-badge">Featured</div>
+            <div class="department-header">
+              <div class="department-icon">
+                <i class="fas fa-robot"></i>
+              </div>
+              <h3 class="department-name">Robotics</h3>
+              <p class="department-tagline">
+                Innovating the future through automation and intelligence
+              </p>
+            </div>
+            <div class="department-content">
+              <p class="department-description">
+                Our Robotics department designs and builds autonomous systems
+                and robots for various applications. We experiment with sensors,
+                actuators, and microcontrollers while implementing advanced
+                control algorithms to create innovative solutions for real-world
+                challenges.
+              </p>
+              <div class="department-stats">
+                <div class="stat-item">
+                  <div class="stat-value count-up" data-count="18">0</div>
+                  <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value count-up" data-count="10">0</div>
+                  <div class="stat-label">Members</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value count-up" data-count="5">0</div>
+                  <div class="stat-label">Competitions</div>
+                </div>
+              </div>
+              <div class="department-techs">
+                <h4 class="techs-title">Technologies</h4>
+                <div class="tech-tags">
+                  <span class="tech-tag">Arduino</span>
+                  <span class="tech-tag">Raspberry Pi</span>
+                  <span class="tech-tag">IoT</span>
+                  <span class="tech-tag">Embedded Systems</span>
+                  <span class="tech-tag">3D Printing</span>
+                </div>
+              </div>
+              <div class="department-action">
+                <a href="#" class="action-button">Learn More</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Department 4: Graphics Designing -->
+          <div
+            class="department-card"
+            data-category="design"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="pattern-overlay"></div>
+            <div class="glow-effect"></div>
+            <div class="department-header">
+              <div class="department-icon">
+                <i class="fas fa-paintbrush"></i>
+              </div>
+              <h3 class="department-name">Graphics Designing</h3>
+              <p class="department-tagline">
+                Visualizing concepts with artistic excellence
+              </p>
+            </div>
+            <div class="department-content">
+              <p class="department-description">
+                Our Graphics Designing department creates visual content that
+                communicates ideas effectively. From digital illustrations to
+                UI/UX design, we blend creativity with technical skills to
+                produce compelling visuals for various platforms, events, and
+                promotional materials.
+              </p>
+              <div class="department-stats">
+                <div class="stat-item">
+                  <div class="stat-value count-up" data-count="40">0</div>
+                  <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value count-up" data-count="8">0</div>
+                  <div class="stat-label">Members</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value count-up" data-count="12">0</div>
+                  <div class="stat-label">Exhibitions</div>
+                </div>
+              </div>
+              <div class="department-techs">
+                <h4 class="techs-title">Tools</h4>
+                <div class="tech-tags">
+                  <span class="tech-tag">Photoshop</span>
+                  <span class="tech-tag">Illustrator</span>
+                  <span class="tech-tag">Figma</span>
+                  <span class="tech-tag">After Effects</span>
+                  <span class="tech-tag">Blender</span>
+                </div>
+              </div>
+              <div class="department-action">
+                <a href="#" class="action-button">Learn More</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Department 5: Cyber Security -->
+          <div
+            class="department-card"
+            data-category="security"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <div class="pattern-overlay"></div>
+            <div class="glow-effect"></div>
+            <div class="department-header">
+              <div class="department-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h3 class="department-name">Cyber Security</h3>
+              <p class="department-tagline">
+                Protecting digital assets in an interconnected world
+              </p>
+            </div>
+            <div class="department-content">
+              <p class="department-description">
+                Our Cyber Security department focuses on identifying
+                vulnerabilities and implementing robust security measures. We
+                conduct penetration testing, security audits, and awareness
+                training while exploring ethical hacking techniques to
+                strengthen digital defenses against evolving threats.
+              </p>
+              <div class="department-stats">
+                <div class="stat-item">
+                  <div class="stat-value count-up" data-count="15">0</div>
+                  <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value count-up" data-count="7">0</div>
+                  <div class="stat-label">Members</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value count-up" data-count="6">0</div>
+                  <div class="stat-label">CTF Wins</div>
+                </div>
+              </div>
+              <div class="department-techs">
+                <h4 class="techs-title">Specialties</h4>
+                <div class="tech-tags">
+                  <span class="tech-tag">Ethical Hacking</span>
+                  <span class="tech-tag">Network Security</span>
+                  <span class="tech-tag">Cryptography</span>
+                  <span class="tech-tag">Forensics</span>
+                  <span class="tech-tag">Penetration Testing</span>
+                </div>
+              </div>
+              <div class="department-action">
+                <a href="#" class="action-button">Learn More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Department Quick Stats -->
+        <div class="department-quick-stats" data-aos="fade-up">
+          <div class="stats-item">
+            <div class="stats-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <div class="stats-value count-up" data-count="345">0</div>
+            <div class="stats-label">Projects Completed</div>
+          </div>
+          <div class="stats-item">
+            <div class="stats-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="stats-value count-up" data-count="45">0</div>
+            <div class="stats-label">Team Members</div>
+          </div>
+          <div class="stats-item">
+            <div class="stats-icon">
+              <i class="fas fa-award"></i>
+            </div>
+            <div class="stats-value count-up" data-count="28">0</div>
+            <div class="stats-label">Awards Won</div>
+          </div>
+          <div class="stats-item">
+            <div class="stats-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="stats-value count-up" data-count="12">0</div>
+            <div class="stats-label">Years Experience</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Showcase & Testimonials Sections REMOVED -->
+
+    <!-- CTA Section (Imported from About.html) -->
+    <section class="cta-section" data-aos="fade-up">
+      <div class="cta-glow"></div>
+      <h2 class="cta-title">Ready to Innovate?</h2>
+      <p class="cta-text">
+        Join forces with our expert teams to bring your ideas to life. Whether
+        you're starting a new project or enhancing an existing one, we have the
+        skills and experience to make it happen.
+      </p>
+      <a href="#" class="cta-button" id="joinButton">Get in Touch</a>
+      <!-- Changed ID to make more sense here -->
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container" style="padding-top: 0">
+        <!-- Adjusted padding for spacing -->
+        <div class="section-title" data-aos="fade-up">
+          <h2>Frequently Asked Questions</h2>
+          <p>Common questions about our departments and services.</p>
+        </div>
+
+        <div class="accordion" data-aos="fade-up">
+          <!-- FAQ Item 1 -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span>How do departments collaborate on projects?</span>
+              <div class="accordion-icon"></div>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>
+                  Our departments work seamlessly together through an integrated
+                  workflow system. We use agile methodologies with regular
+                  cross-functional meetings to ensure all aspects of a project
+                  are aligned. Each project gets assigned a dedicated project
+                  manager who coordinates between departments, ensuring
+                  efficient communication and timely delivery.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span>What technologies do your departments specialize in?</span>
+              <div class="accordion-icon"></div>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>
+                  Our Web Development team specializes in React, Angular,
+                  Vue.js, Node.js, and PHP. The UI/UX Design team is proficient
+                  with Figma, Adobe XD, and Sketch. Our AI & Machine Learning
+                  department works with TensorFlow, PyTorch, and Python. The
+                  Digital Marketing team utilizes various SEO tools, analytics
+                  platforms, and social media management solutions to deliver
+                  results-driven campaigns.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span>How long does a typical project take to complete?</span>
+              <div class="accordion-icon"></div>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>
+                  Project timelines vary depending on scope and complexity. A
+                  standard website might take 4-8 weeks, while a comprehensive
+                  e-commerce platform could take 3-6 months. AI solutions
+                  typically require 2-4 months of development and training. We
+                  provide detailed timelines during the project planning phase
+                  and keep you updated on progress throughout the development
+                  lifecycle.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span
+                >Do you offer maintenance and support after project
+                completion?</span
+              >
+              <div class="accordion-icon"></div>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>
+                  Yes, we offer various maintenance and support packages
+                  tailored to your needs. These include regular updates,
+                  security patches, performance optimization, content updates,
+                  and technical support. Our support team is available during
+                  business hours, with options for 24/7 support for
+                  mission-critical applications.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 5 -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span>How do you ensure the quality of your deliverables?</span>
+              <div class="accordion-icon"></div>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>
+                  Quality assurance is integrated into every step of our
+                  process. We implement rigorous testing methodologies including
+                  unit testing, integration testing, and user acceptance
+                  testing. Our QA team works independently from the development
+                  teams to ensure unbiased evaluation. We also follow industry
+                  best practices and standards specific to each department's
+                  area of expertise.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-footer">
+      <!-- Particles.js container for interactive background (Footer) -->
+      <div id="footer-particles-js" class="footer-particles-container"></div>
+
+      <div class="footer-container">
+        <div class="footer-top">
+          <div class="footer-logo-container" data-aos="fade-right">
+            <img
+              src="/Public/logo/dcitc-logo-trans.png"
+              alt="DCITC Logo"
+              class="footer-logo-img"
+              id="footer-club-logo"
+            />
+          </div>
+          <div
+            class="footer-links-section"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <h3>Quick Links</h3>
+            <ul class="footer-vertical-links">
+              <li>
+                <a href="#home"><i class="fas fa-home"></i> Home</a>
+              </li>
+              <li>
+                <a href="#about"><i class="fas fa-info-circle"></i> About Us</a>
+              </li>
+              <li>
+                <a href="#events"><i class="fas fa-calendar-alt"></i> Events</a>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="footer-links-section"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <h3>Resources</h3>
+            <ul class="footer-vertical-links">
+              <li>
+                <a href="#tutorials"
+                  ><i class="fas fa-book-open"></i> Tutorials</a
+                >
+              </li>
+              <li>
+                <a href="#workshops"><i class="fas fa-tools"></i> Workshops</a>
+              </li>
+              <li>
+                <a href="#blog"><i class="fas fa-blog"></i> Blog</a>
+              </li>
+              <li>
+                <a href="#faqs"><i class="fas fa-question-circle"></i> FAQs</a>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="footer-links-section"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <h3>Contact Us</h3>
+            <ul class="footer-vertical-links">
+              <li>
+                <a href="mailto:info@dcitc.com"
+                  ><i class="fas fa-envelope"></i> info@dcitc.com</a
+                >
+              </li>
+              <li>
+                <a href="tel:+8801234567890"
+                  ><i class="fas fa-phone-alt"></i> +880 123 456 7890</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-map-marker-alt"></i> Dhaka College, Dhaka</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-divider" data-aos="fade-in"></div>
+        <div class="footer-social-row" data-aos="zoom-in">
+          <div class="footer-social-icons">
+            <a
+              href="#"
+              aria-label="Facebook"
+              class="footer-social-icon"
+              data-tooltip="Follow us on Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="Twitter"
+              class="footer-social-icon"
+              data-tooltip="Follow us on Twitter"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="Instagram"
+              class="footer-social-icon"
+              data-tooltip="Follow us on Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              class="footer-social-icon"
+              data-tooltip="Connect on LinkedIn"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="YouTube"
+              class="footer-social-icon"
+              data-tooltip="Watch our videos"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="GitHub"
+              class="footer-social-icon"
+              data-tooltip="Check out our code"
+              ><i class="fab fa-github"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer-divider" data-aos="fade-in"></div>
+        <div class="footer-copyright" data-aos="fade-up">
+          <p>© 2025 DCITC - Dhaka College IT Club. All rights reserved.</p>
+          <p>
+            Designed with <i class="fas fa-heart footer-heart-icon"></i> by
+            <a href="/executives.html" class="footer-hover-effect">DCITC Team</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Back to top button -->
+      <div class="footer-back-to-top" id="footer-backToTop">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </footer>
+
+    <!-- Notification REMOVED -->
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.4.8/sweetalert2.min.js"></script>
+    <!-- Swiper JS REMOVED -->
+    <script src="/scripts/departments.js" defer></script>
+
+    <script>
+      // --- Theme Toggle (Dark/Light Mode) ---
+      const themeToggle = document.getElementById("themeToggle");
+      const rootElement = document.documentElement; // Target <html> for class toggle
+      let isDarkMode =
+        localStorage.getItem("theme") === "dark" ||
+        (!localStorage.getItem("theme") &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+      function applyTheme() {
+        rootElement.classList.toggle("light", !isDarkMode);
+        if (themeToggle) {
+          themeToggle.setAttribute("aria-checked", String(isDarkMode)); // Use String() for attribute compatibility
+        }
+        // Optional: Add logic here to update other theme-dependent elements if needed
+      }
+
+      // Set initial state
+      applyTheme();
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          isDarkMode = !isDarkMode;
+          applyTheme();
+          localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+        });
+      }
+    </script>
+  </body>
+</html>

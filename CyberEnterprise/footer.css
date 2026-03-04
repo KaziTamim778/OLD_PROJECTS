@@ -1,0 +1,267 @@
+
+:root {
+  --deep-space-black: #0A0E17;
+  --cybernetic-blue: #00C2FF;
+  --titanium-silver: #D8DEE9;
+  --neon-green: #39FF14;
+  --neural-purple: #BF5AF2;
+  --surgical-white: #F8F9FC;
+  --hydraulic-red: #FF3B30;
+  --alloy-gray: #4A4E57;
+}
+
+body {
+  background-color: var(--deep-space-black);
+  color: var(--titanium-silver);
+  font-family: 'Titillium Web', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: var(--deep-space-black);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Circuit board pattern overlay */
+.circuit-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%232A3544' stroke-width='1'%3E%3Cpath d='M10,10 L90,10 M10,25 L90,25 M10,40 L90,40 M10,55 L90,55 M10,70 L90,70 M10,85 L90,85 M10,10 L10,90 M25,10 L25,90 M40,10 L40,90 M55,10 L55,90 M70,10 L70,90 M85,10 L85,90'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Ccircle cx='25' cy='25' r='2'/%3E%3Ccircle cx='40' cy='40' r='2'/%3E%3Ccircle cx='55' cy='55' r='2'/%3E%3Ccircle cx='70' cy='70' r='2'/%3E%3Ccircle cx='85' cy='85' r='2'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.footer-container {
+  position: relative;
+  z-index: 2;
+}
+
+.footer-heading {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--cybernetic-blue);
+  position: relative;
+  display: inline-block;
+}
+
+.footer-heading::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cybernetic-blue), var(--neural-purple));
+}
+
+.cybernetic-border {
+  border: 1px solid var(--cybernetic-blue);
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 194, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.cybernetic-border:hover {
+  box-shadow: 0 0 15px rgba(0, 194, 255, 0.5);
+}
+
+.footer-link {
+  color: var(--titanium-silver);
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.footer-link::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--cybernetic-blue);
+  transition: width 0.3s ease;
+}
+
+.footer-link:hover {
+  color: var(--cybernetic-blue);
+}
+
+.footer-link:hover::before {
+  width: 100%;
+}
+
+.social-icon {
+  color: var(--titanium-silver);
+  border: 1px solid var(--alloy-gray);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  color: var(--deep-space-black);
+  background: var(--cybernetic-blue);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 194, 255, 0.5);
+}
+
+.newsletter-input {
+  background-color: rgba(74, 78, 87, 0.3);
+  border: 1px solid var(--alloy-gray);
+  color: var(--surgical-white);
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.3s ease;
+}
+
+.newsletter-input:focus {
+  border-color: var(--cybernetic-blue);
+  box-shadow: 0 0 0 2px rgba(0, 194, 255, 0.2);
+  outline: none;
+}
+
+.subscribe-btn {
+  background: linear-gradient(90deg, var(--cybernetic-blue), var(--neural-purple));
+  font-family: 'Orbitron', sans-serif;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.subscribe-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--neural-purple), var(--cybernetic-blue));
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.subscribe-btn:hover::before {
+  left: 0;
+}
+
+.cybernetic-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cybernetic-blue), transparent);
+}
+
+.pulsing-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--cybernetic-blue);
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse 2s infinite;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 194, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(0, 194, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 194, 255, 0);
+  }
+}
+
+.animated-text {
+  background: linear-gradient(90deg, var(--cybernetic-blue), var(--neural-purple), var(--neon-green));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: textShine 3s linear infinite;
+}
+
+@keyframes textShine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.back-to-top {
+  background-color: rgba(10, 14, 23, 0.8);
+  border: 1px solid var(--cybernetic-blue);
+  color: var(--cybernetic-blue);
+  transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+  background-color: var(--cybernetic-blue);
+  color: var(--deep-space-black);
+}
+
+.heartbeat {
+  display: inline-block;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.1); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.1); }
+  70% { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+
+.language-selector {
+  cursor: pointer;
+  position: relative;
+}
+
+.language-options {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background-color: var(--deep-space-black);
+  border: 1px solid var(--alloy-gray);
+  border-radius: 4px;
+  padding: 10px;
+  min-width: 150px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.language-selector:hover .language-options {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer-bottom > div {
+    margin-bottom: 1rem;
+  }
+}

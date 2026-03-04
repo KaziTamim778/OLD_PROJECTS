@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech-Themed Web Development Presentation</title>
+  <!-- Adding modern fonts -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      line-height: 1.5;
+      overflow-x: hidden;
+      color: #e1e5f2;
+    }
+    
+    h2 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #4da8ff;
+      text-shadow: 0 0 10px rgba(77, 168, 255, 0.7);
+      letter-spacing: -1px;
+    }
+    
+    h3 {
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      color: #66fcf1;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: -0.5px;
+    }
+    
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      background-color: #0f1121;
+    }
+    
+    .scroll-section {
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .wrapper {
+      height: 100vh;
+      position: relative;
+    }
+    
+    .item {
+      width: 100vw;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border: 1px solid rgba(77, 168, 255, 0.2);
+      border-radius: 0;
+      transition: all 0.5s ease;
+      background: transparent;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+    
+    .item:before {
+      display: none;
+    }
+    
+    .item_content {
+      max-width: 800px;
+      text-align: left;
+      position: relative;
+      z-index: 1;
+    }
+    
+    ul {
+      list-style-type: none;
+      padding-left: 1.5rem;
+    }
+    
+    li {
+      margin-bottom: 0.75rem;
+      position: relative;
+      transition: transform 0.3s, opacity 0.3s;
+      opacity: 0.9;
+    }
+    
+    li:hover {
+      transform: translateX(5px);
+      opacity: 1;
+    }
+    
+    li:before {
+      content: ">";
+      position: absolute;
+      left: -1.5rem;
+      color: #66fcf1;
+      font-weight: bold;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    em {
+      color: #ff5d8f;
+      font-style: normal;
+      font-weight: bold;
+    }
+    
+    .circuit-lines {
+      display: none;
+    }
+    
+    .code-decoration {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      color: rgba(77, 168, 255, 0.3);
+      font-size: 0.8rem;
+    }
+    
+    .item.meme {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    .item.meme .item_content {
+      flex: 0 0 45%;
+      max-width: 45%;
+      padding-right: 0;
+      margin: 0;
+    }
+    
+    .item.meme .meme-image {
+      flex: 0 0 45%;
+      max-width: 45%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .item.meme .meme-image img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 5px 25px rgba(102, 252, 241, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .item.meme .meme-image img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 30px rgba(102, 252, 241, 0.4);
+    }
+    
+    .navigation {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .nav-dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: rgba(77, 168, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-dot.active {
+      background-color: #4da8ff;
+      box-shadow: 0 0 10px rgba(77, 168, 255, 0.7);
+      transform: scale(1.2);
+    }
+    
+    .slide-number {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: rgba(77, 168, 255, 0.7);
+    }
+    
+    .controls {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      gap: 20px;
+    }
+    
+    .control-btn {
+      background: rgba(77, 168, 255, 0.2);
+      border: 1px solid rgba(77, 168, 255, 0.5);
+      color: #4da8ff;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .control-btn:hover {
+      background: rgba(77, 168, 255, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(77, 168, 255, 0.2);
+    }
+    
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #4da8ff, #66fcf1);
+      z-index: 10;
+      width: 0%;
+      transition: width 0.2s ease;
+    }
+    
+    /* Enhanced glowing effect for titles */
+    h2::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #4da8ff, transparent);
+      bottom: -5px;
+      left: 0;
+    }
+    
+    /* Typing effect for code decoration */
+    .typing-effect {
+      overflow: hidden;
+      border-right: 2px solid rgba(77, 168, 255, 0.7);
+      white-space: nowrap;
+      animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
+    }
+    
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: rgba(77, 168, 255, 0.7) }
+    }
+    
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 1.75rem;
+      }
+      
+      .item {
+        padding: 1.5rem;
+      }
+      
+      .item.meme {
+        flex-direction: column;
+      }
+      
+      .item.meme .item_content,
+      .item.meme .meme-image {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding-right: 0;
+      }
+      
+      .item.meme .meme-image {
+        margin-top: 1.5rem;
+      }
+      
+      .navigation {
+        right: 10px;
+      }
+      
+      .nav-dot {
+        width: 10px;
+        height: 10px;
+      }
+    }
+    
+    @media (max-width: 575.98px) {
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      .item {
+        padding: 1rem;
+      }
+      
+      .controls {
+        bottom: 20px;
+      }
+      
+      .control-btn {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+      }
+      
+    }
+
+    /* Enhanced glow effects for titles */
+    h2 {
+      position: relative;
+      text-shadow: 0 0 15px rgba(77, 168, 255, 0.5);
+      margin-bottom: 1.5rem;
+    }
+
+    h2:before {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 3px;
+      bottom: -10px;
+      left: 0;
+      background: linear-gradient(90deg, #4da8ff, transparent);
+    }
+
+    h2:after {
+      content: attr(data-tech);
+      position: absolute;
+      right: -10px;
+      top: -15px;
+      font-size: 0.8rem;
+      opacity: 0.5;
+      color: #66fcf1;
+    }
+
+    /* Enhanced list styling */
+    li {
+      position: relative;
+      margin-bottom: 0.9rem;
+      padding-left: 5px;
+      border-left: 2px solid rgba(77, 168, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    li:hover {
+      border-left: 2px solid #4da8ff;
+      padding-left: 10px;
+    }
+
+    li:before {
+      content: ">";
+      margin-right: 8px;
+      color: #66fcf1;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Cyberpunk-inspired highlight for emphasized text */
+    em {
+      position: relative;
+      color: #ff5d8f;
+      font-style: normal;
+      font-weight: bold;
+      padding: 0 3px;
+      background: linear-gradient(90deg, rgba(255, 93, 143, 0.1), transparent);
+      border-radius: 3px;
+    }
+
+    /* Enhanced code decoration */
+    .code-decoration {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      font-family: 'JetBrains Mono', monospace;
+      color: rgba(102, 252, 241, 0.7);
+      font-size: 0.9rem;
+      padding: 5px 10px;
+      background: rgba(15, 17, 33, 0.5);
+      border-radius: 4px;
+      border-left: 2px solid #66fcf1;
+      min-width: 100px;
+    }
+
+    /* Glowing button effects */
+    .control-btn {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(77, 168, 255, 0.3);
+    }
+
+    .control-btn:hover {
+      box-shadow: 0 0 15px rgba(77, 168, 255, 0.5);
+    }
+
+    .control-btn:after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -100%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(60deg, transparent, rgba(77, 168, 255, 0.2), transparent);
+      transform: rotate(30deg);
+      transition: all 0.5s ease;
+    }
+
+    .control-btn:hover:after {
+      left: 100%;
+    }
+
+    /* Fullscreen button */
+    .fullscreen-btn {
+      margin-left: 10px;
+    }
+
+    /* Enhanced slide number */
+    .slide-number {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: rgba(77, 168, 255, 0.7);
+      padding: 3px 8px;
+      background: rgba(15, 17, 33, 0.5);
+      border-radius: 4px;
+      border-right: 2px solid #4da8ff;
+    }
+
+    /* Circuit animation enhancement */
+    .circuit-lines {
+      animation: circuitPulse 10s infinite linear;
+    }
+
+    @keyframes circuitPulse {
+      0%, 100% { opacity: 0.1; }
+      50% { opacity: 0.15; }
+    }
+
+    /* Better meme image styling */
+    .meme-image img {
+      border: 1px solid rgba(102, 252, 241, 0.3);
+      border-radius: 8px;
+      box-shadow: 0 5px 25px rgba(102, 252, 241, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .meme-image img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 5px 35px rgba(102, 252, 241, 0.4);
+    }
+
+    /* Terminal-like typing effect enhancement */
+    .typing-effect {
+      overflow: hidden;
+      white-space: nowrap;
+      margin: 0;
+      border-right: 2px solid rgba(102, 252, 241, 0.7);
+      animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: rgba(102, 252, 241, 0.7) }
+    }
+
+    /* Progress bar enhancement */
+    .progress-bar {
+      height: 3px;
+      background: linear-gradient(90deg, #4da8ff, #66fcf1);
+      box-shadow: 0 0 10px rgba(102, 252, 241, 0.5);
+    }
+
+    /* Navigation dot enhancements */
+    .nav-dot {
+      transition: all 0.3s ease;
+      border: 1px solid rgba(77, 168, 255, 0.5);
+    }
+
+    .nav-dot.active {
+      box-shadow: 0 0 10px rgba(77, 168, 255, 0.7), 0 0 20px rgba(77, 168, 255, 0.3);
+    }
+
+    .nav-dot:hover {
+      transform: scale(1.3);
+    }
+
+    /* Quick transition when changing slides */
+    .item {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Adaptive design for better mobile experience */
+    @media (max-width: 768px) {
+      .navigation {
+        right: 5px;
+      }
+      
+      .nav-dot {
+        width: 8px;
+        height: 8px;
+        margin: 5px 0;
+      }
+      
+      .controls {
+        gap: 10px;
+      }
+      
+      .code-decoration {
+        font-size: 0.7rem;
+        bottom: 10px;
+        right: 10px;
+      }
+      
+      .slide-number {
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Particles.js container -->
+  <div id="particles-js"></div>
+  
+  <!-- Progress bar -->
+  <div class="progress-bar"></div>
+  
+  <!-- Navigation dots -->
+  <div class="navigation"></div>
+  
+  <!-- Controls -->
+  <div class="controls">
+    <button class="control-btn prev-btn"><i class="fas fa-chevron-left"></i> Prev</button>
+    <button class="control-btn next-btn">Next <i class="fas fa-chevron-right"></i></button>
+  </div>
+  
+  <section class="scroll-section vertical-section">
+    <div class="wrapper">
+      <!-- Slide 1: Web Development Overview -->
+      <div class="item meme">
+        <div class="circuit-lines"></div>
+        <div class="item_content">
+          <h2>&lt;Web_Development/&gt;</h2>
+          <ul>
+            <li><em>Definition & Scope</em>: Building and maintaining websites, covering both the visual and functional aspects.</li>
+            <li><em>Categories</em>:
+              <ul>
+                <li>Front-end: The client-side or "face" of the website.</li>
+                <li>Back-end: The server-side logic that makes everything work.</li>
+                <li>Full-stack: A combination of both front-end and back-end skills.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="meme-image">
+          <img src="meme1.jpg" alt="meme">
+        </div>
+        <div class="code-decoration typing-effect">&lt;/html&gt;</div>
+        <div class="slide-number">01 / 18</div>
+      </div>
+
+      <!-- Slide 2: Web Development vs. Web Design -->
+      <div class="item meme">
+        <div class="circuit-lines"></div>
+        <div class="item_content">
+          <h2>Web_Development vs. Web_Design</h2>
+          <ul>
+            <li><em>Web Development</em>: Focuses on coding, interactivity, and the logic behind websites.</li>
+            <li><em>Web Design</em>: Concentrates on aesthetics, user experience, and interface design.</li>
+            <li><em>Note</em>: Knowing both is like having a superpower.</li>
+          </ul>
+        </div>
+        <div class="meme-image">
+          <img src="meme2.jpg" alt="meme">
+        </div>
+        <div class="code-decoration typing-effect">console.log("development !== design");</div>
+        <div class="slide-number">02 / 18</div>
+      </div>
+
+      <!-- Remaining slides continue with the same structure -->
+      <!-- Slide 3: Why to Learn Web Development -->
+      <div class="item meme">
+        <div class="circuit-lines"></div>
+        <div class="item_content">
+          <h2>Why_to_Learn_Web_Development</h2>
+          <ul>
+            <li><em>High Demand</em>: There are plenty of opportunities in the tech industry.</li>
+            <li><em>Creative Expression</em>: It allows you to blend creativity with technology, crafting interactive and visually appealing experiences.</li>
+            <li><em>Real Reason</em>: HTML is easy. It's better than scrolling reels and wasting your life.</li>
+          </ul>
+        </div>
+        <div class="meme-image">
+          <img src="meme3.jpg" alt="meme">
+        </div>
+        <div class="code-decoration typing-effect">return success;</div>
+        <div class="slide-number">03 / 18</div>
+      </div>
+
+      <!-- Slide 4: Core Technologies -->
+      <div class="item">
+        <div class="circuit-lines"></div>
+        <div class="item_content">
+          <h2>Core_Technologies[]</h2>
+          <h3>&lt;HTML&gt;</h3>
+          <ul>
+            <li><em>Structure & Content</em>: The skeleton that holds your digital masterpiece together.</li>
+            <li><em>Key Concept</em>: Uses opening and closing tags to organize information.</li>
+            <li><em>Extra Info</em>: It organizes content, because chaos isn't sexy (or functional).</li>
+          </ul>
+          <h3>{CSS}</h3>
+          <ul>
+            <li><em>Purpose</em>: Styles the content, determining layout, colors, and fonts.</li>
+            <li><em>Implementation</em>: Can be applied inline, internally, or externally. Choose your weapon wisely.</li>
+          </ul>
+          <h3>function JavaScript() {</h3>
+          <ul>
+            <li><em>Purpose</em>: Adds interactivity and dynamic behavior to web pages.</li>
+            <li><em>Interactivity</em>: Makes things move, shake, and do the cha-cha on your page.</li>
+            <li><em>Key Concepts</em>: Variables, operators, conditionals, functions, and DOM manipulation.</li>
+          </ul>
+        </div>
+        <div class="code-decoration typing-effect">}</div>
+        <div class="slide-number">04 / 18</div>
+      </div>
+
+      <!-- Slide 5: Detailed Look at HTML -->
+      <div class="item">
+        <div class="circuit-lines"></div>
+        <div class="item_content">
+          <h2>&lt;HTML_Details/&gt;</h2>
+          <ul>
+            <li><em>What It Is</em>: It's the skeleton of a website. yohohoho!</li>
+            <li><em>HTML</em>: Hyper Text Markup Language</li>
+            <li><em>Inventor</em>: Tim Berners-Lee (1993)</li>
+            <li><em>Extra Info</em>: Boosts SEO and accessibility. Basically, it's like giving your site a power-up.</li>
+          </ul>
+        </div>
+        <div class="code-decoration typing-effect">&lt;/body&gt;</div>
+        <div class="slide-number">05 / 18</div>
+      </div>
+
+      <!-- Slide 6: Detailed Look at CSS -->
+      <div class="item">
+        <div class="circuit-lines"></div>
+        <div class="item_content">
+          <h2>.css-details {</h2>
+          <ul>
+            <li><em>.structure</em>: Composed of selectors and declarations that style HTML elements;</li>
+            <li><em>.responsive-design</em>: Ends 'Racism' among devices from smartphones to fridges;</li>
+            <li><em>.reminder</em>: External CSS is the hero that saves you from inline styling nightmares;</li>
+          </ul>
+        </div>
+        <div class="code-decoration typing-effect">}</div>
+        <div class="slide-number">06 / 18</div>
+      </div>
+
+      <!-- Slide 7: Detailed Look at JavaScript -->
+      <div class="item">
+        <div class="circuit-lines"></div>
+        <div class="item_content">
+          <h2>const jsDetails = () => {</h2>
+          <ul>
+            <li><em>keyAreas</em>: Learning basic programming concepts and DOM manipulation;</li>
+            <li><em>domManipulation</em>: Updates content dynamically, like magic tricks but with fewer rabbits;</li>
+            <li><em>role</em>: Enables interactive elements on websites and powers modern frameworks;</li>
+          </ul>
+        </div>
+        <div class="code-decoration typing-effect">};</div>
+        <div class="slide-number">07 / 18</div>
+      </div>
+
+      <!-- Slide 8: Integration & Workflow -->
+      <div class="item">
+        <div class="circuit-lines"></div>
+        <div class="item_content">
+          <h2>Integration.merge(workflow)</h2>
+          <ul>
+            <li><em>HTML</em>: Handles structure (content of the page);</li>
+            <li><em>CSS</em>: Handles styling (visual design);</li>
+            <li><em>JavaScript</em>: Handles behavior (interactivity and dynamic updates);</li>
+            <li><em>Backend</em>: (Node.js, PHP, etc.) Manages data processing and business logic;</li>
+            <li><em>Workflow Example</em>: A button styled by CSS that triggers a JavaScript action demonstrates effective integration;</li>
+            <li><em>Practical Advice</em>: Separation of concerns is crucial—keep your code organized;</li>
+          </ul>
+        </div>
+        <div class="code-decoration typing-effect">project.commit();</div>
+        <div class="slide-number">08 / 18</div>
+      </div>
+
+      <!-- Slide 9: Development Environment Setup -->
+      <div class="item">
+        <div class="circuit-lines"></div>
+        <div class="item_content">
+          <h2>DevEnvironment.setup()</h2>
+          <ul>
+            <li><em>Tools</em>: Use code editors like VS Code (Recommended) or Sublime or Cursor AI and modern web browsers;</li>
+            <li><em>Testing</em>: Employ developer tools to debug issues—remember, "it works on my machine" isn't enough;</li>
+            <li><em>Organization</em>: Maintain a clear folder structure (e.g., index.html, style.css, script.js) to streamline development;</li>
+          </ul>
+        </div>
+        <div class="code-decoration typing-effect">npm install</div>
+        <div class="slide-number">09 / 18</div>
+      </div>
+
+      <!-- Slide 10: Project Organization -->
+      <div class="item">
+        <div class="circuit-lines"></div>
+        <div class="item_content">
+          <h2>Project.organize({</h2>
+          <ul>
+            <li><em>bestPractices</em>: Organize files by type and purpose (HTML, CSS, JS, assets) to maintain clarity and efficiency;</li>
+            <li><em>practicalTip</em>: A tidy file structure is like having a clean desk—it saves time and avoids confusion;</li>
+            <li><em>extraInfo</em>: Essential for managing complex projects and your overflowing desktop;</li>
+          </ul>
+        </div>
+        <div class="code-decoration typing-effect">});</div>
+        <div class="slide-number">10 / 18</div>
+      </div>
+
+      <!-- Slide 11: Version Control -->
+      <div class="item">
+        <div class="circuit-lines"></div>
+        <div class="item_content">
+          <h2>Version_Control.git</h2>
+          <ul>
+            <li><em>git</em>: Tracks changes and supports branching/merging;</li>
+            <li><em>github</em>: (Google Drive for code) Hosts repositories and boosts team collaboration;</li>
+            <li><em>practicalTip</em>: Commit frequently with clear messages;</li>
+            <li><em>bestPractices</em>: Use branches for features and pull requests for reviews;</li>
+          </ul>
+        </div>
+        <div class="code-decoration typing-effect">git commit -m "Add version control slide"</div>
+        <div class="slide-number">11 / 18</div>
+      </div>
+
+      <!-- Slide 12: Learning Roadmap -->
+      <div class="item">
+        <div class="circuit-lines"></div>
+        <div class="item_content">
+          <h2>const learningRoadmap = [</h2>
+          <ul>
+            <li><em>sequentialLearning</em>: Start with HTML, then move to CSS, and finally JavaScript;</li>
+            <li><em>handsOnPractice</em>: Build projects (like a portfolio or a simple calculator) to reinforce your skills. Because practice makes perfect (or at least less buggy);</li>
+            <li><em>advice</em>: Incremental progress is key—each small project builds toward greater competence;</li>
+          </ul>
+        </div>
+        <div class="code-decoration typing-effect">];</div>
+        <div class="slide-number">12 / 18</div>
+      </div>
+
+      <!-- Slide 13: Online Resources -->
+      <div class="item">
+        <div class="circuit-lines"></div>
+        <div class="item_content">
+          <h2>fetch("online-resources")</h2>
+          <ul>
+            <li><em>youtube</em>: English -> Traversy Media, The Net Ninja, freeCodeCamp.org, Hindi -> CodeWithHarry, Apna College, Bengali -> Hablu Programmer, Stack Learner;</li>
+            <li><em>documentation</em>: MDN Web Docs, W3Schools; because even legends need cheat sheets;</li>
+            <li><em>extraTip</em>: Choose a recent series as the technologies change too fast;</li>
+          </ul>
+        </div>
+        <div class="code-decoration typing-effect">.then(learn);</div>
+        <div class="slide-number">13 / 18</div>
+      </div>
+
+      <!-- Slide 14: Project-Based Learning -->
+      <div class="item">
+        <div class="circuit-lines"></div>
+        <div class="item_content">
+          <h2>class ProjectLearning {</h2>
+          <ul>
+            <li><em>approach</em>: Make something more than printing "Hello World!" in 15 different languages;</li>
+            <li><em>reminder</em>: Starting small and scaling up is a practical way to handle complex projects;</li>
+          </ul>
+        </div>
+        <div class="code-decoration typing-effect">}</div>
+        <div class="slide-number">14 / 18</div>
+      </div>
+
+      <!-- Slide 15: Challenges & Solutions -->
+      <div class="item">
+        <div class="circuit-lines"></div>
+        <div class="item_content">
+          <h2>try { challenges() }</h2>
+          <ul>
+            <li><em>commonIssues</em>: Debugging errors and cross-browser compatibility can be challenging;</li>
+            <li><em>solutions</em>: Use developer tools and online communities (like Stack Overflow) for support;</li>
+            <li><em>strategy</em>: Break down problems into smaller tasks to make them easier to solve;</li>
+          </ul>
+        </div>
+        <div class="code-decoration typing-effect">catch(solutions);</div>
+        <div class="slide-number">15 / 18</div>
+      </div>
+
+      <!-- Slide 16: Advanced Topics -->
+      <div class="item">
+        <div class="circuit-lines"></div>
+        <div class="item_content">
+          <h2>advanced.topics.extend({</h2>
+          <ul>
+            <li><em>frontEndFrameworks</em>: Explore tools like React, Angular, or Vue.js to streamline development;</li>
+            <li><em>backEndDevelopment</em>: Learn about server-side technologies such as Python, Ruby, or Node.js;</li>
+            <li><em>additionalLayers</em>: Consider studying UX/UI design and web security to enhance your overall skill set;</li>
+          </ul>
+        </div>
+        <div class="code-decoration typing-effect">});</div>
+        <div class="slide-number">16 / 18</div>
+      </div>
+
+      <!-- Slide 17: Conclusion & Community Engagement -->
+      <div class="item">
+        <div class="circuit-lines"></div>
+        <div class="item_content">
+          <h2>export default function Conclusion() {</h2>
+          <ul>
+            <li><em>continuousLearning</em>: Stay updated with new technologies and practices;</li>
+            <li><em>communityEngagement</em>: Dive into forums like Reddit and Stack Overflow; remember, why suffer alone when you can suffer with friends;</li>
+            <li><em>finalTip</em>: Always celebrate small wins and use every challenge as a learning opportunity;</li>
+          </ul>
+        </div>
+        <div class="code-decoration typing-effect">return success;</div>
+        <div class="slide-number">17 / 18</div>
+      </div>
+
+      <!-- Slide 18: AI Integration in Web Development -->
+      <div class="item">
+        <div class="circuit-lines"></div>
+        <div class="item_content">
+          <h2>AI_Integration.in_Web_Dev()</h2>
+          <ul>
+            <li><em>overview</em>: Everything that you've learned until now was a joke in front of AI;</li>
+            <li><em>debug</em>: Debug your code like never before. (Before AI starts debugging you);</li>
+            <li><em>formattingCode</em>: Making your code so beautiful that now you can at least act like you understand it. Adding comments and giving proper structure;</li>
+            <li><em>aiTools</em>: ChatGPT, Claude, Grok, Deepseek, Github Copilot, Cursor AI;</li>
+            <li><em>tip</em>: Make small parts of the website using AI;</li>
+            <li><em>warning</em>: Don't lose control over code or it could turn out 30 minutes of code with ChatGPT and 30 days of debugging by you;</li>
+          </ul>
+        </div>
+        <div class="code-decoration typing-effect">console.log("AI is here to help... or take over.");</div>
+        <div class="slide-number">18 / 18</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <!-- Particles.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+  <!-- GSAP and ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- AnimateCSS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"></script>
+  <script>
+    
+    // Initialize Particles.js with enhanced configuration
+    particlesJS('particles-js', {
+        particles: {
+          number: {
+            value: 100,
+            density: {
+              enable: true,
+              value_area: 1000
+            }
+          },
+          color: {
+            value: ['#4da8ff', '#66fcf1', '#ff5d8f']
+          },
+          shape: {
+            type: 'circle',
+            stroke: {
+              width: 0,
+              color: '#000000'
+            },
+            polygon: {
+              nb_sides: 5
+            }
+          },
+          opacity: {
+            value: 0.6,
+            random: true,
+            anim: {
+              enable: true,
+              speed: 1,
+              opacity_min: 0.1,
+              sync: false
+            }
+          },
+          size: {
+            value: 3,
+            random: true,
+            anim: {
+              enable: true,
+              speed: 2,
+              size_min: 0.1,
+              sync: false
+            }
+          },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: '#66fcf1',
+            opacity: 0.4,
+            width: 1,
+            shadow: {
+              enable: true,
+              color: '#66fcf1',
+              blur: 5
+            }
+          },
+          move: {
+            enable: true,
+            speed: 1.5,
+            direction: 'none',
+            random: true,
+            straight: false,
+            out_mode: 'out',
+            bounce: false,
+            attract: {
+              enable: true,
+              rotateX: 600,
+              rotateY: 1200
+            }
+          }
+        },
+        interactivity: {
+          detect_on: 'canvas',
+          events: {
+            onhover: {
+              enable: true,
+              mode: 'grab'
+            },
+            onclick: {
+              enable: true,
+              mode: 'push'
+            },
+            resize: true
+          },
+          modes: {
+            grab: {
+              distance: 180,
+              line_linked: {
+                opacity: 0.8
+              }
+            },
+            bubble: {
+              distance: 400,
+              size: 40,
+              duration: 2,
+              opacity: 8,
+              speed: 3
+            },
+            repulse: {
+              distance: 200,
+              duration: 0.4
+            },
+            push: {
+              particles_nb: 4
+            },
+            remove: {
+              particles_nb: 2
+            }
+          }
+        },
+        retina_detect: true,
+        fps_limit: 60
+      });
+  
+      // Presentation variables
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.item');
+      const totalSlides = slides.length;
+      const progressBar = document.querySelector('.progress-bar');
+      const nextBtn = document.querySelector('.next-btn');
+      const prevBtn = document.querySelector('.prev-btn');
+      const navigation = document.querySelector('.navigation');
+  
+      // Create navigation dots
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('nav-dot');
+        dot.setAttribute('data-slide', i);
+        navigation.appendChild(dot);
+        
+        // Add click event to each dot
+        dot.addEventListener('click', () => {
+          goToSlide(i);
+        });
+      }
+  
+      const navDots = document.querySelectorAll('.nav-dot');
+  
+      // Function to update slide visibility
+      function updateSlides() {
+        // Update progress bar
+        progressBar.style.width = `${(currentSlide / (totalSlides - 1)) * 100}%`;
+        
+        // Update navigation dots
+        navDots.forEach((dot, index) => {
+          if (index === currentSlide) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+        
+        // Update slides
+        slides.forEach((slide, index) => {
+          if (index === currentSlide) {
+            // Show current slide with tech-inspired animation
+            slide.style.opacity = '0';
+            slide.style.transform = 'translateY(20px)';
+            slide.style.display = 'flex';
+            
+            // Use GSAP for smoother animation
+            gsap.to(slide, {
+              opacity: 1,
+              transform: 'translateY(0)',
+              duration: 0.5,
+              ease: 'power2.out'
+            });
+            
+            // Animate list items sequentially
+            const listItems = slide.querySelectorAll('li');
+            gsap.fromTo(listItems, 
+              { opacity: 0, x: -20 },
+              { 
+                opacity: 1, 
+                x: 0, 
+                stagger: 0.1,
+                duration: 0.3,
+                delay: 0.3,
+                ease: 'power2.out'
+              }
+            );
+            
+            // Animate code decoration
+            const codeDecoration = slide.querySelector('.code-decoration');
+            if (codeDecoration) {
+              gsap.fromTo(codeDecoration,
+                { opacity: 0 },
+                { opacity: 1, duration: 0.5, delay: 0.8 }
+              );
+            }
+            
+            // Special animation for meme images
+            if (slide.classList.contains('meme')) {
+              const memeImg = slide.querySelector('.meme-image img');
+              if (memeImg) {
+                gsap.fromTo(memeImg,
+                  { opacity: 0, scale: 0.8 },
+                  { opacity: 1, scale: 1, duration: 0.5, delay: 0.5 }
+                );
+              }
+            }
+            
+          } else {
+            // Hide other slides
+            slide.style.opacity = '0';
+            slide.style.transform = 'translateY(20px)';
+            
+            // Wait for animation to complete before hiding
+            setTimeout(() => {
+              if (index !== currentSlide) {
+                slide.style.display = 'none';
+              }
+            }, 300);
+          }
+        });
+      }
+  
+      // Function to go to a specific slide
+      function goToSlide(index) {
+        if (index < 0) {
+          currentSlide = totalSlides - 1;
+        } else if (index >= totalSlides) {
+          currentSlide = 0;
+        } else {
+          currentSlide = index;
+        }
+        
+        updateSlides();
+      }
+  
+      // Button click events
+      nextBtn.addEventListener('click', () => {
+        goToSlide(currentSlide + 1);
+      });
+  
+      prevBtn.addEventListener('click', () => {
+        goToSlide(currentSlide - 1);
+      });
+  
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+          goToSlide(currentSlide + 1);
+        } else if (e.key === 'ArrowLeft') {
+          goToSlide(currentSlide - 1);
+        }
+      });
+  
+      // Add touch swipe functionality
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      document.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      });
+      
+      document.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      });
+      
+      function handleSwipe() {
+        const swipeThreshold = 50;
+        
+        if (touchEndX < touchStartX - swipeThreshold) {
+          // Swipe left - next slide
+          goToSlide(currentSlide + 1);
+        } else if (touchEndX > touchStartX + swipeThreshold) {
+          // Swipe right - previous slide
+          goToSlide(currentSlide - 1);
+        }
+      }
+  
+      // Add mouse wheel navigation
+      let wheelTimeout;
+      document.addEventListener('wheel', (e) => {
+        clearTimeout(wheelTimeout);
+        
+        wheelTimeout = setTimeout(() => {
+          if (e.deltaY > 0) {
+            // Scroll down - next slide
+            goToSlide(currentSlide + 1);
+          } else {
+            // Scroll up - previous slide
+            goToSlide(currentSlide - 1);
+          }
+        }, 50);
+      }, { passive: true });
+  
+      // Add typing effect to code decorations
+      function initTypingEffects() {
+        const codeDecorations = document.querySelectorAll('.code-decoration');
+        
+        codeDecorations.forEach(code => {
+          const text = code.textContent;
+          code.textContent = '';
+          code.classList.add('typing-effect');
+          
+          // Store original text for later use
+          code.setAttribute('data-text', text);
+        });
+      }
+  
+      // Show slide based on URL hash if present
+      function checkHash() {
+        const hash = window.location.hash.substring(1);
+        if (hash && !isNaN(hash)) {
+          const slideIndex = parseInt(hash) - 1;
+          if (slideIndex >= 0 && slideIndex < totalSlides) {
+            currentSlide = slideIndex;
+          }
+        }
+        
+        // Initialize first slide
+        updateSlides();
+        initTypingEffects();
+      }
+  
+      // Update URL hash when changing slides
+      function updateHash() {
+        window.location.hash = currentSlide + 1;
+      }
+  
+      // Initialize the presentation
+      window.addEventListener('load', () => {
+        checkHash();
+        
+        // Show first slide
+        slides[currentSlide].style.display = 'flex';
+        navDots[currentSlide].classList.add('active');
+        
+        // Add circuit lines animation
+        gsap.to('.circuit-lines', {
+          backgroundPosition: '100px 100px',
+          repeat: -1,
+          duration: 20,
+          ease: 'linear'
+        });
+        
+        // Initialize ScrollTrigger for optional scroll-based navigation
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Add subtle hover effects to controls
+        const controlBtns = document.querySelectorAll('.control-btn');
+        controlBtns.forEach(btn => {
+          btn.addEventListener('mouseenter', () => {
+            gsap.to(btn, {
+              backgroundColor: 'rgba(77, 168, 255, 0.4)',
+              duration: 0.3
+            });
+          });
+          
+          btn.addEventListener('mouseleave', () => {
+            gsap.to(btn, {
+              backgroundColor: 'rgba(77, 168, 255, 0.2)',
+              duration: 0.3
+            });
+          });
+        });
+      });
+  
+      // Add a random "glitch" effect occasionally to enhance the tech feel
+      setInterval(() => {
+        if (Math.random() > 0.7) {
+          const glitchElement = document.querySelector(`h2, .code-decoration`);
+          if (glitchElement) {
+            glitchElement.style.textShadow = '2px 0 #ff5d8f, -2px 0 #66fcf1';
+            setTimeout(() => {
+              glitchElement.style.textShadow = '';
+            }, 100);
+          }
+        }
+      }, 5000);
+      
+      // Add a fullscreen toggle functionality
+      function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => {
+            console.log(`Error attempting to enable fullscreen: ${err.message}`);
+          });
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
+        }
+      }
+      
+      // Create fullscreen button
+      const fullscreenBtn = document.createElement('button');
+      fullscreenBtn.className = 'control-btn fullscreen-btn';
+      fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+      fullscreenBtn.title = 'Toggle Fullscreen';
+      fullscreenBtn.addEventListener('click', toggleFullScreen);
+      document.querySelector('.controls').appendChild(fullscreenBtn);
+      
+      // Initialize the first slide
+      goToSlide(0);
+  </script>
+</body>
+</html>

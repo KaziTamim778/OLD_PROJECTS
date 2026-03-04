@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DCITC Gallery</title>
+
+
+    <!-- Updated Title -->
+    <!-- External Libraries -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.4.8/sweetalert2.min.css"
+    />
+    <link rel="stylesheet" href="/styles/gallery.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="nav-navbar-container" id="nav-navbarContainer">
+      <nav class="nav-navbar">
+        <div class="nav-logo-container">
+          <img
+            src="/Public/logo/dcitc-logo-trans.png"
+            alt="Logo"
+            class="nav-logo-img"
+          />
+          <div class="nav-logo-text">DCITC</div>
+          <!-- Moved Theme Toggle Here -->
+          <div class="theme-toggle" id="themeToggle">
+            <div class="theme-toggle-track">
+              <div class="theme-toggle-thumb"></div>
+            </div>
+          </div>
+          <div class="nav-tech-circles">
+            <div class="nav-circle"></div>
+            <div class="nav-circle"></div>
+            <div class="nav-circle"></div>
+            <div class="nav-circle"></div>
+          </div>
+        </div>
+        <ul class="nav-links" id="nav-navLinks">
+          <li>
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+          </li>
+          <li>
+            <a href="About.html"><i class="fas fa-info-circle"></i> About</a>
+          </li>
+          <li>
+            <a href="Executives.html"><i class="fas fa-users"></i> Executive</a>
+          </li>
+          <li>
+            <a href="Events.html"><i class="fas fa-calendar-alt"></i> Events</a>
+          </li>
+          <li>
+            <a href="Projects.html"
+              ><i class="fas fa-project-diagram"></i> Projects</a
+            >
+          </li>
+          <li>
+            <a href="Gallery.html" class="active"
+              ><i class="fas fa-images"></i> Gallery</a
+            >
+          </li>
+          <li>
+            <a href="Departments.html"
+              ><i class="fas fa-sitemap"></i> Departments</a
+            >
+          </li>
+        </ul>
+        <button class="nav-menu-btn" id="nav-menuBtn">
+          <div class="nav-hamburger" id="nav-hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </nav>
+    </div>
+    <div class="nav-overlay" id="nav-overlay"></div>
+
+    <!-- Main Particles Background -->
+    <div id="particles-js"></div>
+
+    <div class="gallery-container">
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Images will be dynamically loaded here -->
+      </div>
+    </div>
+
+    <div class="gallery-modal" id="gallery-modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-title">Image Title</h2>
+        <div class="modal-controls">
+          <button
+            class="modal-button"
+            id="slideshow-button"
+            title="Start Slideshow"
+          >
+            <i class="fas fa-play"></i>
+          </button>
+          <button
+            class="modal-button"
+            id="thumbnail-toggle"
+            title="Toggle Thumbnails"
+          >
+            <i class="fas fa-th-large"></i>
+          </button>
+          <button
+            class="modal-button"
+            id="fullscreen-button"
+            title="Toggle Fullscreen"
+          >
+            <i class="fas fa-expand"></i>
+          </button>
+          <button class="modal-button" id="modal-close" title="Close">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-content">
+        <div class="modal-image-container" id="modal-image-container">
+          <img id="modal-image" src="" alt="" class="fade" />
+        </div>
+        <div class="modal-navigation hover-controls">
+          <button class="nav-button" id="prev-button">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="nav-button" id="next-button">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="thumbnail-container" id="thumbnail-container">
+        <div class="thumbnail-track" id="thumbnail-track">
+          <!-- Thumbnails will be loaded here -->
+        </div>
+      </div>
+
+      <div class="image-info" id="image-info">
+        <span id="image-counter">1 / 10</span>
+        <span id="image-dimensions">1920 × 1080</span>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-footer">
+      <div id="footer-particles-js" class="footer-particles-container"></div>
+      <div class="footer-container">
+        <div class="footer-top">
+          <div class="footer-logo-container" data-aos="fade-right">
+            <img
+              src="/Public/logo/dcitc-logo-trans.png"
+              alt="DCITC Logo"
+              class="footer-logo-img"
+              id="footer-club-logo"
+            />
+          </div>
+          <div
+            class="footer-links-section"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <h3>Quick Links</h3>
+            <ul class="footer-vertical-links">
+              <li>
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+              </li>
+              <li>
+                <a href="About.html"
+                  ><i class="fas fa-info-circle"></i> About Us</a
+                >
+              </li>
+              <li>
+                <a href="Events.html"
+                  ><i class="fas fa-calendar-alt"></i> Events</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div
+            class="footer-links-section"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <h3>Resources</h3>
+            <ul class="footer-vertical-links">
+              <li>
+                <a href="#tutorials"
+                  ><i class="fas fa-book-open"></i> Tutorials</a
+                >
+              </li>
+              <li>
+                <a href="#workshops"><i class="fas fa-tools"></i> Workshops</a>
+              </li>
+              <li>
+                <a href="#blog"><i class="fas fa-blog"></i> Blog</a>
+              </li>
+              <li>
+                <a href="#faqs"><i class="fas fa-question-circle"></i> FAQs</a>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="footer-links-section"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <h3>Contact Us</h3>
+            <ul class="footer-vertical-links">
+              <li>
+                <a href="mailto:info@dcitc.com"
+                  ><i class="fas fa-envelope"></i> info@dcitc.com</a
+                >
+              </li>
+              <li>
+                <a href="tel:+8801234567890"
+                  ><i class="fas fa-phone-alt"></i> +880 123 456 7890</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-map-marker-alt"></i> Dhaka College, Dhaka</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-divider" data-aos="fade-in"></div>
+        <div class="footer-social-row" data-aos="zoom-in">
+          <div class="footer-social-icons">
+            <a
+              href="#"
+              aria-label="Facebook"
+              class="footer-social-icon"
+              data-tooltip="Follow us on Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="Twitter"
+              class="footer-social-icon"
+              data-tooltip="Follow us on Twitter"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="Instagram"
+              class="footer-social-icon"
+              data-tooltip="Follow us on Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              class="footer-social-icon"
+              data-tooltip="Connect on LinkedIn"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="YouTube"
+              class="footer-social-icon"
+              data-tooltip="Watch our videos"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="GitHub"
+              class="footer-social-icon"
+              data-tooltip="Check out our code"
+              ><i class="fab fa-github"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer-divider" data-aos="fade-in"></div>
+        <div class="footer-copyright" data-aos="fade-up">
+          <p>© 2025 DCITC - Dhaka College IT Club. All rights reserved.</p>
+          <p>
+            Designed with <i class="fas fa-heart footer-heart-icon"></i> by
+            <a href="/executives.html" class="footer-hover-effect">DCITC Team</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-back-to-top" id="footer-backToTop">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.4.8/sweetalert2.min.js"></script>
+    <script src="/scripts/gallery.js" defer></script>
+
+    <script>
+      // --- Theme Toggle (Dark/Light Mode) ---
+      const themeToggle = document.getElementById("themeToggle");
+      const rootElement = document.documentElement; // Target <html> for class toggle
+      let isDarkMode =
+        localStorage.getItem("theme") === "dark" ||
+        (!localStorage.getItem("theme") &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+      function applyTheme() {
+        rootElement.classList.toggle("light", !isDarkMode);
+        if (themeToggle) {
+          themeToggle.setAttribute("aria-checked", String(isDarkMode)); // Use String() for attribute compatibility
+        }
+        // Optional: Add logic here to update other theme-dependent elements if needed
+      }
+
+      // Set initial state
+      applyTheme();
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          isDarkMode = !isDarkMode;
+          applyTheme();
+          localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+        });
+      }
+    </script>
+  </body>
+</html>

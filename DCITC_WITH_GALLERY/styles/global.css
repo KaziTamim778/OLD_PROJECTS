@@ -1,0 +1,503 @@
+
+/* ==========================================================================
+   CSS Custom Properties (Variables) Definition
+   - Defines the core design tokens for the application.
+   - Includes light theme overrides.
+   - Provides examples for component variables and usage.
+   ========================================================================== */
+
+:root {
+  /* ==========================================================================
+     1. COLOR PALETTE (Dark Theme - Default)
+     ========================================================================== */
+
+  /* 1.1. Brand Colors */
+  --primary-color: #00b4db;
+  --secondary-color: #0083b0;
+  --accent-color: #00d4ff;
+  --primary-rgb: 0, 180, 219;
+  --secondary-rgb: 0, 131, 176;
+
+  /* 1.2. Background Colors */
+  --bg-body: #0c0c14;
+  --bg-surface-1: #1a1a1a;        /* Primary surface (cards, modals) */
+  --bg-surface-2: #2a2a3a;        /* Secondary surface (subtle variations) */
+  --bg-navbar: rgba(26, 26, 26, 0.9);
+  --bg-footer: var(--bg-body);
+  --bg-header-alt: #111;          /* e.g., Modal header, special controls */
+  --bg-filter: rgba(26, 26, 26, 0.7); /* Filter bar background */
+
+  /* 1.3. Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #aaaaaa;
+  --text-link: var(--primary-color);
+  --text-link-hover: var(--secondary-color);
+  --text-on-primary: #ffffff;       /* Text on primary color background */
+  --text-on-dark-surface: var(--text-primary);
+  --text-form: #dddddd;
+  --text-placeholder: #666666;
+
+  /* 1.4. Border Colors */
+  --border-color-subtle: rgba(var(--primary-rgb), 0.2); /* Subtle borders, highlights */
+  --border-color-medium: #666666;                     /* Standard borders, form inputs */
+  --border-color-dark: rgba(255, 255, 255, 0.1);      /* Dividers on dark backgrounds */
+  --border-primary: 1px solid var(--primary-color);
+
+  /* 1.5. Overlay & State Colors */
+  --bg-overlay-dark: rgba(0, 0, 0, 0.7);
+  --bg-overlay-light: rgba(255, 255, 255, 0.1);
+  --bg-filter-active: var(--primary-color);
+  --bg-primary-subtle: rgba(var(--primary-rgb), 0.1);
+  --bg-primary-hover: rgba(var(--primary-rgb), 0.2);
+  --bg-focus-ring: rgba(var(--primary-rgb), 0.3); /* For focus outlines */
+
+  /* 1.6. Gradient Definitions */
+  --text-gradient: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  --bg-gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+
+
+  /* ==========================================================================
+     2. TYPOGRAPHY
+     ========================================================================== */
+
+  /* 2.1. Font Families */
+  --font-family-base: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-family-heading: 'Montserrat', var(--font-family-base);
+
+  /* 2.2. Font Sizes */
+  --font-size-base: 16px;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-h1: 2.8rem;
+  --font-size-h2: 2.2rem;
+  --font-size-h3: 1.8rem;
+  --font-size-h4: 1.5rem;
+
+  /* 2.3. Font Weights */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* 2.4. Line Heights */
+  --line-height-base: 1.6;
+  --line-height-heading: 1.2;
+  --line-height-tight: 1.1;
+
+
+  /* ==========================================================================
+     3. SPACING & LAYOUT
+     ========================================================================== */
+
+  /* 3.1. Spacing Units */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 40px;
+  --spacing-section: 60px;
+
+  /* 3.2. Layout Dimensions */
+  --container-max-width: 1400px;
+  --container-padding-x: var(--spacing-xl); /* Default horizontal padding */
+  --container-padding-y: var(--spacing-xxl);/* Default vertical padding */
+  --grid-gap: var(--spacing-md);
+  --grid-gap-lg: var(--spacing-xl);
+
+  /* 3.3. Border Radii */
+  --border-radius-xs: 4px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-pill: 50px;
+  --border-radius-round: 50%;
+
+
+  /* ==========================================================================
+     4. EFFECTS & MOTION
+     ========================================================================== */
+
+  /* 4.1. Transitions */
+  --transition-speed-fast: 0.2s;
+  --transition-speed-medium: 0.3s;
+  --transition-speed-slow: 0.5s;
+  --timing-function-ease: ease;
+  --timing-function-ease-in-out: ease-in-out;
+  --timing-function-bounce: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  --transition-base: all var(--transition-speed-medium) var(--timing-function-ease-in-out);
+  --transition-colors: background-color var(--transition-speed-medium) var(--timing-function-ease-in-out),
+                       color var(--transition-speed-medium) var(--timing-function-ease-in-out),
+                       border-color var(--transition-speed-medium) var(--timing-function-ease-in-out);
+
+  /* 4.2. Shadows */
+  --shadow-color-rgb: 0, 0, 0;
+  --shadow-sm: 0 2px 5px rgba(var(--shadow-color-rgb), 0.15);
+  --shadow-md: 0 5px 15px rgba(var(--shadow-color-rgb), 0.2);
+  --shadow-lg: 0 10px 30px rgba(var(--shadow-color-rgb), 0.25);
+  --shadow-primary-sm: 0 3px 8px rgba(var(--primary-rgb), 0.2);
+  --shadow-primary-md: 0 5px 15px rgba(var(--primary-rgb), 0.3);
+  --shadow-primary-lg: 0 10px 25px rgba(var(--primary-rgb), 0.4);
+
+  /* 4.3. Effects */
+  --backdrop-blur: 10px;
+  --hover-scale-sm: 1.03;
+  --hover-scale-md: 1.05;
+
+
+  /* ==========================================================================
+     5. Z-INDEX STACKING ORDER
+     ========================================================================== */
+  --z-index-background: -1;
+  --z-index-default: 1;
+  --z-index-content-overlay: 5;
+  --z-index-sticky: 100;
+  --z-index-navbar: 1000;
+  --z-index-dropdown: 1050;
+  --z-index-modal-backdrop: 1090;
+  --z-index-modal: 1100;
+  --z-index-tooltip: 1200;
+  --z-index-loader: 9999;
+
+
+  /* ==========================================================================
+     6. BREAKPOINTS & MEDIA QUERIES (For use in @media rules)
+     ========================================================================== */
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1400px;
+
+}
+
+/* ==========================================================================
+   LIGHT THEME OVERRIDES
+   - Activated by adding the 'light-theme' class to the <body> or <html> tag.
+   ========================================================================== */
+body.light-theme {
+  /* 1. COLOR PALETTE (Overrides) */
+  --bg-body: #f5f5f7;
+  --bg-surface-1: #ffffff;
+  --bg-surface-2: #f0f0f5;
+  --bg-navbar: rgba(255, 255, 255, 0.9);
+  --bg-footer: #e9ecef;
+  --bg-header-alt: #eeeeee;
+  --bg-overlay-dark: rgba(0, 0, 0, 0.5);
+  --bg-overlay-light: rgba(0, 0, 0, 0.05);
+  --bg-filter: rgba(0, 0, 0, 0.05);
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --text-form: #495057;
+  --text-placeholder: #adb5bd;
+  --border-color-subtle: rgba(var(--primary-rgb), 0.15);
+  --border-color-medium: #ced4da;
+  --border-color-dark: #dee2e6;
+  --text-link-hover: var(--primary-color); /* Often looks better in light mode */
+
+  /* 4. EFFECTS & MOTION (Overrides) */
+  --shadow-color-rgb: 100, 100, 100;
+  --shadow-sm: 0 2px 5px rgba(var(--shadow-color-rgb), 0.08);
+  --shadow-md: 0 5px 15px rgba(var(--shadow-color-rgb), 0.1);
+  --shadow-lg: 0 10px 30px rgba(var(--shadow-color-rgb), 0.12);
+}
+
+/* ==========================================================================
+   THEME TRANSITION
+   - Apply smooth transitions to elements changing color between themes.
+   ========================================================================== */
+body,
+.card, /* Add specific selectors that change theme colors */
+.button,
+.navbar,
+.footer,
+input,
+textarea {
+  transition: var(--transition-colors); /* Use the specific color transition */
+}
+
+
+/* ==========================================================================
+   COMPONENT-SPECIFIC VARIABLES (Examples)
+   - Define variables scoped to components, referencing root variables.
+   - This creates an abstraction layer for easier maintenance.
+   ========================================================================== */
+
+.button {
+  --button-padding-y: var(--spacing-sm);
+  --button-padding-x: var(--spacing-md);
+  --button-bg: var(--primary-color);
+  --button-text-color: var(--text-on-primary);
+  --button-bg-hover: var(--secondary-color);
+  --button-border-radius: var(--border-radius-sm);
+  --button-font-weight: var(--font-weight-semibold);
+
+  /* Apply the variables */
+  padding: var(--button-padding-y) var(--button-padding-x);
+  background-color: var(--button-bg);
+  color: var(--button-text-color);
+  border-radius: var(--button-border-radius);
+  font-weight: var(--button-font-weight);
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-speed-fast) ease; /* Specific transition */
+}
+
+.button:hover {
+  background-color: var(--button-bg-hover);
+}
+
+.card {
+  --card-padding: var(--spacing-lg);
+  --card-bg: var(--bg-surface-1);
+  --card-border-color: var(--border-color-dark);
+  --card-border-radius: var(--border-radius-md);
+  --card-shadow: var(--shadow-md);
+
+  /* Apply the variables */
+  padding: var(--card-padding);
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border-color); /* Use var here */
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
+  /* Transition defined globally or specifically */
+}
+
+/* Example using fallback values (for older browser support or optional vars) */
+.some-element {
+  color: var(--text-primary, #ffffff); /* Fallback to white if --text-primary isn't defined */
+  padding: var(--element-padding, var(--spacing-md)); /* Fallback to another variable */
+}
+
+/* Example using breakpoint variables */
+@media (min-width: var(--breakpoint-md)) {
+  .container {
+    --container-padding-x: var(--spacing-xxl); /* Increase padding on medium screens */
+    padding-left: var(--container-padding-x);
+    padding-right: var(--container-padding-x);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:root {
+   /* 1. COLOR PALETTE (Dark Theme - Default) */
+   --primary-color: #00b4db;
+   --secondary-color: #0083b0;
+   --accent-color: #00d4ff;
+   --primary-rgb: 0, 180, 219;
+   --secondary-rgb: 0, 131, 176;
+   --bg-body: #0c0c14;
+   --bg-surface-1: #1a1a1a; /* Card Background */
+   --bg-surface-2: #2a2a3a; /* Card Alt Background */
+   --bg-navbar: rgba(26, 26, 26, 0.9);
+   --navbar-scrolled: rgba(10, 10, 18, 0.95);
+   --bg-footer: var(--bg-body);
+   --bg-header-alt: #111; /* Contact Header */
+   --bg-filter: rgba(26, 26, 26, 0.7);
+   --text-primary: #ffffff;
+   --text-secondary: #aaaaaa;
+   --text-link: var(--primary-color);
+   --text-link-hover: var(--secondary-color);
+   --text-on-primary: #ffffff;
+   --text-on-dark-surface: var(--text-primary);
+   --text-form: #dddddd; /* Contact Form Text */
+   --text-placeholder: #666666; /* Contact Form Placeholder */
+   --border-color-subtle: rgba(var(--primary-rgb), 0.2);
+   --border-color-medium: #666666; /* Contact Form Border */
+   --border-color-dark: rgba(255, 255, 255, 0.1); /* Navbar Border */
+   --border-primary: 1px solid var(--primary-color);
+   --bg-overlay-dark: rgba(0, 0, 0, 0.7);
+   --bg-overlay-light: rgba(255, 255, 255, 0.1);
+   --bg-filter-active: var(--primary-color); /* Dept Filter Active */
+   --bg-primary-subtle: rgba(var(--primary-rgb), 0.1);
+   --bg-primary-hover: rgba(var(--primary-rgb), 0.2);
+   --bg-focus-ring: rgba(var(--primary-rgb), 0.3);
+   --text-gradient: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+   --bg-gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+   --glow-color: rgba(0, 180, 219, 0.6);
+   --button-background: var(--primary-color); /* Added for consistency */
+   --button-hover: var(--secondary-color); /* Added for consistency */
+   --card-background: var(--bg-surface-1); /* Alias for clarity */
+   --card-alt-background: var(--bg-surface-2); /* Alias for clarity */
+   --screen-background: var(--bg-surface-1); /* Contact Screen BG */
+   --header-background: var(--bg-header-alt); /* Contact Header BG */
+   --form-border: var(--border-color-medium); /* Alias for clarity */
+   --form-text: var(--text-form); /* Alias for clarity */
+   --placeholder-color: var(--text-placeholder); /* Alias for clarity */
+   --credits-text: var(--text-secondary); /* Alias for clarity */
+   --credits-link: var(--primary-color); /* Alias for clarity */
+
+   /* 2. TYPOGRAPHY */
+   --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   --font-family-heading: 'Montserrat', var(--font-family-base);
+   --font-family-alt: 'Poppins', var(--font-family-base); /* Added Alt Font */
+   --font-size-base: 16px;
+   --font-size-xs: 0.75rem;  /* 12px */
+   --font-size-sm: 0.875rem; /* 14px */
+   --font-size-md: 1rem;     /* 16px */
+   --font-size-lg: 1.125rem; /* 18px */
+   --font-size-xl: 1.25rem;  /* 20px */
+   --font-size-h1: 2.8rem;   /* ~45px */
+   --font-size-h2: 2.2rem;   /* ~35px */
+   --font-size-h3: 1.8rem;   /* ~29px */
+   --font-size-h4: 1.5rem;   /* 24px */
+   --font-weight-light: 300;
+   --font-weight-regular: 400;
+   --font-weight-medium: 500;
+   --font-weight-semibold: 600;
+   --font-weight-bold: 700;
+   --line-height-base: 1.6;
+   --line-height-heading: 1.2;
+   --line-height-tight: 1.1;
+
+   /* 3. SPACING & LAYOUT */
+   --spacing-xs: 4px;
+   --spacing-sm: 8px;
+   --spacing-md: 16px;
+   --spacing-lg: 24px;
+   --spacing-xl: 32px;
+   --spacing-xxl: 40px;
+   --spacing-section: 60px; /* Standard section spacing */
+   --container-max-width: 1200px;
+   --container-padding-x: 20px;
+   --container-padding-y: var(--spacing-xxl);
+   --grid-gap: var(--spacing-md);
+   --grid-gap-lg: var(--spacing-xl);
+   --border-radius-xs: 4px;
+   --border-radius-sm: 8px;
+   --border-radius-md: 12px;
+   --border-radius-lg: 16px;
+   --border-radius-pill: 50px;
+   --border-radius-round: 50%;
+
+   /* 4. EFFECTS & MOTION */
+   --transition-speed-fast: 0.2s;
+   --transition-speed-medium: 0.3s;
+   --transition-speed-slow: 0.5s;
+   --timing-function-ease: ease;
+   --timing-function-ease-in-out: ease-in-out;
+   --timing-function-bounce: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+   --transition-base: all var(--transition-speed-medium) var(--timing-function-ease-in-out);
+   --transition-colors: background-color var(--transition-speed-medium) var(--timing-function-ease-in-out),
+                      color var(--transition-speed-medium) var(--timing-function-ease-in-out),
+                      border-color var(--transition-speed-medium) var(--timing-function-ease-in-out);
+   --shadow-color-rgb: 0, 0, 0;
+   --shadow-sm: 0 2px 5px rgba(var(--shadow-color-rgb), 0.15);
+   --shadow-md: 0 5px 15px rgba(var(--shadow-color-rgb), 0.2);
+   --shadow-lg: 0 10px 30px rgba(var(--shadow-color-rgb), 0.25);
+   --shadow-primary-sm: 0 3px 8px rgba(var(--primary-rgb), 0.2);
+   --shadow-primary-md: 0 5px 15px rgba(var(--primary-rgb), 0.3);
+   --shadow-primary-lg: 0 10px 25px rgba(var(--primary-rgb), 0.4);
+   --backdrop-blur: 10px;
+   --hover-scale-sm: 1.03;
+   --hover-scale-md: 1.05;
+
+   /* 5. Z-INDEX STACKING ORDER */
+   --z-index-background: -1;
+   --z-index-default: 1;
+   --z-index-content-overlay: 5;
+   --z-index-sticky: 100;
+   --z-index-navbar: 1000;
+   --z-index-dropdown: 1050;
+   --z-index-modal-backdrop: 1090;
+   --z-index-modal: 1100;
+   --z-index-tooltip: 1200;
+   --z-index-loader: 9999;
+
+   /* 6. BREAKPOINTS & MEDIA QUERIES */
+   --breakpoint-xs: 480px;
+   --breakpoint-sm: 576px;
+   --breakpoint-md: 768px;
+   --breakpoint-lg: 992px;
+   --breakpoint-xl: 1200px;
+   --breakpoint-xxl: 1400px;
+}
+
+/* Light Theme Overrides */
+html.light {
+   /* 1. COLOR PALETTE (Overrides) */
+   --bg-body: #f5f7fa;
+   --bg-surface-1: #ffffff;
+   --bg-surface-2: #f0f0f5;
+   --bg-navbar: rgba(255, 255, 255, 0.9);
+   --navbar-scrolled: rgba(245, 247, 250, 0.98);
+   --bg-footer: #e9ecef;
+   --bg-header-alt: #eeeeee;
+   --bg-overlay-dark: rgba(0, 0, 0, 0.5);
+   --bg-overlay-light: rgba(0, 0, 0, 0.05);
+   --bg-filter: rgba(0, 0, 0, 0.05);
+   --text-primary: #333333;
+   --text-secondary: #666666;
+   --text-form: #495057;
+   --text-placeholder: #adb5bd;
+   --text-link-hover: var(--primary-color);
+   --text-on-primary: #ffffff; /* Text on primary button remains white */
+   --border-color-subtle: rgba(var(--primary-rgb), 0.15);
+   --border-color-medium: #ced4da;
+   --border-color-dark: #dee2e6;
+   --card-background: rgba(255, 255, 255, 0.7);
+   --card-border: rgba(0, 180, 219, 0.2);
+
+   /* 4. EFFECTS & MOTION (Overrides) */
+   --shadow-color-rgb: 100, 100, 100;
+   --shadow-sm: 0 2px 5px rgba(var(--shadow-color-rgb), 0.08);
+   --shadow-md: 0 5px 15px rgba(var(--shadow-color-rgb), 0.1);
+   --shadow-lg: 0 10px 30px rgba(var(--shadow-color-rgb), 0.12);
+}
+
+/* Hero Light Mode Overrides */
+html.light .hero::before {
+   background: radial-gradient(
+       circle at center,
+       rgba(0, 180, 219, 0.1) 0%,
+       rgba(245, 247, 250, 0.8) 70%
+   );
+}
+
+html.light .hero-bg {
+   background: linear-gradient(
+       135deg,
+       rgba(255, 255, 255, 0.9) 0%,
+       rgba(240, 240, 245, 0.8) 100%
+   ),
+   url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f5f7fa"/><path d="M0 50 L100 50 M50 0 L50 100" stroke="%2300b4db30" stroke-width="0.5"/><circle cx="50" cy="50" r="40" stroke="%2300b4db20" stroke-width="0.5" fill="none"/></svg>');
+}
+
+html.light .college-name {
+   color: var(--text-secondary);
+}
+
+html.light .title-prefix {
+   color: var(--text-primary);
+}
+
+html.light .description {
+   color: var(--text-secondary);
+}
+
+html.light .btn-secondary {
+   color: var(--text-primary);
+}
+
+html.light .floating-icon {
+   color: var(--primary-color);
+   opacity: 0.5;
+}

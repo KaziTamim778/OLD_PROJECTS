@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | CyberTech Enterprise</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Titillium+Web:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Library for scroll animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <!-- Swiper for sliders -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.3.2/swiper-bundle.min.css">
+    
+    <!-- Navbar CSS -->
+    <link rel="stylesheet" href="navbar.css">
+    
+    <link rel="stylesheet" href="footer.css">
+    <script src="footer.js"></script>
+    
+    <style>
+        :root {
+            /* Primary Colors */
+            --deep-space-black: #0A0E17;
+            --cybernetic-blue: #00C2FF;
+            --titanium-silver: #D8DEE9;
+            
+            /* Secondary Colors */
+            --neon-green: #39FF14;
+            --neural-purple: #BF5AF2;
+            --surgical-white: #F8F9FC;
+            
+            /* Accent/Status Colors */
+            --hydraulic-red: #FF3B30;
+            --alloy-gray: #4A4E57;
+            
+            /* Gradient */
+            --cyber-gradient: linear-gradient(135deg, var(--cybernetic-blue), var(--neural-purple));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Titillium Web', sans-serif;
+            background-color: var(--deep-space-black);
+            color: var(--titanium-silver);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="none" stroke="rgba(0,194,255,0.05)" stroke-width="0.5" d="M30.5,10.5 L70.5,10.5 L90.5,50 L70.5,90.5 L30.5,90.5 L10.5,50z" /></svg>');
+            background-size: 100px 100px;
+            z-index: -1;
+            opacity: 0.2;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--surgical-white);
+        }
+        
+        .tech-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .page-header {
+            text-align: center;
+            padding: 3rem 1rem;
+            position: relative;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--cyber-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        .page-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+        
+        .service-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .tab-button {
+            background-color: rgba(10, 14, 23, 0.7);
+            border: 1px solid var(--cybernetic-blue);
+            color: var(--titanium-silver);
+            padding: 0.8rem 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tab-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--cyber-gradient);
+            opacity: 0.2;
+            transition: transform 0.5s ease;
+            z-index: -1;
+        }
+        
+        .tab-button:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .tab-button.active {
+            background-color: var(--cybernetic-blue);
+            color: var(--deep-space-black);
+            box-shadow: 0 0 15px rgba(0, 194, 255, 0.5);
+        }
+        
+        .service-content {
+            display: none;
+            padding: 2rem;
+            background-color: rgba(74, 78, 87, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 194, 255, 0.2);
+            margin-bottom: 2rem;
+        }
+        
+        .service-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-title {
+            border-left: 4px solid var(--cybernetic-blue);
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: rgba(10, 14, 23, 0.8);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(216, 222, 233, 0.1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 194, 255, 0.3);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .service-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(10, 14, 23, 1), transparent);
+        }
+        
+        .service-info {
+            padding: 1.5rem;
+        }
+        
+        .service-info h3 {
+            margin-bottom: 1rem;
+            color: var(--cybernetic-blue);
+        }
+        
+        .service-info ul {
+            list-style-type: none;
+            margin: 1rem 0;
+        }
+        
+        .service-info ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-info ul li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--neon-green);
+            font-weight: bold;
+        }
+        
+        .service-cta {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        
+        .btn {
+            background-color: transparent;
+            color: var(--cybernetic-blue);
+            border: 1px solid var(--cybernetic-blue);
+            padding: 0.8rem 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--cybernetic-blue);
+            opacity: 0.2;
+            transition: transform 0.5s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            color: var(--surgical-white);
+            border-color: var(--surgical-white);
+        }
+        
+        .btn:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .btn-primary {
+            background-color: var(--cybernetic-blue);
+            color: var(--deep-space-black);
+        }
+        
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--cybernetic-blue);
+        }
+        
+        /* Maintenance Tiers */
+        .tier-tabs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(216, 222, 233, 0.2);
+        }
+        
+        .tier-tab {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tier-tab.active {
+            border-bottom: 3px solid var(--cybernetic-blue);
+            color: var(--cybernetic-blue);
+        }
+        
+        .tier-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tier-content.active {
+            display: block;
+        }
+        
+        .maintenance-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-item {
+            background: rgba(74, 78, 87, 0.2);
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--cybernetic-blue);
+        }
+        
+        .feature-item h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Timeline for Upgrade Paths */
+        .upgrade-timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+        
+        .upgrade-timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--cybernetic-blue);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--deep-space-black);
+            border: 3px solid var(--cybernetic-blue);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+            text-align: right;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -10px;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background: rgba(74, 78, 87, 0.2);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .timeline-content h3 {
+            color: var(--cybernetic-blue);
+            margin-bottom: 10px;
+        }
+        
+        .timeline-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            color: var(--deep-space-black);
+        }
+        
+        .badge-primary {
+            background: var(--cybernetic-blue);
+        }
+        
+        .badge-secondary {
+            background: var(--neural-purple);
+        }
+        
+        .badge-tertiary {
+            background: var(--neon-green);
+        }
+        
+        /* Warranty Section */
+        .warranty-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .warranty-card {
+            background: rgba(74, 78, 87, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .warranty-card:nth-child(1) {
+            border-left-color: var(--cybernetic-blue);
+        }
+        
+        .warranty-card:nth-child(2) {
+            border-left-color: var(--neural-purple);
+        }
+        
+        .warranty-card:nth-child(3) {
+            border-left-color: var(--neon-green);
+        }
+        
+        .warranty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .warranty-card h3 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .warranty-card p {
+            margin-bottom: 1rem;
+        }
+        
+        .warranty-features {
+            margin-top: 1rem;
+        }
+        
+        .warranty-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .warranty-feature i {
+            color: var(--neon-green);
+            margin-right: 0.5rem;
+        }
+        
+        /* FAQ Accordion */
+        .faq-section {
+            margin-top: 3rem;
+        }
+        
+        .accordion {
+            margin-top: 2rem;
+        }
+        
+        .accordion-item {
+            border-bottom: 1px solid rgba(216, 222, 233, 0.1);
+            margin-bottom: 1rem;
+        }
+        
+        .accordion-header {
+            padding: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(74, 78, 87, 0.1);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-header:hover {
+            background: rgba(74, 78, 87, 0.2);
+        }
+        
+        .accordion-header h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .accordion-header i {
+            color: var(--cybernetic-blue);
+            transition: transform 0.3s ease;
+        }
+        
+        .accordion-item.active .accordion-header i {
+            transform: rotate(180deg);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(10, 14, 23, 0.5);
+            border-radius: 0 0 4px 4px;
+        }
+        
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+        
+        .accordion-body {
+            padding: 1rem;
+        }
+        
+        /* Call to action */
+        .cta-section {
+            margin: 4rem 0;
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(rgba(10, 14, 23, 0.8), rgba(10, 14, 23, 0.8)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+        }
+        
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .service-tabs {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .upgrade-timeline::before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+                right: auto;
+            }
+            
+            .left, .right {
+                left: 0%;
+                text-align: left;
+            }
+            
+            .left::after, .right::after {
+                left: 21px;
+            }
+            
+            .tier-tabs {
+                flex-direction: column;
+                border-bottom: none;
+            }
+            
+            .tier-tab {
+                border-bottom: 1px solid rgba(216, 222, 233, 0.2);
+                border-left: 3px solid transparent;
+            }
+            
+            .tier-tab.active {
+                border-bottom: 1px solid rgba(216, 222, 233, 0.2);
+                border-left: 3px solid var(--cybernetic-blue);
+            }
+            
+            .cta-section {
+                padding: 2rem 1rem;
+            }
+        }
+        
+        /* Swiper styles */
+        .swiper {
+            width: 100%;
+            margin-top: 2rem;
+        }
+        
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .swiper-slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 1.5rem;
+            background: linear-gradient(to top, rgba(10, 14, 23, 0.9), transparent);
+            color: var(--surgical-white);
+        }
+        
+        .swiper-pagination-bullet {
+            background: var(--titanium-silver);
+            opacity: 0.5;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: var(--cybernetic-blue);
+            opacity: 1;
+        }
+        
+        .swiper-button-next, .swiper-button-prev {
+            color: var(--cybernetic-blue);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-container">
+                <a href="index.html" class="navbar-brand">
+                    <i class="fas fa-microchip"></i> CYBERTECH
+                </a>
+                
+                <button class="hamburger">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <div class="nav-menu">
+                    <ul class="nav-links">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li class="dropdown">
+                            <a href="products.html">Products <i class="fas fa-chevron-down" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#neural">Neural Enhancements</a></li>
+                                <li><a href="#ocular">Ocular Systems</a></li>
+                                <li><a href="#limbs">Advanced Limbs</a></li>
+                                <li><a href="#core">Core Implants</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="inventory.html">Inventory</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-icons">
+                    <div class="nav-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="nav-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="nav-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-nav-overlay"></div>
+
+    <!-- Main content starts -->
+    <main>
+        <!-- Page Header -->
+        <section class="page-header" data-aos="fade-down">
+            <div class="container">
+                <h1>Premium Services</h1>
+                <p>Beyond technology - we offer comprehensive care for your cybernetic enhancements with precision installation, ongoing maintenance, strategic upgrades, and robust warranty coverage.</p>
+            </div>
+        </section>
+        
+        <!-- Service Tabs -->
+        <section class="container">
+            <div class="service-tabs" data-aos="fade-up">
+                <button class="tab-button active" data-tab="installation">Installation Services</button>
+                <button class="tab-button" data-tab="maintenance">Maintenance Programs</button>
+                <button class="tab-button" data-tab="upgrade">Upgrade Paths</button>
+                <button class="tab-button" data-tab="warranty">Warranty Information</button>
+            </div>
+            
+            <!-- Installation Services -->
+            <div class="service-content active" id="installation" data-aos="fade-up">
+                <h2 class="section-title">Installation Services</h2>
+                <p>Our certified technicians provide precise, safe installation of all cybernetic enhancements in state-of-the-art facilities.</p>
+                
+                <!-- Installation Services Slider -->
+                <div class="swiper installation-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" style="background-image: url('/api/placeholder/800/500')">
+                            <div class="swiper-slide-content">
+                                <h3>Neural Integration</h3>
+                                <p>Expert neural pathway mapping and precise interface installation for optimal cognitive enhancement compatibility.</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" style="background-image: url('/api/placeholder/800/500')">
+                            <div class="swiper-slide-content">
+                                <h3>Ocular Enhancement</h3>
+                                <p>Advanced precision ocular surgery with nervous system integration for enhanced visual capabilities.</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" style="background-image: url('/api/placeholder/800/500')">
+                            <div class="swiper-slide-content">
+                                <h3>Limb Replacement</h3>
+                                <p>Complete limb replacement with neural feedback systems and adaptive mobility training.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+                
+                <div class="service-grid" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('/api/placeholder/600/400')"></div>
+                        <div class="service-info">
+                            <h3>Standard Installation</h3>
+                            <p>Our entry-level service package for basic cybernetic enhancements.</p>
+                            <ul>
+                                <li>Pre-installation consultation</li>
+                                <li>Certified technician installation</li>
+                                <li>Basic neural calibration</li>
+                                <li>48-hour support</li>
+                            </ul>
+                            <div class="tech-mono" style="color: var(--neon-green)">FROM 2,500 CR</div>
+                            <div class="service-cta">
+                                <a href="#" class="btn">Schedule Consultation</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('/api/placeholder/600/400')"></div>
+                        <div class="service-info">
+                            <h3>Premium Installation</h3>
+                            <p>Enhanced service package for advanced cybernetic systems.</p>
+                            <ul>
+                                <li>Comprehensive pre-op assessment</li>
+                                <li>Elite technician team</li>
+                                <li>Advanced neural mapping</li>
+                                <li>2-week recovery support</li>
+                                <li>Custom calibration</li>
+                            </ul>
+                            <div class="tech-mono" style="color: var(--neon-green)">FROM 7,500 CR</div>
+                            <div class="service-cta">
+                                <a href="#" class="btn btn-primary">Schedule Consultation</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('/api/placeholder/600/400')"></div>
+                        <div class="service-info">
+                            <h3>Elite Installation</h3>
+                            <p>Our highest tier service for prototype and elite-level enhancements.</p>
+                            <ul>
+                                <li>Full biometric scanning</li>
+                                <li>Chief surgeon operation</li>
+                                <li>Premium recovery suite</li>
+                                <li>30-day support program</li>
+                                <li>Lifetime calibration sessions</li>
+                                <li>Personal recovery assistant</li>
+                            </ul>
+                            <div class="tech-mono" style="color: var(--neon-green)">FROM 15,000 CR</div>
+                            <div class="service-cta">
+                                <a href="#" class="btn">Schedule Consultation</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Maintenance Programs -->
+            <div class="service-content" id="maintenance">
+                <h2 class="section-title">Maintenance Programs</h2>
+                <p>Keep your cybernetic enhancements operating at peak efficiency with our comprehensive maintenance programs.</p>
+                
+                <div class="tier-tabs">
+                    <div class="tier-tab active" data-tier="basic">Basic Care</div>
+                    <div class="tier-tab" data-tier="advanced">Advanced Care</div>
+                    <div class="tier-tab" data-tier="premium">Premium Care</div>
+                </div>
+                
+                <div class="tier-content active" id="basic-tier">
+                    <div class="service-card" style="max-width: 800px; margin: 0 auto;" data-aos="fade-up">
+                        <div class="service-info">
+                            <h3>Basic Maintenance Plan</h3>
+                            <p>Essential maintenance for standard enhancements with annual check-ups and basic diagnostics.</p>
+                            
+                            <div class="maintenance-features">
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-sync-alt"></i>
+                                    </div>
+                                    <h4>Annual Diagnostics</h4>
+                                    <p>Complete system check and performance analysis</p>
+                                </div>
+                                
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-tools"></i>
+                                    </div>
+                                    <h4>Basic Calibration</h4>
+                                    <p>Standard adjustments to maintain functionality</p>
+                                </div>
+                                
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-headset"></i>
+                                    </div>
+                                    <h4>Tech Support</h4>
+                                    <p>Standard hours support via comm channel</p>
+                                </div>
+                            </div>
+                            
+                            <div class="tech-mono" style="color: var(--neon-green); text-align: center; margin-top: 2rem;">1,200 CR / YEAR</div>
+                            <div class="service-cta">
+                                <a href="#" class="btn btn-primary">Subscribe Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tier-content" id="advanced-tier">
+                    <div class="service-card" style="max-width: 800px; margin: 0 auto;" data-aos="fade-up">
+                        <div class="service-info">
+                            <h3>Advanced Maintenance Plan</h3>
+                            <p>Enhanced care for mid-tier enhancements with semi-annual check-ups and performance optimization.</p>
+                            
+                            <div class="maintenance-features">
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-sync-alt"></i>
+                                    </div>
+                                    <h4>Semi-Annual Diagnostics</h4>
+                                    <p>Complete system check and performance analysis twice yearly</p>
+                                </div>
+                                
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-tools"></i>
+                                    </div>
+                                    <h4>Enhanced Calibration</h4>
+                                    <p>Advanced adjustments for optimal performance</p>
+                                </div>
+                                
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-headset"></i>
+                                    </div>
+                                    <h4>Priority Support</h4>
+                                    <p>Extended hours support with faster response times</p>
+                                </div>
+                                
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-bolt"></i>
+                                    </div>
+                                    <h4>Performance Optimization</h4>
+                                    <p>Fine-tuning for enhanced response and efficiency</p>
+                                </div>
+                            </div>
+                            
+                            <div class="tech-mono" style="color: var(--neon-green); text-align: center; margin-top: 2rem;">3,600 CR / YEAR</div>
+                            <div class="service-cta">
+                                <a href="#" class="btn btn-primary">Subscribe Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tier-content" id="premium-tier">
+                    <div class="service-card" style="max-width: 800px; margin: 0 auto;">
+                        <div class="service-info">
+                            <h3>Premium Maintenance Plan</h3>
+                            <p>Comprehensive care for elite-level enhancements with quarterly check-ups and emergency service.</p>
+                            
+                            <div class="maintenance-features">
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-sync-alt"></i>
+                                    </div>
+                                    <h4>Quarterly Diagnostics</h4>
+                                    <p>Comprehensive system analysis every three months</p>
+                                </div>
+                                
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-tools"></i>
+                                    </div>
+                                    <h4>Elite Calibration</h4>
+                                    <p>Precision adjustments by senior technicians</p>
+                                </div>
+                                
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-headset"></i>
+                                    </div>
+                                    <h4>24/7 VIP Support</h4>
+                                    <p>Round-the-clock dedicated support team</p>
+                                </div>
+                                
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-bolt"></i>
+                                    </div>
+                                    <h4>Elite Performance Tuning</h4>
+                                    <p>Custom optimization for your unique usage patterns</p>
+                                </div>
+                                
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-ambulance"></i>
+                                    </div>
+                                    <h4>Emergency Service</h4>
+                                    <p>Rapid response for critical malfunctions</p>
+                                </div>
+                                
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <h4>Priority Parts</h4>
+                                    <p>Guaranteed access to replacement components</p>
+                                </div>
+                            </div>
+                            
+                            <div class="tech-mono" style="color: var(--neon-green); text-align: center; margin-top: 2rem;">8,400 CR / YEAR</div>
+                            <div class="service-cta">
+                                <a href="#" class="btn btn-primary">Subscribe Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Upgrade Paths -->
+            <div class="service-content" id="upgrade">
+                <h2 class="section-title">Upgrade Paths</h2>
+                <p>Strategic enhancement evolution designed to keep you at the cutting edge of cybernetic technology.</p>
+                
+                <div class="upgrade-timeline">
+                    <div class="timeline-item left" data-aos="fade-right">
+                        <div class="timeline-content">
+                            <span class="timeline-badge badge-primary">ENTRY LEVEL</span>
+                            <h3>Basic Enhancement Installation</h3>
+                            <p>Begin your journey with foundational cybernetic enhancements that establish the neural interface framework.</p>
+                            <ul class="service-info">
+                                <li>Neural compatibility mapping</li>
+                                <li>Base-level enhancement installation</li>
+                                <li>Initial system calibration</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item right" data-aos="fade-left">
+                        <div class="timeline-content">
+                            <span class="timeline-badge badge-secondary">3-6 MONTHS</span>
+                            <h3>Neural Adaptation Phase</h3>
+                            <p>As your biological systems adapt to enhancements, we optimize neural pathways and fine-tune response patterns.</p>
+                            <ul class="service-info">
+                                <li>Neural pathway stabilization</li>
+                                <li>Response time optimization</li>
+                                <li>Comfort adjustment sessions</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item left" data-aos="fade-right">
+                        <div class="timeline-content">
+                            <span class="timeline-badge badge-tertiary">12 MONTHS</span>
+                            <h3>First-Tier Upgrades</h3>
+                            <p>Once fully adapted, we can implement significant performance enhancements to your existing systems.</p>
+                            <ul class="service-info">
+                                <li>Processing power increase</li>
+                                <li>Range extension modifications</li>
+                                <li>Energy efficiency improvements</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item right" data-aos="fade-left">
+                        <div class="timeline-content">
+                            <span class="timeline-badge badge-primary">18-24 MONTHS</span>
+                            <h3>Compatibility Expansion</h3>
+                            <p>Broaden your enhancement ecosystem with additional compatible systems that work synergistically.</p>
+                            <ul class="service-info">
+                                <li>Cross-system integration</li>
+                                <li>Complementary enhancement addition</li>
+                                <li>Synergy optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item left" data-aos="fade-right">
+                        <div class="timeline-content">
+                            <span class="timeline-badge badge-secondary">36 MONTHS</span>
+                            <h3>Generation Leap</h3>
+                            <p>Transition to next-generation technology with comprehensive system replacement and significant capability expansion.</p>
+                            <ul class="service-info">
+                                <li>Complete system replacement</li>
+                                <li>Next-gen neural interface</li>
+                                <li>Advanced capabilities unlocked</li>
+                                <li>Legacy data migration</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item right" data-aos="fade-left">
+                        <div class="timeline-content">
+                            <span class="timeline-badge badge-tertiary">ONGOING</span>
+                            <h3>Specialized Customization</h3>
+                            <p>Continuous refinement with tailor-made enhancements designed specifically for your unique usage patterns.</p>
+                            <ul class="service-info">
+                                <li>Usage analysis and optimization</li>
+                                <li>Custom module development</li>
+                                <li>Personalized interface adjustments</li>
+                                <li>Elite-tier capabilities</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#" class="btn btn-primary">Schedule Upgrade Consultation</a>
+                </div>
+            </div>
+            
+            <!-- Warranty Information -->
+            <div class="service-content" id="warranty">
+                <h2 class="section-title">Warranty Information</h2>
+                <p>We stand behind our cybernetic enhancement technology with comprehensive protection plans.</p>
+                
+                <div class="warranty-cards" data-aos="fade-up">
+                    <div class="warranty-card">
+                        <h3><i class="fas fa-shield-alt"></i> Standard Warranty</h3>
+                        <p>Basic protection for all cybernetic enhancements covering manufacturing defects and calibration.</p>
+                        <div class="tech-mono">DURATION: 2 YEARS</div>
+                        <div class="warranty-features">
+                            <div class="warranty-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Manufacturing defects</span>
+                            </div>
+                            <div class="warranty-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Basic system failures</span>
+                            </div>
+                            <div class="warranty-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Calibration adjustments</span>
+                            </div>
+                            <div class="warranty-feature">
+                                <i class="fas fa-times" style="color: var(--hydraulic-red);"></i>
+                                <span>User damage</span>
+                            </div>
+                            <div class="warranty-feature">
+                                <i class="fas fa-times" style="color: var(--hydraulic-red);"></i>
+                                <span>Unauthorized modifications</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="warranty-card">
+                        <h3><i class="fas fa-shield-alt"></i> Enhanced Warranty</h3>
+                        <p>Extended protection including performance issues and limited accident coverage.</p>
+                        <div class="tech-mono">DURATION: 5 YEARS</div>
+                        <div class="warranty-features">
+                            <div class="warranty-feature">
+                                <i class="fas fa-check"></i>
+                                <span>All Standard Warranty coverage</span>
+                            </div>
+                            <div class="warranty-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Performance degradation</span>
+                            </div>
+                            <div class="warranty-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Limited accident protection</span>
+                            </div>
+                            <div class="warranty-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Priority repair service</span>
+                            </div>
+                            <div class="warranty-feature">
+                                <i class="fas fa-times" style="color: var(--hydraulic-red);"></i>
+                                <span>Extreme environmental damage</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="warranty-card">
+                        <h3><i class="fas fa-shield-alt"></i> Lifetime Warranty</h3>
+                        <p>Complete protection for the lifetime of your enhancement, including accidental damage.</p>
+                        <div class="tech-mono">DURATION: LIFETIME</div>
+                        <div class="warranty-features">
+                            <div class="warranty-feature">
+                                <i class="fas fa-check"></i>
+                                <span>All Enhanced Warranty coverage</span>
+                            </div>
+                            <div class="warranty-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Full accident protection</span>
+                            </div>
+                            <div class="warranty-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Emergency replacement service</span>
+                            </div>
+                            <div class="warranty-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Annual technology assessment</span>
+                            </div>
+                            <div class="warranty-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Discounted upgrades</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Accordion -->
+                <div class="faq-section" data-aos="fade-up">
+                    <h3>Frequently Asked Questions</h3>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <h3>What voids my warranty?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Your warranty becomes void if unauthorized technicians perform modifications, if you use non-approved components, or if damage occurs from improper use such as exposure to incompatible electromagnetic fields or extreme environments. Self-repair attempts will also void warranty protection.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <h3>How do I file a warranty claim?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Contact our service center through your neural interface's emergency protocol, visit any certified clinic location, or use our secure comms channel. Our technicians will perform a remote diagnostic, and if necessary, schedule an immediate service appointment. All warranty claims require verification of your enhancement's registration code.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <h3>Can I upgrade my warranty after purchase?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Yes, warranty upgrades are available within the first 90 days after installation. After this period, we require a full diagnostic exam (priced at 500 CR) to verify system condition before allowing warranty upgrades. Lifetime warranty upgrades are only available for enhancements less than 18 months old.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <h3>Are software malfunctions covered?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>All firmware and system software issues are covered under every warranty tier. However, third-party applications and neural plugins are not covered unless they were installed by our certified technicians and are on our approved compatibility list. We provide quarterly security and stability updates regardless of warranty status.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Call to Action -->
+        <section class="container" data-aos="fade-up">
+            <div class="cta-section">
+                <h2>Ready to Enhance Your Cybernetic Experience?</h2>
+                <p>Our expert technicians are standing by to answer your questions and help you select the perfect service plan for your enhancement needs.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary">Schedule Consultation</a>
+                    <a href="#" class="btn">Contact Support</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer pt-16 pb-6">
+        <!-- Circuit overlay -->
+        <div class="circuit-overlay"></div>
+        
+        <!-- Main footer content -->
+        <div class="footer-container container mx-auto px-4">
+            <!-- Top footer section with logo and main content -->
+            <div class="footer-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+                <!-- Company Info Column -->
+                <div class="footer-col">
+                    <div class="mb-4">
+                        <h2 class="text-3xl font-bold mb-2 animated-text" style="font-family: 'Audiowide', cursive;">CYBORG</h2>
+                        <p class="text-sm tracking-wide" style="font-family: 'JetBrains Mono', monospace;">HUMAN POTENTIAL · ENHANCED</p>
+                    </div>
+                    <p class="text-sm mb-6">Revolutionizing human capabilities through cutting-edge cybernetic enhancements. Build your future, enhance your potential.</p>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="social-icon h-10 w-10 flex items-center justify-center hover:text-deep-space-black">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon h-10 w-10 flex items-center justify-center hover:text-deep-space-black">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon h-10 w-10 flex items-center justify-center hover:text-deep-space-black">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-icon h-10 w-10 flex items-center justify-center hover:text-deep-space-black">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="pulsing-dot"></span>
+                        <span class="text-sm text-cybernetic-blue">All systems operational</span>
+                    </div>
+                </div>
+                
+                <!-- Quick Links Column -->
+                <div class="footer-col">
+                    <h3 class="footer-heading text-lg font-semibold mb-6">Navigation</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Home</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>About Us</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Products</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Services</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Contact</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Inventory</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Column -->
+                <div class="footer-col">
+                    <h3 class="footer-heading text-lg font-semibold mb-6">Connect With Us</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-cybernetic-blue mt-1 mr-3"></i>
+                            <span>Neo-Tokyo Research Complex<br>Building 42, Sector 7<br>Tokyo, Japan</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-cybernetic-blue mr-3"></i>
+                            <span>+81 3-1234-5678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-cybernetic-blue mr-3"></i>
+                            <span>enhancements@cyborg.tech</span>
+                        </li>
+                        <li class="mt-4">
+                            <a href="#" class="cybernetic-border inline-block px-4 py-2 text-sm">
+                                <i class="fas fa-calendar-check mr-2"></i>Schedule Consultation
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Newsletter Column -->
+                <div class="footer-col">
+                    <h3 class="footer-heading text-lg font-semibold mb-6">Enhancement Updates</h3>
+                    <p class="mb-4 text-sm">Stay informed about the latest cybernetic innovations and exclusive offers.</p>
+                    <form class="mb-4">
+                        <div class="flex flex-col space-y-3">
+                            <input type="email" placeholder="Enter your email" class="newsletter-input px-4 py-3 rounded text-sm w-full" required>
+                            <button type="submit" class="subscribe-btn px-4 py-3 rounded text-sm font-medium text-surgical-white">
+                                SUBSCRIBE <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <div class="text-xs">
+                        <div class="flex items-center mb-1">
+                            <i class="fas fa-shield-alt text-neon-green mr-2"></i>
+                            <span>Encrypted transmission</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-lock text-neon-green mr-2"></i>
+                            <span>We respect your privacy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Divider -->
+            <div class="cybernetic-divider my-6"></div>
+            
+            <!-- Secondary links section -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div>
+                    <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Support</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="footer-link">FAQs</a></li>
+                        <li><a href="#" class="footer-link">Help Center</a></li>
+                        <li><a href="#" class="footer-link">Maintenance</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="footer-link">Terms of Service</a></li>
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">Warranty</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Resources</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                        <li><a href="#" class="footer-link">Research Papers</a></li>
+                        <li><a href="#" class="footer-link">Case Studies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Partners</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="footer-link">Medical Institutions</a></li>
+                        <li><a href="#" class="footer-link">Tech Companies</a></li>
+                        <li><a href="#" class="footer-link">Become a Partner</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom footer with copyright, language, payment -->
+            <div class="footer-bottom flex flex-col md:flex-row justify-between items-center py-4 text-sm">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2025 Cyborg Enhancement Tech. All rights reserved.</p>
+                </div>
+                
+                <div class="flex space-x-6 items-center mb-4 md:mb-0">
+                    <div class="language-selector flex items-center">
+                        <i class="fas fa-globe mr-2 text-cybernetic-blue"></i>
+                        <span>English</span>
+                        <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                        
+                        <div class="language-options">
+                            <ul class="space-y-2">
+                                <li><a href="#" class="footer-link">English</a></li>
+                                <li><a href="#" class="footer-link">日本語</a></li>
+                                <li><a href="#" class="footer-link">Español</a></li>
+                                <li><a href="#" class="footer-link">Français</a></li>
+                                <li><a href="#" class="footer-link">Deutsch</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="footer-link flex items-center">
+                        <i class="fas fa-headset mr-2"></i>
+                        <span>24/7 Support</span>
+                    </a>
+                </div>
+                
+                <div class="payment-methods">
+                    <span class="mr-2 text-xs">SECURE PAYMENT</span>
+                    <div class="flex space-x-2">
+                        <i class="fab fa-cc-visa text-xl"></i>
+                        <i class="fab fa-cc-mastercard text-xl"></i>
+                        <i class="fab fa-cc-amex text-xl"></i>
+                        <i class="fab fa-bitcoin text-xl"></i>
+                        <i class="fab fa-ethereum text-xl"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tech certification badges -->
+            <div class="flex flex-wrap justify-center gap-4 my-6">
+                <div class="cybernetic-border px-3 py-2 flex items-center text-xs">
+                    <i class="fas fa-medal text-neon-green mr-2"></i>
+                    <span>ISO 9001 Certified</span>
+                </div>
+                <div class="cybernetic-border px-3 py-2 flex items-center text-xs">
+                    <i class="fas fa-shield-alt text-neon-green mr-2"></i>
+                    <span>Medical Grade Security</span>
+                </div>
+                <div class="cybernetic-border px-3 py-2 flex items-center text-xs">
+                    <i class="fas fa-robot text-neon-green mr-2"></i>
+                    <span>Advanced AI Support</span>
+                </div>
+                <div class="cybernetic-border px-3 py-2 flex items-center text-xs">
+                    <i class="fas fa-leaf text-neon-green mr-2"></i>
+                    <span>Carbon Neutral Tech</span>
+                </div>
+            </div>
+            
+            <!-- Back to top button -->
+            <div class="flex justify-center mt-6">
+                <button id="backToTop" class="back-to-top rounded-full h-12 w-12 flex items-center justify-center">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.3.2/swiper-bundle.min.js"></script>
+    <script src="navbar.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+        
+        // Service Tabs
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const serviceContents = document.querySelectorAll('.service-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Hide all service content
+                serviceContents.forEach(content => content.classList.remove('active'));
+                
+                // Show corresponding content
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Maintenance Tier Tabs
+        const tierTabs = document.querySelectorAll('.tier-tab');
+        const tierContents = document.querySelectorAll('.tier-content');
+        
+        tierTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                tierTabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all tier content
+                tierContents.forEach(content => content.classList.remove('active'));
+                
+                // Show corresponding content
+                const tierId = tab.getAttribute('data-tier') + '-tier';
+                document.getElementById(tierId).classList.add('active');
+            });
+        });
+        
+        // FAQ Accordion
+        const accordionItems = document.querySelectorAll('.accordion-item');
+        
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            const content = item.querySelector('.accordion-content');
+            
+            header.addEventListener('click', () => {
+                // Toggle active class
+                item.classList.toggle('active');
+                
+                // If item is active, set max-height to content's scroll height
+                if (item.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = '0';
+                }
+            });
+        });
+        
+        // Initialize Swiper
+        const installationSwiper = new Swiper('.installation-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+        });
+        
+        // Cyberpunk hover effect for buttons
+        const buttons = document.querySelectorAll('.btn, .tab-button');
+        
+        buttons.forEach(button => {
+            button.addEventListener('mouseover', () => {
+                button.style.transition = 'all 0.3s ease';
+                button.style.boxShadow = '0 0 15px rgba(0, 194, 255, 0.7)';
+            });
+            
+            button.addEventListener('mouseout', () => {
+                button.style.boxShadow = 'none';
+            });
+        });
+        
+        // Service card hover effects
+        const serviceCards = document.querySelectorAll('.service-card');
+        
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseover', () => {
+                card.style.transform = 'translateY(-10px)';
+                card.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 194, 255, 0.3)';
+                
+                // Add a subtle glow to heading
+                const heading = card.querySelector('h3');
+                if (heading) {
+                    heading.style.textShadow = '0 0 10px rgba(0, 194, 255, 0.5)';
+                }
+            });
+            
+            card.addEventListener('mouseout', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = 'none';
+                
+                const heading = card.querySelector('h3');
+                if (heading) {
+                    heading.style.textShadow = 'none';
+                }
+            });
+        });
+        
+        // Add parallax effect to CTA background
+        const ctaSection = document.querySelector('.cta-section');
+        
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.pageYOffset;
+            const ctaPosition = ctaSection.offsetTop;
+            const windowHeight = window.innerHeight;
+            
+            if (scrollPosition + windowHeight > ctaPosition) {
+                const yPos = (scrollPosition + windowHeight - ctaPosition) * 0.2;
+                ctaSection.style.backgroundPosition = `center -${yPos}px`;
+            }
+        });
+        
+        // Initialize data count animation
+        const animateValue = (obj, start, end, duration) => {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.textContent = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        };
+        
+        // Custom cursor for cyberpunk feel (only on desktop)
+        if (window.innerWidth > 768) {
+            const cursor = document.createElement('div');
+            cursor.classList.add('custom-cursor');
+            cursor.style.position = 'fixed';
+            cursor.style.width = '20px';
+            cursor.style.height = '20px';
+            cursor.style.borderRadius = '50%';
+            cursor.style.border = '2px solid var(--cybernetic-blue)';
+            cursor.style.pointerEvents = 'none';
+            cursor.style.zIndex = '9999';
+            cursor.style.transform = 'translate(-50%, -50%)';
+            document.body.appendChild(cursor);
+            
+            const cursorDot = document.createElement('div');
+            cursorDot.classList.add('cursor-dot');
+            cursorDot.style.position = 'fixed';
+            cursorDot.style.width = '4px';
+            cursorDot.style.height = '4px';
+            cursorDot.style.borderRadius = '50%';
+            cursorDot.style.backgroundColor = 'var(--neon-green)';
+            cursorDot.style.pointerEvents = 'none';
+            cursorDot.style.zIndex = '9999';
+            cursorDot.style.transform = 'translate(-50%, -50%)';
+            document.body.appendChild(cursorDot);
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                // Add delay to dot for cool effect
+                setTimeout(() => {
+                    cursorDot.style.left = e.clientX + 'px';
+                    cursorDot.style.top = e.clientY + 'px';
+                }, 50);
+            });
+            
+            // Cursor effects on interactive elements
+            const interactiveElements = document.querySelectorAll('button, a, .accordion-header, .service-card');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                    cursor.style.borderColor = 'var(--neon-green)';
+                    cursorDot.style.backgroundColor = 'var(--neon-green)';
+                    cursorDot.style.transform = 'translate(-50%, -50%) scale(2)';
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                    cursor.style.borderColor = 'var(--cybernetic-blue)';
+                    cursorDot.style.backgroundColor = 'var(--neon-green)';
+                    cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>

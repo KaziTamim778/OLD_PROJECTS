@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERTECH - Premium Cybernetic Enhancements</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Titillium+Web:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&family=Audiowide&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <!-- AOS library for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+    --deep-space: #0A0E17;
+    --cybernetic-blue: #00C2FF;
+    --titanium-silver: #D8DEE9;
+    --neon-green: #39FF14;
+    --neural-purple: #BF5AF2;
+    --surgical-white: #F8F9FC;
+    --hydraulic-red: #FF3B30;
+    --alloy-gray: #4A4E57;
+    
+    --header-height: 70px;
+    --border-radius: 8px;
+    --section-padding: 5rem 2rem;
+    --transition-speed: 0.3s;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Titillium Web', sans-serif;
+    background-color: var(--deep-space);
+    color: var(--titanium-silver);
+    overflow-x: hidden;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    color: var(--surgical-white);
+    line-height: 1.3;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition-speed) ease;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all var(--transition-speed) ease;
+    cursor: pointer;
+    border: none;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background-color: var(--cybernetic-blue);
+    color: var(--deep-space);
+}
+
+.btn-primary:hover {
+    background-color: var(--neon-green);
+}
+
+.btn-secondary {
+    background-color: var(--neural-purple);
+    color: var(--surgical-white);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(191, 90, 242, 0.8);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--cybernetic-blue);
+    color: var(--cybernetic-blue);
+}
+
+.btn-outline:hover {
+    background-color: var(--cybernetic-blue);
+    color: var(--deep-space);
+}
+
+.btn-outline-light {
+    background-color: transparent;
+    border: 1px solid var(--surgical-white);
+    color: var(--surgical-white);
+}
+
+.btn-outline-light:hover {
+    background-color: var(--surgical-white);
+    color: var(--deep-space);
+}
+
+.btn-outline-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+}
+
+/* Hexagonal Grid Background */
+.hexagon-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+/* Header Styles */
+header {
+    background-color: rgba(10, 14, 23, 0.95);
+    border-bottom: 1px solid var(--cybernetic-blue);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    z-index: 100;
+    box-shadow: 0 0 15px rgba(0, 194, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-text {
+    font-family: 'Audiowide', cursive;
+    font-size: 1.8rem;
+    background: linear-gradient(90deg, var(--cybernetic-blue), var(--neural-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 2rem;
+}
+
+.main-nav a {
+    color: var(--titanium-silver);
+    font-weight: 600;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--cybernetic-blue);
+    transition: width var(--transition-speed) ease;
+}
+
+.main-nav a:hover, .main-nav a.active {
+    color: var(--surgical-white);
+}
+
+.main-nav a:hover::after, .main-nav a.active::after {
+    width: 100%;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.search-bar {
+    position: relative;
+    width: 300px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 0.6rem 1rem 0.6rem 2.5rem;
+    background-color: rgba(74, 78, 87, 0.3);
+    border: 1px solid var(--alloy-gray);
+    border-radius: 20px;
+    color: var(--surgical-white);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+}
+
+.search-bar i {
+    position: absolute;
+    left: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--cybernetic-blue);
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: var(--titanium-silver);
+    font-size: 1.2rem;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--neon-green);
+    color: var(--deep-space);
+    font-size: 0.7rem;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Mobile Navigation */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--cybernetic-blue);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.mobile-nav {
+    position: fixed;
+    top: var(--header-height);
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    background-color: rgba(10, 14, 23, 0.95);
+    z-index: 99;
+    transition: left var(--transition-speed) ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: none;
+}
+
+.mobile-nav.active {
+    left: 0;
+}
+
+.mobile-nav ul {
+    padding: 2rem;
+}
+
+.mobile-nav a {
+    display: block;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgba(0, 194, 255, 0.1);
+    font-weight: 600;
+}
+
+.mobile-nav a.active {
+    color: var(--cybernetic-blue);
+}
+
+/* Tooltip */
+.tooltip {
+    position: relative;
+}
+
+.tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--deep-space);
+    color: var(--surgical-white);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--cybernetic-blue);
+}
+
+/* Main Content Styles */
+main {
+    margin-top: var(--header-height);
+    padding-top: 2rem;
+}
+
+section {
+    padding: var(--section-padding);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--cybernetic-blue), var(--neural-purple));
+}
+
+.section-header p {
+    color: var(--titanium-silver);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Hero Section */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    min-height: calc(100vh - var(--header-height));
+    align-items: center;
+    padding-top: calc(var(--header-height) + 2rem);
+}
+
+.hero-content {
+    padding-right: 2rem;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, var(--cybernetic-blue), var(--neural-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    color: var(--titanium-silver);
+    max-width: 600px;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.hero-image {
+    position: relative;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(74, 78, 87, 0.1);
+    border-radius: var(--border-radius);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.placeholder-text {
+    font-family: 'Orbitron', sans-serif;
+    color: rgba(0, 194, 255, 0.3);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+.tech-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid var(--cybernetic-blue);
+    opacity: 0.3;
+    animation: pulse 3s infinite;
+}
+
+.tech-circle:nth-child(2) {
+    width: 200px;
+    height: 200px;
+    animation-delay: 0s;
+}
+
+.tech-circle:nth-child(3) {
+    width: 300px;
+    height: 300px;
+    animation-delay: 0.5s;
+}
+
+.tech-circle:nth-child(4) {
+    width: 400px;
+    height: 400px;
+    animation-delay: 1s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(0.8);
+        opacity: 0.3;
+    }
+}
+
+/* Featured Products */
+.featured-products {
+    background-color: rgba(10, 14, 23, 0.5);
+}
+
+.product-carousel {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    background-color: rgba(74, 78, 87, 0.2);
+    border: 1px solid rgba(74, 78, 87, 0.5);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 194, 255, 0.2);
+    border-color: var(--cybernetic-blue);
+}
+
+.product-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: var(--neural-purple);
+    color: var(--surgical-white);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.product-image {
+    height: 250px;
+    background-color: rgba(10, 14, 23, 0.6);
+    position: relative;
+}
+
+.product-image .image-placeholder {
+    background-color: transparent;
+}
+
+.product-image .image-placeholder i {
+    font-size: 4rem;
+    color: rgba(0, 194, 255, 0.3);
+}
+
+.product-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--cybernetic-blue);
+}
+
+.product-info p {
+    color: var(--titanium-silver);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.product-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.product-category {
+    background-color: rgba(0, 194, 255, 0.1);
+    color: var(--cybernetic-blue);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.product-price {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--surgical-white);
+}
+
+/* Value Proposition */
+.value-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.value-card {
+    background-color: rgba(74, 78, 87, 0.1);
+    border: 1px solid rgba(74, 78, 87, 0.3);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    transition: all var(--transition-speed) ease;
+    text-align: center;
+}
+
+.value-card:hover {
+    background-color: rgba(74, 78, 87, 0.2);
+    border-color: var(--cybernetic-blue);
+    transform: translateY(-5px);
+}
+
+.value-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: rgba(0, 194, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cybernetic-blue);
+    font-size: 2rem;
+}
+
+.value-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+/* Testimonials */
+.testimonials {
+    background-color: rgba(10, 14, 23, 0.5);
+}
+
+.testimonial-slider {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.testimonial-slide {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    background-color: rgba(74, 78, 87, 0.1);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.testimonial-image {
+    height: 100%;
+    min-height: 300px;
+    position: relative;
+}
+
+.before-after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background: linear-gradient(90deg, rgba(10, 14, 23, 0.8), transparent, rgba(10, 14, 23, 0.8));
+}
+
+.before-after span {
+    background-color: rgba(10, 14, 23, 0.8);
+    color: var(--cybernetic-blue);
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--border-radius);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.testimonial-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.testimonial-quote {
+    position: relative;
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-quote i {
+    color: var(--cybernetic-blue);
+    opacity: 0.3;
+    font-size: 1.5rem;
+    position: absolute;
+}
+
+.testimonial-quote i:first-child {
+    top: 0;
+    left: 0;
+}
+
+.testimonial-quote i:last-child {
+    bottom: 0;
+    right: 0;
+}
+
+.testimonial-quote p {
+    font-size: 1.1rem;
+    padding: 0 2rem;
+}
+
+.testimonial-author h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+}
+
+.testimonial-author p {
+    color: var(--cybernetic-blue);
+    font-size: 0.9rem;
+}
+
+.testimonial-rating {
+    margin-top: 1rem;
+    color: var(--neon-green);
+}
+
+/* Call to Action */
+.cta {
+    background: linear-gradient(135deg, var(--cybernetic-blue), var(--neural-purple));
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    margin: 5rem 2rem;
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--deep-space);
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: rgba(10, 14, 23, 0.8);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Footer Styles */
+.footer-footer {
+    background-color: var(--deep-space);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Circuit board pattern overlay */
+.footer-circuit-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%232A3544' stroke-width='1'%3E%3Cpath d='M10,10 L90,10 M10,25 L90,25 M10,40 L90,40 M10,55 L90,55 M10,70 L90,70 M10,85 L90,85 M10,10 L10,90 M25,10 L25,90 M40,10 L40,90 M55,10 L55,90 M70,10 L70,90 M85,10 L85,90'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Ccircle cx='25' cy='25' r='2'/%3E%3Ccircle cx='40' cy='40' r='2'/%3E%3Ccircle cx='55' cy='55' r='2'/%3E%3Ccircle cx='70' cy='70' r='2'/%3E%3Ccircle cx='85' cy='85' r='2'/%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.1;
+    z-index: -1;
+}
+
+.footer-container {
+    position: relative;
+    z-index: 2;
+}
+
+.footer-heading {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--cybernetic-blue);
+    position: relative;
+    display: inline-block;
+}
+
+.footer-heading::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cybernetic-blue), var(--neural-purple));
+}
+
+.footer-cybernetic-border {
+    border: 1px solid var(--cybernetic-blue);
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 194, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.footer-cybernetic-border:hover {
+    box-shadow: 0 0 15px rgba(0, 194, 255, 0.5);
+}
+
+.footer-link {
+    color: var(--titanium-silver);
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-link::before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--cybernetic-blue);
+    transition: width 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--cybernetic-blue);
+}
+
+.footer-link:hover::before {
+    width: 100%;
+}
+
+.footer-social-icon {
+    color: var(--titanium-silver);
+    border: 1px solid var(--alloy-gray);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.footer-social-icon:hover {
+    color: var(--deep-space);
+    background: var(--cybernetic-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 194, 255, 0.5);
+}
+
+.footer-newsletter-input {
+    background-color: rgba(74, 78, 87, 0.3);
+    border: 1px solid var(--alloy-gray);
+    color: var(--surgical-white);
+    font-family: 'JetBrains Mono', monospace;
+    transition: all 0.3s ease;
+}
+
+.footer-newsletter-input:focus {
+    border-color: var(--cybernetic-blue);
+    box-shadow: 0 0 0 2px rgba(0, 194, 255, 0.2);
+    outline: none;
+}
+
+.footer-subscribe-btn {
+    background: linear-gradient(90deg, var(--cybernetic-blue), var(--neural-purple));
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.footer-subscribe-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--neural-purple), var(--cybernetic-blue));
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.footer-subscribe-btn:hover::before {
+    left: 0;
+}
+
+.footer-cybernetic-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cybernetic-blue), transparent);
+}
+
+.footer-pulsing-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--cybernetic-blue);
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse 2s infinite;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.footer-animated-text {
+    background: linear-gradient(90deg, var(--cybernetic-blue), var(--neural-purple), var(--neon-green));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: textShine 3s linear infinite;
+}
+
+.footer-back-to-top {
+    background-color: rgba(10, 14, 23, 0.8);
+    border: 1px solid var(--cybernetic-blue);
+    color: var(--cybernetic-blue);
+    transition: all 0.3s ease;
+}
+
+.footer-back-to-top:hover {
+    background-color: var(--cybernetic-blue);
+    color: var(--deep-space);
+}
+
+.footer-language-selector {
+    cursor: pointer;
+    position: relative;
+}
+
+.footer-language-options {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background-color: var(--deep-space);
+    border: 1px solid var(--alloy-gray);
+    border-radius: 4px;
+    padding: 10px;
+    min-width: 150px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.footer-language-selector:hover .footer-language-options {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 194, 255, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(0, 194, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 194, 255, 0);
+    }
+}
+
+@keyframes textShine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--deep-space);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--alloy-gray);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--cybernetic-blue);
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    :root {
+        --section-padding: 4rem 2rem;
+    }
+    
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .hero-content {
+        padding-right: 0;
+    }
+    
+    .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-btns {
+        justify-content: center;
+    }
+    
+    .main-nav {
+        display: none;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .mobile-nav {
+        display: block;
+    }
+    
+    .testimonial-slide {
+        grid-template-columns: 1fr;
+    }
+    
+    .testimonial-image {
+        min-height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 3rem 1.5rem;
+    }
+    
+    header {
+        padding: 0 1.5rem;
+    }
+    
+    .search-bar {
+        display: none;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .cta {
+        padding: 2rem;
+        margin: 3rem 1.5rem;
+    }
+    
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .footer-legal {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo-text {
+        font-size: 1.4rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .value-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-carousel {
+        grid-template-columns: 1fr;
+    }
+} 
+    </style>
+</head>
+<body>
+    <!-- Hexagonal Grid Background SVG -->
+    <svg class="hexagon-background" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <pattern id="hexagons" width="50" height="43.4" patternUnits="userSpaceOnUse" patternTransform="scale(5)">
+            <path d="M0,21.7 L12.5,0 L37.5,0 L50,21.7 L37.5,43.4 L12.5,43.4 Z" stroke="#00C2FF" stroke-width="0.5" fill="none"/>
+        </pattern>
+        <rect width="100%" height="100%" fill="url(#hexagons)"/>
+    </svg>
+
+    <!-- Header -->
+    <header>
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="logo">
+            <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" stroke="#00C2FF" stroke-width="2"/>
+                <path d="M50 5 L50 95" stroke="#00C2FF" stroke-width="2"/>
+                <path d="M5 50 L95 50" stroke="#00C2FF" stroke-width="2"/>
+                <circle cx="50" cy="50" r="20" fill="none" stroke="#00C2FF" stroke-width="2"/>
+                <path d="M35 50 C35 42.5 42.5 35 50 35" stroke="#BF5AF2" stroke-width="2"/>
+                <path d="M50 65 C42.5 65 35 57.5 35 50" stroke="#BF5AF2" stroke-width="2"/>
+                <path d="M65 50 C65 57.5 57.5 65 50 65" stroke="#BF5AF2" stroke-width="2"/>
+                <path d="M50 35 C57.5 35 65 42.5 65 50" stroke="#BF5AF2" stroke-width="2"/>
+            </svg>
+            <a href="index.html" class="logo-text">CYBERTECH</a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="inventory.html">Inventory</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search enhancements...">
+            </div>
+            <a href="#" class="action-btn tooltip" data-tooltip="Wishlist">
+                <i class="fas fa-heart"></i>
+            </a>
+            <a href="cart.html" class="action-btn tooltip" data-tooltip="Your Cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">3</span>
+            </a>
+            <a href="https://www.facebook.com/kazi.tamim.2717" class="action-btn tooltip" data-tooltip="User Account">
+                <i class="fas fa-user-circle"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-right">
+            <h1>Elevate Human Potential</h1>
+            <p>Premium cyborg enhancements designed to transform your capabilities beyond natural limits.</p>
+            <div class="hero-btns">
+                <a href="products.html" class="btn btn-primary">
+                    <span>Explore Products</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="contact.html" class="btn btn-secondary">
+                    <span>Schedule Consultation</span>
+                    <i class="fas fa-calendar-check"></i>
+                </a>
+            </div>
+        </div>
+        <div class="hero-image" data-aos="fade-left">
+            <div class="image-placeholder">
+                <div class="placeholder-text">Premium Cyborg Enhancement</div>
+                <div class="tech-circle"></div>
+                <div class="tech-circle"></div>
+                <div class="tech-circle"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Featured Enhancements</h2>
+            <p>Our most advanced cybernetic solutions</p>
+        </div>
+        <div class="product-carousel" data-aos="fade-up">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-badge">Best Seller</div>
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>OptiView Pro</h3>
+                    <p>Advanced ocular enhancement with 20x zoom capability, night vision, and augmented reality overlay.</p>
+                    <div class="product-meta">
+                        <span class="product-category">Ocular</span>
+                        <span class="product-price">₡120,000</span>
+                    </div>
+                    <a href="product-detail.html" class="btn btn-outline">View Details</a>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-badge">New</div>
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-hand"></i>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>TitanGrip 9000</h3>
+                    <p>Precision-engineered limb enhancement with titanium-reinforced joints and neural response time of 0.05ms.</p>
+                    <div class="product-meta">
+                        <span class="product-category">Upper Limbs</span>
+                        <span class="product-price">₡215,000</span>
+                    </div>
+                    <a href="product-detail.html" class="btn btn-outline">View Details</a>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-badge">Top Rated</div>
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Cortex Quantum</h3>
+                    <p>Neural enhancement increasing cognitive processing by 300% and adding 2TB of secure neural storage.</p>
+                    <div class="product-meta">
+                        <span class="product-category">Neural</span>
+                        <span class="product-price">₡450,000</span>
+                    </div>
+                    <a href="product-detail.html" class="btn btn-outline">View Details</a>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-badge">Limited</div>
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>CardioSync Elite</h3>
+                    <p>Next-gen cardiovascular system with self-regulating blood filtration and enhanced oxygen delivery.</p>
+                    <div class="product-meta">
+                        <span class="product-category">Cardiovascular</span>
+                        <span class="product-price">₡380,000</span>
+                    </div>
+                    <a href="product-detail.html" class="btn btn-outline">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition -->
+    <section class="value-proposition">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Why Choose CYBERTECH</h2>
+            <p>Setting the standard in cybernetic enhancement technology</p>
+        </div>
+        <div class="value-grid">
+            <!-- Value 1 -->
+            <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="value-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Unmatched Durability</h3>
+                <p>Our enhancements are constructed from aerospace-grade materials, ensuring years of reliable performance in any environment.</p>
+            </div>
+
+            <!-- Value 2 -->
+            <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="value-icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <h3>Superior Performance</h3>
+                <p>Every CYBERTECH product undergoes rigorous testing to deliver performance that consistently exceeds human limitations.</p>
+            </div>
+
+            <!-- Value 3 -->
+            <div class="value-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="value-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h3>Cutting-Edge Technology</h3>
+                <p>We integrate the latest advancements in neural interfaces, materials science, and quantum computing into each enhancement.</p>
+            </div>
+
+            <!-- Value 4 -->
+            <div class="value-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="value-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>Aesthetic Excellence</h3>
+                <p>Our design philosophy blends form and function, creating enhancements that are as visually striking as they are powerful.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Success Stories</h2>
+            <p>Hear from those who have transcended human limitations</p>
+        </div>
+        <div class="testimonial-slider" data-aos="fade-up">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-slide">
+                <div class="testimonial-image">
+                    <div class="image-placeholder">
+                        <div class="before-after">
+                            <span>Before</span>
+                            <span>After</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-content">
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>After my OptiView Pro installation, I can see details I never imagined possible. As a professional photographer, this has revolutionized my work and creative vision.</p>
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4>Elena Kai</h4>
+                        <p>Visual Artist, OptiView Pro User</p>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-slide">
+                <div class="testimonial-image">
+                    <div class="image-placeholder">
+                        <div class="before-after">
+                            <span>Before</span>
+                            <span>After</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-content">
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>The TitanGrip 9000 has given me back my career. After my accident, I never thought I'd climb again. Now I'm scaling peaks that were impossible for me even before my injury.</p>
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4>Marcus Chen</h4>
+                        <p>Professional Climber, TitanGrip User</p>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-slide">
+                <div class="testimonial-image">
+                    <div class="image-placeholder">
+                        <div class="before-after">
+                            <span>Before</span>
+                            <span>After</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-content">
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>My Cortex Quantum integration has transformed my research capabilities. Complex calculations that once took days now happen instantaneously. It's like having a supercomputer in my head.</p>
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4>Dr. Amara Okafor</h4>
+                        <p>Quantum Physicist, Cortex Quantum User</p>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call-to-Action -->
+    <section class="cta" data-aos="zoom-in">
+        <div class="cta-content">
+            <h2>Ready to Evolve?</h2>
+            <p>Take the first step toward transcending your natural limitations.</p>
+            <div class="cta-buttons">
+                <a href="inventory.html" class="btn btn-primary">
+                    <span>Browse Inventory</span>
+                    <i class="fas fa-cubes"></i>
+                </a>
+                <a href="contact.html" class="btn btn-outline-light">
+                    <span>Get a Consultation</span>
+                    <i class="fas fa-user-md"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-footer footer pt-16 pb-6">
+        <!-- Circuit overlay -->
+        <div class="footer-circuit-overlay circuit-overlay"></div>
+        
+        <!-- Main footer content -->
+        <div class="footer-container container mx-auto px-4">
+            <!-- Top footer section with logo and main content -->
+            <div class="footer-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+                <!-- Company Info Column -->
+                <div class="footer-col">
+                    <div class="mb-4">
+                        <div class="logo">
+                            <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="45" stroke="#00C2FF" stroke-width="2"/>
+                                <path d="M50 5 L50 95" stroke="#00C2FF" stroke-width="2"/>
+                                <path d="M5 50 L95 50" stroke="#00C2FF" stroke-width="2"/>
+                                <circle cx="50" cy="50" r="20" fill="none" stroke="#00C2FF" stroke-width="2"/>
+                                <path d="M35 50 C35 42.5 42.5 35 50 35" stroke="#BF5AF2" stroke-width="2"/>
+                                <path d="M50 65 C42.5 65 35 57.5 35 50" stroke="#BF5AF2" stroke-width="2"/>
+                                <path d="M65 50 C65 57.5 57.5 65 50 65" stroke="#BF5AF2" stroke-width="2"/>
+                                <path d="M50 35 C57.5 35 65 42.5 65 50" stroke="#BF5AF2" stroke-width="2"/>
+                            </svg>
+                            <h2 class="text-3xl font-bold mb-2 footer-animated-text animated-text" style="font-family: 'Audiowide', cursive;">CYBERTECH</h2>
+                        </div>
+                        <p class="text-sm tracking-wide" style="font-family: 'JetBrains Mono', monospace;">HUMAN POTENTIAL · ENHANCED</p>
+                    </div>
+                    <p class="text-sm mb-6">Revolutionizing human capabilities through cutting-edge cybernetic enhancements. Build your future, enhance your potential.</p>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="footer-social-icon social-icon h-10 w-10 flex items-center justify-center">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="footer-social-icon social-icon h-10 w-10 flex items-center justify-center">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="footer-social-icon social-icon h-10 w-10 flex items-center justify-center">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="footer-social-icon social-icon h-10 w-10 flex items-center justify-center">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="footer-pulsing-dot pulsing-dot"></span>
+                        <span class="text-sm text-cybernetic-blue">All systems operational</span>
+                    </div>
+                </div>
+                
+                <!-- Quick Links Column -->
+                <div class="footer-col">
+                    <h3 class="footer-heading text-lg font-semibold mb-6">Navigation</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Home</a></li>
+                        <li><a href="about.html" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>About Us</a></li>
+                        <li><a href="products.html" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Products</a></li>
+                        <li><a href="services.html" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Services</a></li>
+                        <li><a href="contact.html" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Contact</a></li>
+                        <li><a href="inventory.html" class="footer-link"><i class="fas fa-chevron-right mr-2 text-cybernetic-blue text-xs"></i>Inventory</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Column -->
+                <div class="footer-col">
+                    <h3 class="footer-heading text-lg font-semibold mb-6">Connect With Us</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-cybernetic-blue mt-1 mr-3"></i>
+                            <span>123 Techno Boulevard<br>Neo City</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-cybernetic-blue mr-3"></i>
+                            <span>(555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-cybernetic-blue mr-3"></i>
+                            <span>info@cyborgnexus.com</span>
+                        </li>
+                        <li class="mt-4">
+                            <a href="contact.html" class="footer-cybernetic-border cybernetic-border inline-block px-4 py-2 text-sm">
+                                <i class="fas fa-calendar-check mr-2"></i>Schedule Consultation
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Newsletter Column -->
+                <div class="footer-col">
+                    <h3 class="footer-heading text-lg font-semibold mb-6">Enhancement Updates</h3>
+                    <p class="mb-4 text-sm">Stay informed about the latest cybernetic innovations and exclusive offers.</p>
+                    <form class="mb-4">
+                        <div class="flex flex-col space-y-3">
+                            <input type="email" placeholder="Enter your email" class="footer-newsletter-input newsletter-input px-4 py-3 rounded text-sm w-full" required>
+                            <button type="submit" class="footer-subscribe-btn subscribe-btn px-4 py-3 rounded text-sm font-medium text-surgical-white">
+                                SUBSCRIBE <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <div class="text-xs">
+                        <div class="flex items-center mb-1">
+                            <i class="fas fa-shield-alt text-neon-green mr-2"></i>
+                            <span>Encrypted transmission</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-lock text-neon-green mr-2"></i>
+                            <span>We respect your privacy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Divider -->
+            <div class="footer-cybernetic-divider cybernetic-divider my-6"></div>
+            
+            <!-- Secondary links section -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div>
+                    <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Support</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="footer-link">FAQs</a></li>
+                        <li><a href="#" class="footer-link">Help Center</a></li>
+                        <li><a href="#" class="footer-link">Maintenance</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="footer-link">Terms of Service</a></li>
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">Warranty</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Resources</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                        <li><a href="#" class="footer-link">Research Papers</a></li>
+                        <li><a href="#" class="footer-link">Case Studies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-cybernetic-blue text-sm font-medium mb-3">Products</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="products.html#neural" class="footer-link">Neural Enhancements</a></li>
+                        <li><a href="products.html#ocular" class="footer-link">Ocular Systems</a></li>
+                        <li><a href="products.html#limbs" class="footer-link">Limb Replacements</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom footer with copyright, language, payment -->
+            <div class="footer-bottom flex flex-col md:flex-row justify-between items-center py-4 text-sm">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2023 CYBERTECH. All rights reserved.</p>
+                </div>
+                
+                <div class="flex space-x-6 items-center mb-4 md:mb-0">
+                    <div class="footer-language-selector language-selector flex items-center">
+                        <i class="fas fa-globe mr-2 text-cybernetic-blue"></i>
+                        <span>English</span>
+                        <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                        
+                        <div class="footer-language-options language-options">
+                            <ul class="space-y-2">
+                                <li><a href="#" class="footer-link">English</a></li>
+                                <li><a href="#" class="footer-link">日本語</a></li>
+                                <li><a href="#" class="footer-link">Español</a></li>
+                                <li><a href="#" class="footer-link">Français</a></li>
+                                <li><a href="#" class="footer-link">Deutsch</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html" class="footer-link flex items-center">
+                        <i class="fas fa-headset mr-2"></i>
+                        <span>24/7 Support</span>
+                    </a>
+                </div>
+                
+                <div class="footer-payment-methods payment-methods">
+                    <span class="mr-2 text-xs">SECURE PAYMENT</span>
+                    <div class="flex space-x-2">
+                        <i class="fab fa-cc-visa text-xl"></i>
+                        <i class="fab fa-cc-mastercard text-xl"></i>
+                        <i class="fab fa-cc-amex text-xl"></i>
+                        <i class="fab fa-bitcoin text-xl"></i>
+                        <i class="fab fa-ethereum text-xl"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tech certification badges -->
+            <div class="flex flex-wrap justify-center gap-4 my-6">
+                <div class="footer-cybernetic-border cybernetic-border px-3 py-2 flex items-center text-xs">
+                    <i class="fas fa-medal text-neon-green mr-2"></i>
+                    <span>ISO 9001 Certified</span>
+                </div>
+                <div class="footer-cybernetic-border cybernetic-border px-3 py-2 flex items-center text-xs">
+                    <i class="fas fa-shield-alt text-neon-green mr-2"></i>
+                    <span>Medical Grade Security</span>
+                </div>
+                <div class="footer-cybernetic-border cybernetic-border px-3 py-2 flex items-center text-xs">
+                    <i class="fas fa-robot text-neon-green mr-2"></i>
+                    <span>Advanced AI Support</span>
+                </div>
+                <div class="footer-cybernetic-border cybernetic-border px-3 py-2 flex items-center text-xs">
+                    <i class="fas fa-leaf text-neon-green mr-2"></i>
+                    <span>Carbon Neutral Tech</span>
+                </div>
+            </div>
+            
+            <!-- Back to top button -->
+            <div class="flex justify-center mt-6">
+                <button id="backToTop" class="footer-back-to-top back-to-top rounded-full h-12 w-12 flex items-center justify-center">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Navbar Scripts -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.nav-navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.nav-hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const mobileOverlay = document.querySelector('.nav-mobile-overlay');
+        
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        });
+        
+        mobileOverlay.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        });
+        
+        // Mobile dropdown toggle
+        const dropdowns = document.querySelectorAll('.nav-dropdown');
+        
+        dropdowns.forEach(dropdown => {
+            if (window.innerWidth <= 768) {
+                const link = dropdown.querySelector('a');
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                });
+            }
+        });
+        
+        // Close mobile menu when clicking on menu items
+        const navLinks = document.querySelectorAll('.nav-links li a');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768 && !this.parentElement.classList.contains('nav-dropdown')) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    mobileOverlay.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                }
+            });
+        });
+        
+        // Footer Scripts
+        $(document).ready(function() {
+            // Back to top button functionality
+            $('#backToTop').click(function() {
+                $('html, body').animate({scrollTop: 0}, 800);
+                return false;
+            });
+            
+            // Show/hide back to top button based on scroll position
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 300) {
+                    $('#backToTop').fadeIn(300);
+                } else {
+                    $('#backToTop').fadeOut(300);
+                }
+            });
+            
+            // Newsletter subscription form animation
+            $('.footer-subscribe-btn').hover(
+                function() {
+                    $(this).find('i').animate({marginLeft: '10px'}, 200);
+                },
+                function() {
+                    $(this).find('i').animate({marginLeft: '8px'}, 200);
+                }
+            );
+            
+            // Form submission (for demo purposes)
+            $('form').submit(function(e) {
+                e.preventDefault();
+                const email = $('.footer-newsletter-input').val();
+                if (email) {
+                    // Replace input with success message
+                    $(this).html('<div class="bg-opacity-20 bg-green-500 p-3 rounded"><i class="fas fa-check-circle text-neon-green mr-2"></i>Thank you! You\'ve been successfully subscribed.</div>');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
