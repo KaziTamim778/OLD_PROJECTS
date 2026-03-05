@@ -88,6 +88,24 @@ An enhanced version of the DCITC website with a dedicated image gallery featurin
 
 ---
 
+### 📊 EXAM_DATA
+**Quantum Practice Analytics Dashboard**
+
+A dark-themed, military-tactical-styled performance tracking and exam analytics application built for two students preparing for higher-education admission exams in Bangladesh (BUET, DU, Medical, KUET, CUET, etc.). Tracks practice problem-solving across Physics, Chemistry, and Mathematics, monitors competitive exam results, archives board exam history, and celebrates academic milestones — wrapped in a futuristic "Ops Center / Tactical HUD" aesthetic.
+
+| Feature | Description |
+|---------|-------------|
+| **Theme** | Military-Tactical / Futuristic HUD |
+| **Type** | Single Page Application (5 Zones) |
+| **Tech Stack** | React 19, TypeScript, Vite, Recharts, Tailwind CSS, Lucide React |
+| **Zones** | Profile (Gladiators), Admission Exams (War), Board Archives (Ruins), Practice (Dojo), Hall of Fame |
+| **Highlights** | Area/Radar/Donut/Radial charts, subject filtering, sortable data table, animated counters, real-time clock, player detail modals |
+| **Data** | 35 chapters · ~23,930 problems · 30+ admission exams · SSC & HSC board results · merit ranks & olympiad prizes |
+
+📂 [View Project](./EXAM_DATA/) | 📄 [View README](./EXAM_DATA/README.md)
+
+---
+
 ## 🛠️ Technologies Used Across Projects
 
 | Category | Technologies |
@@ -95,9 +113,12 @@ An enhanced version of the DCITC website with a dedicated image gallery featurin
 | **Markup** | HTML5 |
 | **Styling** | CSS3, Tailwind CSS, Custom Properties |
 | **JavaScript** | ES6+, Vanilla JS |
+| **Frameworks** | React 19, TypeScript |
+| **Build Tools** | Vite |
 | **Animation** | AOS, GSAP, Animate.css, Particles.js |
+| **Charts** | Recharts |
 | **3D/Effects** | Three.js, Vanilla Tilt, Swiper |
-| **Icons** | Font Awesome |
+| **Icons** | Font Awesome, Lucide React |
 | **Fonts** | Google Fonts (Orbitron, Poppins, Inter, JetBrains Mono) |
 | **Utilities** | SweetAlert2, Tippy.js, Leaflet |
 
