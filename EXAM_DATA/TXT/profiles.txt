@@ -1,0 +1,40 @@
+{
+  "TAMIM": {
+    "name": "Kazi Md. Amimul Ahsan Tamim",
+    "class_9_roll": "96",
+    "class_10_roll": "2",
+    "college_roll": "1202324010395",
+    "udvash_id": "96207502616",
+    "udvash_reg": "2225228",
+    "ssc_roll": "150457",
+    "hsc_roll": "108738",
+    "board_reg": "2011512587",
+    "institution": "Dhaka College",
+    "ssc_institution": "Ibne Taimia School & College",
+    "ssc_board": "Comilla",
+    "hsc_board": "Dhaka",
+    "session": "2023-2024",
+    "batch": "25",
+    "branch": "Malibagh",
+    "avatar_url": "/assets/tamim.png"
+  },
+  "TANVIR": {
+    "name": "Kazi Md. Mainul Islam Tanvir",
+    "class_9_roll": "95",
+    "class_10_roll": "10",
+    "college_roll": "1202324010408",
+    "udvash_id": "12160300770",
+    "udvash_reg": "2492810",
+    "ssc_roll": "150456",
+    "hsc_roll": "108751",
+    "board_reg": "2011512586",
+    "institution": "Dhaka College",
+    "ssc_institution": "Ibne Taimia School & College",
+    "ssc_board": "Comilla",
+    "hsc_board": "Dhaka",
+    "session": "2023-2024",
+    "batch": "25",
+    "branch": "Malibagh",
+    "avatar_url": "/assets/tanvir.png"
+  }
+}

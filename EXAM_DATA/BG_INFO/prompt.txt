@@ -1,0 +1,209 @@
+Background Data : 
+    PROFILE :
+        -there are 2 students 
+        -they give exactly same exams 
+        -the sole purpose of the dashboard is to compare this 2 students 
+    EXAM PHASE : [3 major phasess]
+    1. SSC : School , SSC Board .
+    2. HSC : College , Model Test , HSC Board 
+    3. Admission : 
+        From Coaching : EAP [ Engineering Admission Program ] , MAP[ Medical Admission Program] , VAP [ Varsity Admission Program]
+        From Varsity : Directly from Varsity 
+    PRACTICE : mixed from hsc and admission 
+        Subject: Physics , Chemistry , Math [ for other subjects i dont have exact practice problems count ]
+        - I have subjects > paper [1st and 2nd] > chapters 
+    PHASEWISE DETAILS : 
+        1. SSC : 
+            1A School :
+                - I have a slide where i have our exam result 
+                - I don't have the dates for the exam 
+                - Although the exam had both written and mcq but i didn't have detailed marks i only have the total marks 
+            1B SSC Board : 
+                - I have both dates and marks for the exam .
+                - but i still dont have marks for mcq and written .
+                - overall gpa will be added to hall of fame .
+        2. HSC  : 
+            2A College : 
+                - I have both date and marks 
+                - I have dedicated marks for written , mcq and Practical [ for some exam i have the practical marks but you can just add them to written if the exam has practical ]
+                - i have some trophies from different fests [event name , subject and position will be given ] [ no need to add it in the exam page] [it will be added in the hall of fame page ]
+            2B HSC Model Test : 
+                - I have both date and marks and position [there are 2 types of position in branch merit and central merit ]
+                - I have detailed marks for both written [cq] and mcq
+            2C HSC Board : 
+                - I have both dates and marks for the exam .
+                - but i dont have marks for mcq and written .
+                - overall gpa will be added to hall of fame .
+        3. Admission : 
+            3A From Coaching : 
+                - It has daily , weekly , monthly , subject final , paper final , combined paper final , final model test , Varsity 
+                - I have both date and marks and position [there are 2 types of position in branch merit and central merit ]
+                - you might sometime mix it the exam results so an additional routine might be given for vap , map [ there is medical exam batch from unmesh and medical weekly in Engineering exam]
+                - in this there are online . inbranch and pratice [practice and online will be added to online tag  and inbranch will be known ad offline tag ] 
+            3B From Varsity : 
+                - This are the final result of this phase 
+                - i mainly have merit position but for few exams i have marks to 
+                - all the results from this page will be added to hall of fame .
+DASHBOARD DETAILS : 
+    OVERALL : 
+        - all the pages except for practice page will have 3 modes TAMIM  , TANVIR and COMPARE [tamim and tanvir are the 2 students]
+        - every page will have 3-4 small boxes in the top for relevant info , graphs etc 
+        - I prefer Area charts with rounded edge for practice , exam charts
+        - screenshots from previous attempts will be given for better understanding of DASHBOARD
+            -best_page.mp4 is one of the best example of how the dash board might look the navbar DESIGN , mood switching in header [on other pages it will be tamim , tanvir and compare instead of phy , chemistry math etc and the charts in the top 3-4 lines and other area charts including the hover tooltip]
+            - use different shades of same color per page instead multiple colors unless necessary for highlighting 
+    PROFILE PAGE  [MAIN DASHBOARD ] : 
+        - It will have overall relevant details from different pages 
+    THE WAR Page : 
+        - exam results of last exam phase will be added [for now its admission phase ]
+        - area charts will be used to compare the 2 students over the time [two graphs for 3a and 3b ] 
+    THE DOJO Page : 
+        - there will be one area chart that will have show data of number of problems solved from each chapters paperwise 
+    HALL OF FAME : 
+        - Major Achievents from differe pahses 
+        - ssc board and hsc board overall gpa , varsity position , trophies from fests , position in clubs etc will be added 
+        - this page will be different from other pages [i dont think i will need area chart for this page ]
+        - the overall color theme of this particular page will be monochromic golden theme 
+        -this page will have lot less chart then other pages instead it will have cards for major Achievents at the head as per the best_halloffame_head.png and detailed Achievents in the bottom
+    THE RUINS: 
+        - i will be adding the exam results from previous phases 
+        - It will be almost like the exam page  
+DESIGN DETAILS : 
+    - i like shadow icons [so you might add them in the background of boxes]
+    - screenshots from previous attempts will be given for better understanding of DESIGN 
+    - Area chart : 
+        Chart Line & Fill: The line should be smooth (spline interpolation) with a semi-transparent gradient fill below it fading to the bottom.
+        Markers: Hollow circular points on the line for each data value.
+    -tooltip : 
+        -it will be a hover Effects for chart and other relevant charts 
+        -Use a sleek "Dark Glassmorphism" style (semi-transparent dark background, slight blur, rounded borders) with high-contrast text so it visibly "pops" above the chart lines without completely blocking the background.
+    - boxes in the top :  
+DATA HANDLING : 
+    Exam : results will be handled in both original and percentage format 
+    All Tags : 
+        Provider : SCHOOL , COLLEGE , BOARD , UDVASH , VARSITY 
+        PHASE : SSC , HSC , ADMISSION 
+        Program : EAP , VAP , MAP 
+        Platform : ONLINE , OFFLINE 
+        Type : CQ , MCQ , WRITTEN [a single exam might have multiple type tags ]
+        PROFILE : TAMIM , TANVIR 
+    1. SSC : 
+        Tag: 
+        [Provider : 
+            1. School : 1st Tutorial, 2nd Tutorial, Pre-Test, Test, Weekly Exams 
+            2. Board : SSC/ Board exam ]
+        [Exam Type : All CQ[add practical exam in under the CQ tag] , MCQ ]
+    2. HSC : 
+        Tag: 
+        [Provider :
+            1. College :   
+                1st Year: CT 1, CT 2, CT 3, Half Yearly, Yearly.
+                2nd Year: CT 1, SE (Special Evaluation), Test.
+            2. Board : HSC/Board Exam 
+            3. Udvash : HSC Model Test ]
+        [Exam Type : All CQ[add practical exam in under the CQ tag] , MCQ ]
+    3. ADMISSION :
+        Tag : 
+        [Provider: 
+            1. Udvash : daily , weekly , monthly , subject final , paper final , combined paper final , final model test , Varsitywise special exam 
+            2, VARSITY : Varsity ]
+        [Program : 
+        1. EAP 2. VAP 3.  MAP ]
+        [Exam Type : Written and MCQ determined based on data ]
+        [Platform : 
+            1. Offline : inbranch/ offline 
+            2. Online : Practice , Online ]
+    Practice: 
+        Note: 
+            -total number of problems from each chapter will counted 
+            -there will be data of only 1 user 
+            -tag hierechy subject > paper > Chapter 
+            -if a chapter doesnt have any input in the row keep the row hidden 
+        All tags: 
+            Subject : PHY , CHE , MATH 
+            Paper : 1ST , 2ND 
+            Chapters : [will be like M1C1 [for math 1st paper chapter 1] , P2C5 [for physics 2nd paper chapter 5] , C1C5 [for chemistry 1st paper chapter 5]]
+            Source: [where i practice the problems]
+            Type : MCQ , CQ , WRITTEN 
+            Subject : 
+                PHY -> Physics
+                CHE -> Chemistry 
+                MATH -> Math
+            Paper : 1st and 2nd paper for each subjects
+            Chapter :
+                *** HIGHER MATH 1ST PAPER (M1) ***
+                    M1C1 -> Matrices & Determinants
+                    M1C2 -> Vectors
+                    M1C3 -> Straight Lines
+                    M1C4 -> Circle
+                    M1C5 -> Permutations & Combinations
+                    M1C6 -> Trigonometric Ratios
+                    M1C7 -> Properties of Triangles & Trigonometric Functions
+                    M1C8 -> Functions & Function Graphs
+                    M1C9 -> Differentiation
+                    M1C10 -> Integration
+
+                *** HIGHER MATH 2ND PAPER (M2) ***
+                    M2C1 -> Real Numbers & Inequalities
+                    M2C2 -> Linear Programming
+                    M2C3 -> Complex Numbers
+                    M2C4 -> Polynomials & Polynomial Equations
+                    M2C5 -> Binomial Expansion
+                    M2C6 -> Conics
+                    M2C7 -> Inverse Trigonometric Functions & Trigonometric Equations
+                    M2C8 -> Statics
+                    M2C9 -> Motion of Particles (Dynamics)
+                    M2C10 -> Probability
+
+                *** PHYSICS 1ST PAPER (P1) ***
+                    P1C1 -> Physical World & Measurement
+                    P1C2 -> Vectors
+                    P1C3 -> Dynamics (Kinematics)
+                    P1C4 -> Newtonian Mechanics
+                    P1C5 -> Work, Energy & Power
+                    P1C6 -> Gravitation & Gravity
+                    P1C7 -> Structural Properties of Matter
+                    P1C8 -> Periodic Motion
+                    P1C9 -> Waves
+                    P1C10 -> Ideal Gas & Kinetic Theory of Gases
+
+                *** PHYSICS 2ND PAPER (P2) ***
+                    P2C1 -> Thermodynamics
+                    P2C2 -> Static Electricity
+                    P2C3 -> Current Electricity
+                    P2C4 -> Magnetic Effects of Current & Magnetism
+                    P2C5 -> Electromagnetic Induction & Alternating Current
+                    P2C6 -> Geometrical Optics
+                    P2C7 -> Physical Optics
+                    P2C8 -> Introduction to Modern Physics
+                    P2C9 -> Atomic Model & Nuclear Physics
+                    P2C10 -> Semiconductor & Electronics
+                    P2C11 -> Astronomy
+
+                *** CHEMISTRY 1ST PAPER (C1) ***
+                    C1C1 -> Safe Use of Laboratory
+                    C1C2 -> Qualitative Chemistry
+                    C1C3 -> Periodic Properties & Chemical Bonding
+                    C1C4 -> Chemical Changes
+                    C1C5 -> Work Oriented Chemistry
+
+                *** CHEMISTRY 2ND PAPER (C2) ***
+                    C2C1 -> Environmental Chemistry
+                    C2C2 -> Organic Chemistry
+                    C2C3 -> Quantitative Chemistry
+                    C2C4 -> Electrochemistry
+                    C2C5 -> Economic Chemistry
+            Sources :[ Although i am giving abbreviatio you will using the same tag as the header of that column ]
+                PT -> Parallel Text [PT-E -> means Parallel text example , PT-M -> means parallel text math , the things after - means the type of problems from that source ]
+                TP -> Test Paper 
+                MB -> Main Book 
+                EQB -> Engineering Question Bank
+                VQB -> Varsity Question bank 
+                CB -> Concept Book 
+                PB -> Practice Book
+                FRB -> FINAL REVISION BATCH 
+                ENG-CW -> Engineering Clas
+            Type : [this tag is only counting the total number of problem solved typewise per subject ]
+                CQ -> COLUMNS WITH SPECIFIC CQ TAG 
+                MCQ ->  COLUMNS WITH SPECIFIC CQ TAG
+                Written -> every columns except cq and mcq ones 

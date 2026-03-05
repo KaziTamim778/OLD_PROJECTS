@@ -1,0 +1,776 @@
+{
+  "metadata": {
+    "generated": "2025",
+    "description": "Chapter-wise and type-wise solved problems count (Physics, Chemistry, Higher Math)",
+    "classification_rules": {
+      "MCQ": "Any source containing 'MCQ' in its code (PT-MCQ, EQ-MCQ, MB-MCQ, TP-MCQ, ...)",
+      "CQ": "Any source containing 'CQ' in its code (MB-CQ, TP-CQ, ...)",
+      "Written": "All other sources (PT-E, PT-M, EQ-M, CW, CB, FRB, VQ, PB, ...)"
+    }
+  },
+
+  "grand_totals": {
+    "MCQ": 7160,
+    "CQ": 4938,
+    "Written": 7397,
+    "total_problems_solved": 19495
+  },
+
+  "subjects": {
+    "PHY": {
+      "name": "Physics",
+      "totals": {
+        "MCQ": 2259,
+        "CQ": 1505,
+        "Written": 2450,
+        "total": 6214
+      },
+      "papers": {
+        "1ST": {
+          "name": "Physics 1st Paper",
+          "totals": {
+            "MCQ": 1072,
+            "CQ": 838,
+            "Written": 1413,
+            "total": 3323
+          },
+          "chapters": [
+            {
+              "code": "P1C1",
+              "name": "Physical World & Measurement",
+              "stats": {
+                "TP-MCQ": 37
+              },
+              "breakdown": {
+                "MCQ": 37,
+                "CQ": 0,
+                "Written": 0,
+                "total": 37
+              }
+            },
+            {
+              "code": "P1C2",
+              "name": "Vectors",
+              "stats": {
+                "PT-E": 36,
+                "PT-M": 70,
+                "MB-CQ": 105,
+                "EQ-M": 18,
+                "EQ-MCQ": 28,
+                "MB-MCQ": 101,
+                "CW": 134,
+                "TP-CQ": 168,
+                "TP-MCQ": 168,
+                "FRB": 126
+              },
+              "breakdown": {
+                "MCQ": 365,
+                "CQ": 273,
+                "Written": 316,
+                "total": 954
+              }
+            },
+            {
+              "code": "P1C4",
+              "name": "Newtonian Mechanics",
+              "stats": {
+                "PT-E": 33,
+                "PT-M": 40,
+                "PT-MCQ": 99,
+                "MB-CQ": 83,
+                "EQ-M": 37,
+                "EQ-MCQ": 74,
+                "MB-MCQ": 101,
+                "CW": 111,
+                "TP-CQ": 111,
+                "TP-MCQ": 193,
+                "FRB": 70
+              },
+              "breakdown": {
+                "MCQ": 467,
+                "CQ": 194,
+                "Written": 291,
+                "total": 952
+              }
+            },
+            {
+              "code": "P1C5",
+              "name": "Work, Energy & Power",
+              "stats": {
+                "PT-E": 34,
+                "PT-M": 48,
+                "MB-CQ": 39,
+                "EQ-M": 44,
+                "EQ-MCQ": 67,
+                "MB-MCQ": 110,
+                "CW": 93,
+                "TP-CQ": 93,
+                "FRB": 110
+              },
+              "breakdown": {
+                "MCQ": 177,
+                "CQ": 132,
+                "Written": 329,
+                "total": 638
+              }
+            },
+            {
+              "code": "P1C6",
+              "name": "Gravitation & Gravity",
+              "stats": {
+                "PT-E": 20,
+                "PT-M": 64,
+                "MB-CQ": 57,
+                "EQ-M": 29,
+                "EQ-MCQ": 37,
+                "MB-MCQ": 80,
+                "CW": 88,
+                "TP-CQ": 88
+              },
+              "breakdown": {
+                "MCQ": 117,
+                "CQ": 145,
+                "Written": 201,
+                "total": 463
+              }
+            },
+            {
+              "code": "P1C7",
+              "name": "Structural Properties of Matter",
+              "stats": {
+                "PT-E": 14,
+                "PT-M": 22,
+                "MB-CQ": 27,
+                "EQ-M": 28,
+                "EQ-MCQ": 25,
+                "MB-MCQ": 42,
+                "CW": 71,
+                "TP-CQ": 71
+              },
+              "breakdown": {
+                "MCQ": 67,
+                "CQ": 98,
+                "Written": 135,
+                "total": 300
+              }
+            },
+            {
+              "code": "P1C8",
+              "name": "Periodic Motion",
+              "stats": {
+                "PT-E": 19,
+                "PT-M": 56,
+                "MB-CQ": 44,
+                "EQ-M": 41,
+                "EQ-MCQ": 44,
+                "MB-MCQ": 175,
+                "CW": 82,
+                "TP-CQ": 82
+              },
+              "breakdown": {
+                "MCQ": 219,
+                "CQ": 126,
+                "Written": 198,
+                "total": 543
+              }
+            },
+            {
+              "code": "P1C10",
+              "name": "Ideal Gas & Kinetic Theory of Gases",
+              "stats": {
+                "PT-E": 23,
+                "PT-M": 23,
+                "MB-MCQ": 122,
+                "CW": 105,
+                "TP-CQ": 105
+              },
+              "breakdown": {
+                "MCQ": 122,
+                "CQ": 105,
+                "Written": 151,
+                "total": 378
+              }
+            }
+          ]
+        },
+        "2ND": {
+          "name": "Physics 2nd Paper",
+          "totals": {
+            "MCQ": 1187,
+            "CQ": 667,
+            "Written": 1037,
+            "total": 2891
+          },
+          "chapters": [
+            {
+              "code": "P2C1",
+              "name": "Thermodynamics",
+              "stats": {
+                "PT-E": 29,
+                "PT-M": 58,
+                "PT-MCQ": 114,
+                "MB-CQ": 37,
+                "CB": 40,
+                "MB-MCQ": 166,
+                "CW": 60,
+                "TP-CQ": 86
+              },
+              "breakdown": {
+                "MCQ": 280,
+                "CQ": 123,
+                "Written": 187,
+                "total": 590
+              }
+            },
+            {
+              "code": "P2C2",
+              "name": "Static Electricity",
+              "stats": {
+                "PT-E": 39,
+                "PT-M": 39,
+                "PT-MCQ": 101,
+                "MB-CQ": 45,
+                "CB": 36,
+                "MB-MCQ": 127,
+                "CW": 84,
+                "TP-CQ": 92
+              },
+              "breakdown": {
+                "MCQ": 228,
+                "CQ": 137,
+                "Written": 198,
+                "total": 563
+              }
+            },
+            {
+              "code": "P2C3",
+              "name": "Current Electricity",
+              "stats": {
+                "PT-E": 56,
+                "PT-M": 45,
+                "PT-MCQ": 111,
+                "MB-CQ": 53,
+                "CB": 61,
+                "CW": 84,
+                "TP-CQ": 109
+              },
+              "breakdown": {
+                "MCQ": 111,
+                "CQ": 162,
+                "Written": 246,
+                "total": 519
+              }
+            },
+            {
+              "code": "P2C7",
+              "name": "Physical Optics",
+              "stats": {
+                "PT-E": 25,
+                "PT-M": 22,
+                "PT-MCQ": 97,
+                "MB-CQ": 22,
+                "CB": 20,
+                "MB-MCQ": 60,
+                "CW": 38,
+                "TP-CQ": 62
+              },
+              "breakdown": {
+                "MCQ": 157,
+                "CQ": 84,
+                "Written": 105,
+                "total": 346
+              }
+            },
+            {
+              "code": "P2C8",
+              "name": "Introduction to Modern Physics",
+              "stats": {
+                "PT-E": 46,
+                "PT-MCQ": 111,
+                "MB-CQ": 29,
+                "CB": 36,
+                "TP-CQ": 64
+              },
+              "breakdown": {
+                "MCQ": 111,
+                "CQ": 93,
+                "Written": 82,
+                "total": 286
+              }
+            },
+            {
+              "code": "P2C9",
+              "name": "Atomic Model & Nuclear Physics",
+              "stats": {
+                "PT-E": 25,
+                "MB-CQ": 34,
+                "CB": 29,
+                "TP-CQ": 58
+              },
+              "breakdown": {
+                "MCQ": 0,
+                "CQ": 92,
+                "Written": 54,
+                "total": 146
+              }
+            },
+            {
+              "code": "P2C10",
+              "name": "Semiconductor & Electronics",
+              "stats": {
+                "PT-E": 13,
+                "MB-CQ": 23,
+                "CB": 21,
+                "TP-CQ": 89,
+                "TP-MCQ": 143
+              },
+              "breakdown": {
+                "MCQ": 143,
+                "CQ": 112,
+                "Written": 34,
+                "total": 289
+              }
+            }
+          ]
+        }
+      }
+    },
+
+    "CHE": {
+      "name": "Chemistry",
+      "totals": {
+        "MCQ": 2311,
+        "CQ": 1540,
+        "Written": 1640,
+        "total": 5491
+      },
+      "papers": {
+        "1ST": {
+          "name": "Chemistry 1st Paper",
+          "totals": {
+            "MCQ": 842,
+            "CQ": 573,
+            "Written": 514,
+            "total": 1929
+          },
+          "chapters": [
+            {
+              "code": "C1C2",
+              "name": "Qualitative Chemistry",
+              "stats": {
+                "PT-E": 23,
+                "PT-M": 71,
+                "MB-CQ": 124,
+                "TP-CQ": 172,
+                "TP-MCQ": 242
+              },
+              "breakdown": {
+                "MCQ": 242,
+                "CQ": 296,
+                "Written": 94,
+                "total": 632
+              }
+            },
+            {
+              "code": "C1C3",
+              "name": "Periodic Properties & Chemical Bonding",
+              "stats": {
+                "PT-M": 50,
+                "MB-MCQ": 100,
+                "TP-CQ": 157,
+                "TP-MCQ": 268
+              },
+              "breakdown": {
+                "MCQ": 368,
+                "CQ": 157,
+                "Written": 50,
+                "total": 575
+              }
+            },
+            {
+              "code": "C1C4",
+              "name": "Chemical Changes",
+              "stats": {
+                "PT-E": 68,
+                "PT-M": 58,
+                "PT-MCQ": 158,
+                "MB-CQ": 120,
+                "EQ-M": 93,
+                "EQ-MCQ": 93,
+                "MB-MCQ": 174,
+                "TP-CQ": 140,
+                "TP-MCQ": 200
+              },
+              "breakdown": {
+                "MCQ": 625,
+                "CQ": 260,
+                "Written": 219,
+                "total": 1104
+              }
+            },
+            {
+              "code": "C1C5",
+              "name": "Chemistry in Action",
+              "stats": {
+                "PT-M": 20,
+                "PT-MCQ": 54,
+                "TP-CQ": 61,
+                "TP-MCQ": 87
+              },
+              "breakdown": {
+                "MCQ": 141,
+                "CQ": 61,
+                "Written": 20,
+                "total": 222
+              }
+            }
+          ]
+        },
+        "2ND": {
+          "name": "Chemistry 2nd Paper",
+          "totals": {
+            "MCQ": 1469,
+            "CQ": 967,
+            "Written": 1126,
+            "total": 3562
+          },
+          "chapters": [
+            {
+              "code": "C2C1",
+              "name": "Environmental Chemistry",
+              "stats": {
+                "PT-E": 49,
+                "PT-M": 51,
+                "PT-MCQ": 91,
+                "MB-CQ": 75,
+                "CB": 63,
+                "MB-MCQ": 107,
+                "CW": 150,
+                "TP-CQ": 128,
+                "TP-MCQ": 226
+              },
+              "breakdown": {
+                "MCQ": 424,
+                "CQ": 203,
+                "Written": 313,
+                "total": 940
+              }
+            },
+            {
+              "code": "C2C2",
+              "name": "Organic Chemistry",
+              "stats": {
+                "PT-M": 77,
+                "PT-MCQ": 282,
+                "MB-MCQ": 260,
+                "TP-CQ": 156,
+                "TP-MCQ": 304
+              },
+              "breakdown": {
+                "MCQ": 846,
+                "CQ": 156,
+                "Written": 77,
+                "total": 1079
+              }
+            },
+            {
+              "code": "C2C3",
+              "name": "Quantitative Chemistry",
+              "stats": {
+                "PT-E": 187,
+                "MB-CQ": 77,
+                "CB": 61,
+                "MB-MCQ": 119,
+                "CW": 193,
+                "TP-CQ": 120,
+                "TP-MCQ": 178
+              },
+              "breakdown": {
+                "MCQ": 297,
+                "CQ": 197,
+                "Written": 441,
+                "total": 935
+              }
+            },
+            {
+              "code": "C2C4",
+              "name": "Electrochemistry",
+              "stats": {
+                "PT-E": 59,
+                "MB-CQ": 34,
+                "CB": 59,
+                "MB-MCQ": 158,
+                "CW": 20,
+                "TP-CQ": 69,
+                "TP-MCQ": 156
+              },
+              "breakdown": {
+                "MCQ": 314,
+                "CQ": 103,
+                "Written": 138,
+                "total": 555
+              }
+            }
+          ]
+        }
+      }
+    },
+
+    "MATH": {
+      "name": "Higher Mathematics",
+      "totals": {
+        "MCQ": 2590,
+        "CQ": 1893,
+        "Written": 3307,
+        "total": 7790
+      },
+      "papers": {
+        "1ST": {
+          "name": "Higher Math 1st Paper",
+          "totals": {
+            "MCQ": 1416,
+            "CQ": 1054,
+            "Written": 2270,
+            "total": 4740
+          },
+          "chapters": [
+            {
+              "code": "M1C1",
+              "name": "Matrices & Determinants",
+              "stats": {
+                "PT-E": 54,
+                "PT-M": 62,
+                "PT-MCQ": 72,
+                "MB-CQ": 71,
+                "TP-MCQ": 146,
+                "FRB": 97
+              },
+              "breakdown": {
+                "MCQ": 218,
+                "CQ": 71,
+                "Written": 213,
+                "total": 502
+              }
+            },
+            {
+              "code": "M1C3",
+              "name": "Straight Lines",
+              "stats": {
+                "PT-E": 182,
+                "PT-M": 79,
+                "PT-MCQ": 165,
+                "MB-MCQ": 123,
+                "TP-CQ": 159,
+                "TP-MCQ": 126,
+                "FRB": 149
+              },
+              "breakdown": {
+                "MCQ": 414,
+                "CQ": 159,
+                "Written": 410,
+                "total": 983
+              }
+            },
+            {
+              "code": "M1C4",
+              "name": "Circle",
+              "stats": {
+                "PT-E": 76,
+                "PT-M": 55,
+                "PT-MCQ": 70,
+                "MB-MCQ": 57,
+                "TP-CQ": 96,
+                "TP-MCQ": 74,
+                "FRB": 96
+              },
+              "breakdown": {
+                "MCQ": 201,
+                "CQ": 96,
+                "Written": 227,
+                "total": 524
+              }
+            },
+            {
+              "code": "M1C7",
+              "name": "Properties of Triangles & Trigonometric Functions",
+              "stats": {
+                "PT-E": 176,
+                "PT-M": 77,
+                "PT-MCQ": 79,
+                "MB-CQ": 168,
+                "TP-MCQ": 116,
+                "FRB": 78
+              },
+              "breakdown": {
+                "MCQ": 195,
+                "CQ": 168,
+                "Written": 331,
+                "total": 694
+              }
+            },
+            {
+              "code": "M1C9",
+              "name": "Differentiation",
+              "stats": {
+                "PT-E": 147,
+                "PT-M": 111,
+                "PT-MCQ": 243,
+                "TP-CQ": 158,
+                "TP-MCQ": 165,
+                "FRB": 209
+              },
+              "breakdown": {
+                "MCQ": 408,
+                "CQ": 158,
+                "Written": 467,
+                "total": 1033
+              }
+            },
+            {
+              "code": "M1C10",
+              "name": "Integration",
+              "stats": {
+                "PT-E": 264,
+                "PT-MCQ": 236,
+                "MB-CQ": 425,
+                "TP-CQ": 157,
+                "TP-MCQ": 141,
+                "FRB": 165
+              },
+              "breakdown": {
+                "MCQ": 377,
+                "CQ": 582,
+                "Written": 429,
+                "total": 1388
+              }
+            }
+          ]
+        },
+        "2ND": {
+          "name": "Higher Math 2nd Paper",
+          "totals": {
+            "MCQ": 1174,
+            "CQ": 839,
+            "Written": 1037,
+            "total": 3050
+          },
+          "chapters": [
+            {
+              "code": "M2C3",
+              "name": "Complex Numbers",
+              "stats": {
+                "PT-E": 81,
+                "PT-MCQ": 111,
+                "CB": 26,
+                "CW": 125,
+                "TP-CQ": 95,
+                "TP-MCQ": 96,
+                "FRB": 82
+              },
+              "breakdown": {
+                "MCQ": 207,
+                "CQ": 95,
+                "Written": 314,
+                "total": 616
+              }
+            },
+            {
+              "code": "M2C4",
+              "name": "Polynomials & Polynomial Equations",
+              "stats": {
+                "PT-E": 92,
+                "PT-MCQ": 84,
+                "CB": 74,
+                "CW": 110,
+                "TP-CQ": 146,
+                "TP-MCQ": 145,
+                "FRB": 69
+              },
+              "breakdown": {
+                "MCQ": 229,
+                "CQ": 146,
+                "Written": 345,
+                "total": 720
+              }
+            },
+            {
+              "code": "M2C6",
+              "name": "Conics",
+              "stats": {
+                "PT-E": 106,
+                "PT-MCQ": 145,
+                "CB": 99,
+                "CW": 76,
+                "TP-MCQ": 154,
+                "FRB": 53
+              },
+              "breakdown": {
+                "MCQ": 299,
+                "CQ": 0,
+                "Written": 334,
+                "total": 633
+              }
+            },
+            {
+              "code": "M2C7",
+              "name": "Inverse Trigonometric Functions & Trigonometric Equations",
+              "stats": {
+                "PT-E": 103,
+                "PT-MCQ": 123,
+                "CB": 78,
+                "CW": 80,
+                "TP-CQ": 150,
+                "TP-MCQ": 154,
+                "FRB": 100
+              },
+              "breakdown": {
+                "MCQ": 277,
+                "CQ": 150,
+                "Written": 361,
+                "total": 788
+              }
+            },
+            {
+              "code": "M2C8",
+              "name": "Statics",
+              "stats": {
+                "PT-E": 123,
+                "PT-MCQ": 127,
+                "MB-CQ": 46,
+                "CB": 114,
+                "CW": 71,
+                "TP-CQ": 176,
+                "TP-MCQ": 107,
+                "FRB": 48
+              },
+              "breakdown": {
+                "MCQ": 234,
+                "CQ": 222,
+                "Written": 356,
+                "total": 812
+              }
+            },
+            {
+              "code": "M2C9",
+              "name": "Motion of Particles (Dynamics)",
+              "stats": {
+                "PT-E": 136,
+                "CB": 108,
+                "CW": 76,
+                "TP-CQ": 113,
+                "TP-MCQ": 85,
+                "FRB": 76
+              },
+              "breakdown": {
+                "MCQ": 85,
+                "CQ": 113,
+                "Written": 396,
+                "total": 594
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
